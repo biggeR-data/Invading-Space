@@ -16,10 +16,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GameOverScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
         primaryStage.setTitle("Space Invader - aber besser");
         Scene startscreen = new Scene(root);
         primaryStage.setScene(startscreen);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }
