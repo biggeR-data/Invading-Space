@@ -38,4 +38,6 @@ public abstract class BeweglicheObjekte {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.WHITE);
     }
+
+    // todo: Draw Statement --> nachsehen
 }

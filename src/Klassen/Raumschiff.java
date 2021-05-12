@@ -13,6 +13,7 @@ public class Raumschiff extends BeweglicheObjekte {
     //  Altes Raumschiff "entfernen"
     //  Neue Koordinaten berechnen
     //  "Neues" Raumschiff zeichnen
+
     public void bewegenRechts() {
         zeichneSchwarz();
         this.xKoor =  getXKoor() + BEWEGUNG;
