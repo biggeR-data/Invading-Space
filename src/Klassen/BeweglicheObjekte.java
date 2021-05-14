@@ -10,7 +10,7 @@ public abstract class BeweglicheObjekte {
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     protected final int hoehe = 25;
     protected final int breite = 25;
-    protected final int BEWEGUNG = 10;
+    protected final int XBEWEGUNG = 10;
     // Image
 
     // Konstruktor
@@ -29,13 +29,23 @@ public abstract class BeweglicheObjekte {
     }
 
     // Rechteck zeichnen schwarz und weiß
+    //  todo: GraphicsContext (eine Group ?) muss übergeben werden --> Leon fragen
+    //   Bereits im Konstruktor übergeben
+    //   Group root = new Group();
     protected void zeichneSchwarz() {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.BLACK);
+        //object.fillRect(xKoor, yKoor, breite, hoehe);
+        //root.getChildren().add(objekt)
     }
 
+    // todo: Diese Methode anpassen, so wie die zeichneSchwarz()-Methode.
     protected void zeichneWeiss() {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.WHITE);
     }
+
+    // todo: Draw Statement --> nachsehen
+
+    // Muss das Objekt zurückgegeben werden?
 }
