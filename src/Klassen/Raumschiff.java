@@ -1,8 +1,5 @@
 package Klassen;
 
-import javafx.scene.shape.Rectangle;
-import javafx.scene.paint.Color;
-
 public class Raumschiff extends BeweglicheObjekte {
     // Konstruktor
     public Raumschiff(int xKoor, int yKoor) {
@@ -16,13 +13,13 @@ public class Raumschiff extends BeweglicheObjekte {
 
     public void bewegenRechts() {
         zeichneSchwarz();
-        this.xKoor =  getXKoor() + BEWEGUNG;
+        this.xKoor =  getXKoor() + XBEWEGUNG;
         zeichneWeiss();
     }
 
     public void bewegenLinks() {
         zeichneSchwarz();
-        this.xKoor = getXKoor() - BEWEGUNG;
+        this.xKoor = getXKoor() - XBEWEGUNG;
         zeichneWeiss();
     }
 

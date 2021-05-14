@@ -1,9 +1,8 @@
 package Klassen;
 
-import java.util.Set;
-
 public class Monster extends BeweglicheObjekte {
     private int punkte;
+    private final int YBEWEGUNG = 50;
 
     public Monster(int xKoor, int yKoor, int punkte) {
         super(xKoor, yKoor);
@@ -22,19 +21,19 @@ public class Monster extends BeweglicheObjekte {
     //  siehe Notizen auf IPad
     public void bewegenRechts() {
         zeichneSchwarz();
-        this.xKoor =  getXKoor() + BEWEGUNG;
+        this.xKoor =  getXKoor() + XBEWEGUNG;
         zeichneWeiss();
     }
 
     public void bewegenLinks() {
         zeichneSchwarz();
-        this.xKoor = getXKoor() - BEWEGUNG;
+        this.xKoor = getXKoor() - XBEWEGUNG;
         zeichneWeiss();
     }
 
     public void bewegenRunter() {
         zeichneSchwarz();
-        this.yKoor = getYKoor() + BEWEGUNG;
+        this.yKoor = getYKoor() + YBEWEGUNG;
         zeichneWeiss();
     }
 

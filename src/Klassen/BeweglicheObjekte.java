@@ -10,7 +10,7 @@ public abstract class BeweglicheObjekte {
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     protected final int hoehe = 25;
     protected final int breite = 25;
-    protected final int BEWEGUNG = 10;
+    protected final int XBEWEGUNG = 10;
     // Image
 
     // Konstruktor
