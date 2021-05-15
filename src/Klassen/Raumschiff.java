@@ -13,13 +13,13 @@ public class Raumschiff extends BeweglicheObjekte {
 
     public void bewegenRechts() {
         zeichneSchwarz();
-        this.xKoor =  getXKoor() + XBEWEGUNG;
+        this.xKoor =  erhalteXKoor() + XBEWEGUNG;
         zeichneWeiss();
     }
 
     public void bewegenLinks() {
         zeichneSchwarz();
-        this.xKoor = getXKoor() - XBEWEGUNG;
+        this.xKoor = erhalteXKoor() - XBEWEGUNG;
         zeichneWeiss();
     }
 

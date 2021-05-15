@@ -4,12 +4,17 @@ public class Monster extends BeweglicheObjekte {
     private int punkte;
     private final int YBEWEGUNG = 50;
 
+    // todo: Einer der Konstruktoren muss vermutlich entfernt werden
     public Monster(int xKoor, int yKoor, int punkte) {
         super(xKoor, yKoor);
         this.punkte = punkte;
     }
 
-    public int getPunkte() {
+    public Monster(int xKoor, int yKoor) {
+        super(xKoor, yKoor);
+    }
+
+    public int erhaltePunkte() {
         return this.punkte;
     }
 
@@ -21,19 +26,19 @@ public class Monster extends BeweglicheObjekte {
     //  siehe Notizen auf IPad
     public void bewegenRechts() {
         zeichneSchwarz();
-        this.xKoor =  getXKoor() + XBEWEGUNG;
+        this.xKoor =  erhalteXKoor() + XBEWEGUNG;
         zeichneWeiss();
     }
 
     public void bewegenLinks() {
         zeichneSchwarz();
-        this.xKoor = getXKoor() - XBEWEGUNG;
+        this.xKoor = erhalteXKoor() - XBEWEGUNG;
         zeichneWeiss();
     }
 
     public void bewegenRunter() {
         zeichneSchwarz();
-        this.yKoor = getYKoor() + YBEWEGUNG;
+        this.yKoor = erhalteYKoor() + YBEWEGUNG;
         zeichneWeiss();
     }
 

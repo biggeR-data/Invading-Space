@@ -8,6 +8,8 @@ public abstract class BeweglicheObjekte {
     public int yKoor; // oben links
 
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
+    // todo: hoehe und breite sind beim Raumschiff und beim Monster unterschiedlich.
+    //  reicht eine neue hoehen und breiten Var in der Raumhschiff-Klasse?
     protected final int hoehe = 25;
     protected final int breite = 25;
     protected final int XBEWEGUNG = 10;
@@ -20,12 +22,20 @@ public abstract class BeweglicheObjekte {
     }
 
     // X und Y Koordinaten
-    protected int getXKoor() {
+    public int erhalteXKoor() {
         return this.xKoor;
     }
 
-    protected int getYKoor() {
+    public int erhalteYKoor() {
         return this.yKoor;
+    }
+
+    public int erhalteBreite() {
+        return breite;
+    }
+
+    public int erhalteHoehe() {
+        return hoehe;
     }
 
     // Rechteck zeichnen schwarz und weiß
@@ -48,4 +58,34 @@ public abstract class BeweglicheObjekte {
     // todo: Draw Statement --> nachsehen
 
     // Muss das Objekt zurückgegeben werden?
+
+    public boolean pruefeKollisionRechts(int xRand) {
+        if (erhalteXKoor() + erhalteBreite() + XBEWEGUNG > xRand) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean pruefeKollisionLinks(int xRand) {
+        if (erhalteXKoor() - XBEWEGUNG < xRand) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Prüft, ob eine Kollision zwischen zwei beweglichenObjekten stattfindet.
+     * Die Prüfung erfolgt indem die Flächen der beiden Objekte auf Überlagerung geprüft wird.
+     * @param pruefObjekt Das Objekt welches auf Kollision geprüft werden soll
+     * @return TRUE wenn eine Kollision stattfindet
+     */
+    public boolean pruefeKollision(BeweglicheObjekte pruefObjekt) {
+        if (pruefObjekt.erhalteXKoor() + pruefObjekt.erhalteBreite() >= this.xKoor &&
+            pruefObjekt.erhalteXKoor() <= this.xKoor + breite &&
+            pruefObjekt.erhalteYKoor() + pruefObjekt.erhalteHoehe() >= this.yKoor &&
+            pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe ) {
+            return true;
+        }
+        return false;
+    }
 }
