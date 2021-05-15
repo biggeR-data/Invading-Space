@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/PP_SpaceInvader.iml" filepath="$PROJECT_DIR$/.idea/PP_SpaceInvader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/module.iml" filepath="$PROJECT_DIR$/module/module.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/Space-Invaders-aber-besser.iml" filepath="$PROJECT_DIR$/Space-Invaders-aber-besser.iml" />
+>>>>>>> 15d5a7e1f4e8e8d16dda92cfa089d222473e59fc
+    </modules>
+  </component>
+</project>
