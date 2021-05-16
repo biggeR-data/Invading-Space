@@ -10,7 +10,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class TestSpieler {
@@ -19,7 +18,7 @@ public class TestSpieler {
         // todo Exception wenn ein Komma im Namen ist
         LinkedList<Spieler> spielerliste = new LinkedList<>();
         List<Spieler> highscoreliste;
-        Path dok_spielerdaten = Paths.get("Aufgaben/res/spielerdaten.txt");
+        Path dok_spielerdaten = Paths.get("res/spielerdaten.txt");
         try {
             // vorhandene Spielerdaten erfassen
             // Dokument einlesen
