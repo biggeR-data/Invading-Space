@@ -41,14 +41,13 @@ public class Spielbildschirmcontroller {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.setOnKeyPressed(event ->  {
-            if(event.getCode().equals(KeyCode.D)){
+            if(event.getCode().equals(KeyCode.D) ||event.getCode().equals(KeyCode.RIGHT) ){
                 raumschiffrechts();
                 System.out.println(event.getCode());
-            } else if(event.getCode().equals(KeyCode.A)){
+            } else if(event.getCode().equals(KeyCode.A) ||event.getCode().equals(KeyCode.LEFT)){
                 raumschifflinks();
                 System.out.println(event.getCode());
             } else if(event.getCode().equals(KeyCode.SPACE)){
-
             }
         });
         stage.setScene(scene);

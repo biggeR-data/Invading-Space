@@ -35,6 +35,7 @@ public class Startbildschirmcontroller {
 
     public void wechselZuGamescreen(ActionEvent e) throws IOException {
         //Main klasse des Spielbildschirms
+        //TODO: Überprüfung text leer und kein komma
         String spielername = txt_Namensfeld.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
         root = loader.load();
