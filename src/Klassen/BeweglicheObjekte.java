@@ -19,6 +19,7 @@ public abstract class BeweglicheObjekte {
     protected BeweglicheObjekte(int xKoor, int yKoor) {
         this.xKoor = xKoor;
         this.yKoor = yKoor;
+        zeichneWeiss();
     }
 
     // X und Y Koordinaten
@@ -72,6 +73,7 @@ public abstract class BeweglicheObjekte {
         }
         return false;
     }
+
 
     /**
      * Prüft, ob eine Kollision zwischen zwei beweglichenObjekten stattfindet.

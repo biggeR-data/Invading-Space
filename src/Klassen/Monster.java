@@ -52,10 +52,12 @@ public class Monster extends BeweglicheObjekte {
         // Aufrufen der Klasse Schuss
     }
 
-    // Macht kreiereMonster überhaupt Sinn? Ein Monster wird ja mit dem Konstruktor erstellt.
-    //  Das müsste dann gleich beim hinzufügen in die Datenstruktur passieren.
-    // Das Löschen macht dementsprechend eigentlich auch keinen Sinn.
-    //  Das würde dann mit dem entfernen aus der Datenstruktur passieren.
+    public boolean pruefeKollisionUnten(int yRand) {
+        if (erhalteYKoor() + YBEWEGUNG > yRand) {
+            return true;
+        }
+        return false;
+    }
 
     // Vielleicht müss die Zeichenfläche hier auch übergeben werden.
     //  Und vieleicht muss auch noch eine Fill Funktion genutzt werden, um das ganze Objekt weiß zu zeichnen.

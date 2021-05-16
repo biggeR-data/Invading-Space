@@ -8,18 +8,14 @@ public class Koordinator {
         RECHTS
     }
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
-    private boolean gameOver = false;
     private ArrayList<Monster> monsterListe;
     private final int RANDRECHTS = 545;
     private final int RANDLINKS = 30;
+    private final int RANDUNTEN = 640;
 
     // todo Datenstruktur ggf. abändern. Auch an die anderen Stellen denken!
     public Koordinator(ArrayList<Monster> monster) {
         this.monsterListe = monster;
-    }
-
-    public xBewegung erhalteRichtung() {
-        return this.richtung;
     }
 
     private void setzteRichtung(xBewegung richtung) {
@@ -79,6 +75,7 @@ public class Koordinator {
         // Kollision mit Schuss überprüfen (für jedes Objekt)
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
         for (Schuss schuss : schuesseListe) {
+            schuss.bewegeHoch();
             for (Monster monster : this.monsterListe) {
                 if (monster.pruefeKollision(schuss) == true) {
                     // Monster zerstört und aus der ArrayList monsterListe entfernen
@@ -95,8 +92,14 @@ public class Koordinator {
 
     public boolean gameOver() {
         if (this.monsterListe.isEmpty()) {
-            gameOver = true;
+            return true;
         }
-        return gameOver;
+        // todo: Prüfen ob Monster mit Raumschiff kollidiert bzw. eine bestimmte Höhe erreicht.
+        for (Monster monster : this.monsterListe) {
+            if (monster.pruefeKollisionUnten(RANDUNTEN) == true) {
+                return true;
+            }
+        }
+        return false;
     }
 }

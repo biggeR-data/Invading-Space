@@ -25,5 +25,7 @@ public class Raumschiff extends BeweglicheObjekte {
 
     public void schiessen() {
         // Aufrufen der Klasse Schuss
+        // X und Y Koordinaten setzten
+        // Schuss in Liste hinzufügen
     }
 }
