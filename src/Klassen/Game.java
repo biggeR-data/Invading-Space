@@ -1,5 +1,7 @@
 package Klassen;
 
+import javafx.scene.Group;
+
 import java.util.ArrayList;
 
 // todo: Stages? GameOver? Score speichern?
@@ -18,7 +20,9 @@ public class Game extends Thread{
 
     private long lastTickMillis = 0;
     private int timePerTick = 100; // in milliseconds
-    
+
+    // Von Jasmin
+    private Group root;
 
     // run
     public void run(){
@@ -92,7 +96,7 @@ public class Game extends Thread{
     private void loeseNeuenSchuss() {
         System.out.println("schieße");
         //5 hier eingesetzt von Leon um mein program wieder lauffähig zu machen
-        listSchuesse.add(new Schuss(5,5));
+        listSchuesse.add(new Schuss(5,5, root));
     }
 
     private void gameover(){

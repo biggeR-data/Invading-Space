@@ -1,42 +1,52 @@
 package Klassen;
 
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
 public abstract class BeweglicheObjekte {
-    public int xKoor; // oben links
-    public int yKoor; // oben links
-
+    public double xKoor; // oben links
+    public double yKoor; // oben links
+    public Group root;
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     // todo: hoehe und breite sind beim Raumschiff und beim Monster unterschiedlich.
     //  reicht eine neue hoehen und breiten Var in der Raumhschiff-Klasse?
-    protected final int hoehe = 25;
-    protected final int breite = 25;
-    protected final int XBEWEGUNG = 10;
+    protected final double hoehe = 40;
+    protected final double breite = 40;
+    protected final double XBEWEGUNG = 10;
     // Image
 
     // Konstruktor
-    protected BeweglicheObjekte(int xKoor, int yKoor) {
+    protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
         this.xKoor = xKoor;
         this.yKoor = yKoor;
+        this.root = root;
         zeichneWeiss();
     }
 
     // X und Y Koordinaten
-    public int erhalteXKoor() {
+    public double erhalteXKoor() {
         return this.xKoor;
     }
 
-    public int erhalteYKoor() {
+    public double erhalteYKoor() {
         return this.yKoor;
     }
 
-    public int erhalteBreite() {
+    // Höhe und Breite
+    public double erhalteBreite() {
         return breite;
     }
 
-    public int erhalteHoehe() {
+    public double erhalteHoehe() {
         return hoehe;
+    }
+
+    // Group Root
+    public Group erhalteGroup() {
+        return this.root;
     }
 
     // Rechteck zeichnen schwarz und weiß
@@ -46,28 +56,28 @@ public abstract class BeweglicheObjekte {
     protected void zeichneSchwarz() {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.BLACK);
-        //object.fillRect(xKoor, yKoor, breite, hoehe);
-        //root.getChildren().add(objekt)
+        this.root.getChildren().add(objekt);
     }
 
     // todo: Diese Methode anpassen, so wie die zeichneSchwarz()-Methode.
     protected void zeichneWeiss() {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.WHITE);
+        this.root.getChildren().add(objekt);
     }
 
     // todo: Draw Statement --> nachsehen
 
     // Muss das Objekt zurückgegeben werden?
 
-    public boolean pruefeKollisionRechts(int xRand) {
+    public boolean pruefeKollisionRechts(double xRand) {
         if (erhalteXKoor() + erhalteBreite() + XBEWEGUNG > xRand) {
             return true;
         }
         return false;
     }
 
-    public boolean pruefeKollisionLinks(int xRand) {
+    public boolean pruefeKollisionLinks(double xRand) {
         if (erhalteXKoor() - XBEWEGUNG < xRand) {
             return true;
         }
@@ -90,4 +100,5 @@ public abstract class BeweglicheObjekte {
         }
         return false;
     }
+
 }

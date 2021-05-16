@@ -1,17 +1,19 @@
 package Klassen;
 
+import javafx.scene.Group;
+
 public class Monster extends BeweglicheObjekte {
     private int punkte;
-    private final int YBEWEGUNG = 50;
+    private final double YBEWEGUNG = 50;
 
     // todo: Einer der Konstruktoren muss vermutlich entfernt werden
-    public Monster(int xKoor, int yKoor, int punkte) {
-        super(xKoor, yKoor);
+    public Monster(double xKoor, double yKoor, Group root, int punkte) {
+        super(xKoor, yKoor, root);
         this.punkte = punkte;
     }
 
-    public Monster(int xKoor, int yKoor) {
-        super(xKoor, yKoor);
+    public Monster(double xKoor, double yKoor, Group root) {
+        super(xKoor, yKoor, root);
     }
 
     public int erhaltePunkte() {

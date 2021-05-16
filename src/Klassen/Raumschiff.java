@@ -1,9 +1,12 @@
 package Klassen;
 
+import javafx.scene.Group;
+import javafx.scene.Scene;
+
 public class Raumschiff extends BeweglicheObjekte {
     // Konstruktor
-    public Raumschiff(int xKoor, int yKoor) {
-        super(xKoor, yKoor);
+    public Raumschiff(int xKoor, int yKoor, Group root) {
+        super(xKoor, yKoor, root);
     }
 
     // Raumschiff nach rechts und links bewegen
