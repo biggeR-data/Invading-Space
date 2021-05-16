@@ -91,7 +91,8 @@ public class Game extends Thread{
 
     private void loeseNeuenSchuss() {
         System.out.println("schieße");
-        listSchuesse.add(new Schuss());
+        //5 hier eingesetzt von Leon um mein program wieder lauffähig zu machen
+        listSchuesse.add(new Schuss(5,5));
     }
 
     private void gameover(){
