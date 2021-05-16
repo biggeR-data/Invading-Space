@@ -9,6 +9,11 @@ public class Spieler {
         this.name = name;
     }
 
+    public Spieler(String name, int punkte) {
+        this.name = name;
+        this.punkte = punkte;
+    }
+
     public void setPunkte(int punkte) {
         this.punkte = punkte;
     }
