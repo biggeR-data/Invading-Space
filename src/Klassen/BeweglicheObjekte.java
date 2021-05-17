@@ -1,29 +1,36 @@
 package Klassen;
 
 import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
+//import java.awt.*;
+import javafx.scene.image.Image;
+
 public abstract class BeweglicheObjekte {
+    private static final double STANDARD_HOEHE = 25;
+    protected static final double STANDARD_BREITE= 25;
+    protected static final double STANDARD_XBEWEGUNG = 10;
     public double xKoor; // oben links
     public double yKoor; // oben links
+    private double hoehe = STANDARD_HOEHE;
+    private double breite = STANDARD_BREITE;
+    private double xBewegung = STANDARD_XBEWEGUNG;
     public Group root;
+    private Image img = null;
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     // todo: hoehe und breite sind beim Raumschiff und beim Monster unterschiedlich.
-    //  reicht eine neue hoehen und breiten Var in der Raumhschiff-Klasse?
-    protected final double hoehe = 40;
-    protected final double breite = 40;
-    protected final double XBEWEGUNG = 10;
-    // Image
+    //  reicht eine neue hoehen und breiten Var in der Raumhschiff-Klasse? --Nein
 
     // Konstruktor
     protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
         this.xKoor = xKoor;
         this.yKoor = yKoor;
         this.root = root;
-        zeichneWeiss();
+        System.out.println(System.getProperty("user.dir"));
+        img = new Image(getClass().getResource("/SpaceInvader_Alien.png").toExternalForm());
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     // X und Y Koordinaten
@@ -44,41 +51,54 @@ public abstract class BeweglicheObjekte {
         return hoehe;
     }
 
+    // Setzte Höhe und Breite
+    protected void setzeHoehe(double hoehe) {
+        this.hoehe = hoehe;
+    }
+
+    protected void setzeBreite(double breite) {
+        this.breite = breite;
+    }
+
+    // Setzte XBewegung
+    protected void setzeXBewegung(double xBewegung) {
+        this.xBewegung = xBewegung;
+    }
+
+    // xBewegung
+    public double erhalteXBewegung() {
+        return xBewegung;
+    }
+
     // Group Root
     public Group erhalteGroup() {
         return this.root;
     }
 
     // Rechteck zeichnen schwarz und weiß
-    //  todo: GraphicsContext (eine Group ?) muss übergeben werden --> Leon fragen
-    //   Bereits im Konstruktor übergeben
-    //   Group root = new Group();
-    protected void zeichneSchwarz() {
+    protected void zeichneSchwarz(double breite, double hoehe) {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.BLACK);
         this.root.getChildren().add(objekt);
     }
 
-    // todo: Diese Methode anpassen, so wie die zeichneSchwarz()-Methode.
-    protected void zeichneWeiss() {
+    protected void zeichneWeiss(double breite, double hoehe) {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
-        objekt.setFill(Color.WHITE);
+        objekt.setFill(new ImagePattern(img));
         this.root.getChildren().add(objekt);
     }
 
-    // todo: Draw Statement --> nachsehen
-
-    // Muss das Objekt zurückgegeben werden?
-
+    // Kollisionen von Objekten mit dem rechten Spielrand überprüfen
     public boolean pruefeKollisionRechts(double xRand) {
-        if (erhalteXKoor() + erhalteBreite() + XBEWEGUNG > xRand) {
+        if (erhalteXKoor() + erhalteBreite() + xBewegung > xRand) {
             return true;
         }
         return false;
     }
 
+    // Kollisionen von Objekten mit dem linken Spielrand überprüfen
     public boolean pruefeKollisionLinks(double xRand) {
-        if (erhalteXKoor() - XBEWEGUNG < xRand) {
+        if (erhalteXKoor() - xBewegung < xRand) {
             return true;
         }
         return false;
@@ -95,7 +115,7 @@ public abstract class BeweglicheObjekte {
         if (pruefObjekt.erhalteXKoor() + pruefObjekt.erhalteBreite() >= this.xKoor &&
             pruefObjekt.erhalteXKoor() <= this.xKoor + breite &&
             pruefObjekt.erhalteYKoor() + pruefObjekt.erhalteHoehe() >= this.yKoor &&
-            pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe ) {
+            pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe) {
             return true;
         }
         return false;

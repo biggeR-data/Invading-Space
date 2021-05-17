@@ -3,10 +3,14 @@ package Klassen;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
+import java.awt.*;
+
 public class Raumschiff extends BeweglicheObjekte {
     // Konstruktor
     public Raumschiff(int xKoor, int yKoor, Group root) {
         super(xKoor, yKoor, root);
+        setzeBreite(40);
+        setzeHoehe(40);
     }
 
     // Raumschiff nach rechts und links bewegen
@@ -15,15 +19,15 @@ public class Raumschiff extends BeweglicheObjekte {
     //  "Neues" Raumschiff zeichnen
 
     public void bewegenRechts() {
-        zeichneSchwarz();
-        this.xKoor =  erhalteXKoor() + XBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.xKoor =  erhalteXKoor() + erhalteXBewegung();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void bewegenLinks() {
-        zeichneSchwarz();
-        this.xKoor = erhalteXKoor() - XBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.xKoor = erhalteXKoor() - erhalteXBewegung();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void schiessen() {

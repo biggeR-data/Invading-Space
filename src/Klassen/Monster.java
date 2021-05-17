@@ -27,21 +27,21 @@ public class Monster extends BeweglicheObjekte {
     // todo: Ablauf erstellen --- vielleicht im Main Program und nicht hier in der Klasse
     //  siehe Notizen auf IPad
     public void bewegenRechts() {
-        zeichneSchwarz();
-        this.xKoor =  erhalteXKoor() + XBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.xKoor =  erhalteXKoor() + erhalteXBewegung();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void bewegenLinks() {
-        zeichneSchwarz();
-        this.xKoor = erhalteXKoor() - XBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.xKoor = erhalteXKoor() - erhalteXBewegung();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void bewegenRunter() {
-        zeichneSchwarz();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
-        zeichneWeiss();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     /*public void bewegenHoch() {
