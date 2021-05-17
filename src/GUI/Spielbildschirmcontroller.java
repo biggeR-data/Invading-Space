@@ -27,6 +27,8 @@ public class Spielbildschirmcontroller {
     //Import des FMXL files und erstellung von Objekten der Gui elemente
     @FXML
     private Label lbl_spielername;
+    @FXML
+    private Label lbl_aktuellerscore;
     //@FXML
     //private Polygon raumschiff;
 
@@ -63,11 +65,14 @@ public class Spielbildschirmcontroller {
     }
 
     public void wechselZuGameover(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Endbildschirm.fxml"));
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
+        Parent root2 = loader.load();
+
+        Endbildschirmcontroller endbildschirmcontroller = new Endbildschirmcontroller();
+        String spielername = lbl_spielername.getText();
+        int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
+
+        endbildschirmcontroller.aktiviereEndscreen(e,spielername,aktuellerscore,root2);
     }
     public void wechselZuStartscreen(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));

@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class Startbildschirmcontroller {
@@ -36,6 +35,7 @@ public class Startbildschirmcontroller {
     public void wechselZuGamescreen(ActionEvent e) throws IOException {
         //Main klasse des Spielbildschirms
         //TODO: Überprüfung text leer und kein komma
+
         String spielername = txt_Namensfeld.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
         root = loader.load();
@@ -43,18 +43,5 @@ public class Startbildschirmcontroller {
         //ab hier soll der spielbildschirmcontroller übernehmen
         spielcontroller.aktiviereSpielfeld(e,spielername, root);
     }
-    public void wechselZuGameover(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Endbildschirm.fxml"));
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void wechselZuStartscreen(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
 }

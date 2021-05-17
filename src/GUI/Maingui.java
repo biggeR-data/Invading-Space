@@ -20,6 +20,8 @@ public class Maingui extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
             Parent root = loader.load();
+            Startbildschirmcontroller startcontroller = loader.getController();
+            //startcontroller.setzeHighscorespieler(namen,punktzahl);
             primaryStage.setTitle("Space Invader - aber besser");
             Scene startscreen = new Scene(root);
             primaryStage.setScene(startscreen);

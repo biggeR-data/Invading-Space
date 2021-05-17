@@ -43,7 +43,7 @@
             </AnchorPane>
           <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="lbl_aktuellerscore" layoutX="390.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="202.0" text="9999999999999" textAlignment="RIGHT">
+                  <Label fx:id="lbl_aktuellerscore" layoutX="390.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="202.0" text="15000" textAlignment="RIGHT">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -53,7 +53,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuStartscreen" text="Weltraum verlassen" />
+                  <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuGameover" text="Weltraum verlassen" />
                   <Label fx:id="lbl_spielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="138.0" textAlignment="RIGHT">
                      <font>
                         <Font size="23.0" />
