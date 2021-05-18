@@ -1,0 +1,16 @@
+Kai,1003
+Kai,1002
+Rüdiger,1001
+Thomas,42
+Jasmin,40
+Angela,40
+Tim,30
+Tim,20
+Jasmin,13
+Tom,12
+Tim,10
+Kai,10
+Jan,9
+Maximilian,7
+Patrick,1
+Patrick,0

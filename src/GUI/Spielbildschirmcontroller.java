@@ -4,33 +4,62 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import Klassen.*;
+
 public class Spielbildschirmcontroller {
-    @FXML
-    private Polygon raumschiff;
+
     private Stage stage;
     private Scene scene;
-    private Parent root;
+    //private Parent root;
+    private Group root;
+    //Import des FMXL files und erstellung von Objekten der Gui elemente
     @FXML
     private Label lbl_spielername;
+    //@FXML
+    //private Polygon raumschiff;
 
-    public void setLbl_spielername(String spielername){
-        lbl_spielername.setText(spielername);
-    }
-
-    public void raumschifflinks(ActionEvent e){
+    /*public void raumschifflinks(){
         raumschiff.setLayoutX(raumschiff.getLayoutX()-10);
     }
-    public void raumschiffrechts(ActionEvent e){
+    public void raumschiffrechts(){
         raumschiff.setLayoutX(raumschiff.getLayoutX()+10);
+    }*/
+
+    public void aktiviereSpielfeld(ActionEvent e,String spielername, Parent wurzel) throws IOException {
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
+        //root = wurzel;
+        root = new Group(wurzel);
+        Raumschiff raumschiff = new Raumschiff(280, 638, root);
+        Monster monster1 = new Monster(30, 100, root);
+        lbl_spielername.setText(spielername);
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(raumschiff.erhalteGroup());
+        scene.setOnKeyPressed(event ->  {
+            if(event.getCode().equals(KeyCode.D) ||event.getCode().equals(KeyCode.RIGHT) ){
+                //raumschiffrechts();
+                raumschiff.bewegenRechts();
+                System.out.println(event.getCode());
+            } else if(event.getCode().equals(KeyCode.A) ||event.getCode().equals(KeyCode.LEFT)){
+                //raumschifflinks();
+                raumschiff.bewegenLinks();
+                System.out.println(event.getCode());
+            } else if(event.getCode().equals(KeyCode.SPACE)){
+            }
+        });
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void wechselZuGameover(ActionEvent e) throws IOException {

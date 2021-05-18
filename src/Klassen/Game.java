@@ -1,6 +1,8 @@
 package Klassen;
 
+
 import GUI.Main;
+import javafx.scene.Group;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,12 @@ public class Game extends Thread{
                 break;
         }
     }
+
+    private long lastTickMillis = 0;
+    private int timePerTick = 100; // in milliseconds
+
+    // Von Jasmin
+    private Group root;
 
     // run
     public void run(){
@@ -113,9 +121,12 @@ public class Game extends Thread{
 
     private void loeseNeuenSchuss() {
         System.out.println("schieße");
+
         if(System.currentTimeMillis() - lastSchussMillis >= schussGeschwindigkeit) {
-            listSchuesse.add(schiff.schiessen()); // ich brauch den Schuss!
+            listSchuesse.add(new Schuss(5,5, root));
         }
+
+
     }
 
     private void gameover(){

@@ -1,51 +1,124 @@
 package Klassen;
 
+import javafx.scene.Group;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
-public abstract class BeweglicheObjekte {
-    public int xKoor; // oben links
-    public int yKoor; // oben links
+//import java.awt.*;
+import javafx.scene.image.Image;
 
+public abstract class BeweglicheObjekte {
+    private static final double STANDARD_HOEHE = 25;
+    protected static final double STANDARD_BREITE= 25;
+    protected static final double STANDARD_XBEWEGUNG = 10;
+    public double xKoor; // oben links
+    public double yKoor; // oben links
+    private double hoehe = STANDARD_HOEHE;
+    private double breite = STANDARD_BREITE;
+    private double xBewegung = STANDARD_XBEWEGUNG;
+    public Group root;
+    private Image img = null;
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
-    protected final int hoehe = 25;
-    protected final int breite = 25;
-    protected final int XBEWEGUNG = 10;
-    // Image
+    // todo: hoehe und breite sind beim Raumschiff und beim Monster unterschiedlich.
+    //  reicht eine neue hoehen und breiten Var in der Raumhschiff-Klasse? --Nein
 
     // Konstruktor
-    protected BeweglicheObjekte(int xKoor, int yKoor) {
+    protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
         this.xKoor = xKoor;
         this.yKoor = yKoor;
+        this.root = root;
+        System.out.println(System.getProperty("user.dir"));
+        img = new Image(getClass().getResource("/SpaceInvader_Alien.png").toExternalForm());
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     // X und Y Koordinaten
-    protected int getXKoor() {
+    public double erhalteXKoor() {
         return this.xKoor;
     }
 
-    protected int getYKoor() {
+    public double erhalteYKoor() {
         return this.yKoor;
     }
 
+    // Höhe und Breite
+    public double erhalteBreite() {
+        return breite;
+    }
+
+    public double erhalteHoehe() {
+        return hoehe;
+    }
+
+    // Setzte Höhe und Breite
+    protected void setzeHoehe(double hoehe) {
+        this.hoehe = hoehe;
+    }
+
+    protected void setzeBreite(double breite) {
+        this.breite = breite;
+    }
+
+    // Setzte XBewegung
+    protected void setzeXBewegung(double xBewegung) {
+        this.xBewegung = xBewegung;
+    }
+
+    // xBewegung
+    public double erhalteXBewegung() {
+        return xBewegung;
+    }
+
+    // Group Root
+    public Group erhalteGroup() {
+        return this.root;
+    }
+
     // Rechteck zeichnen schwarz und weiß
-    //  todo: GraphicsContext (eine Group ?) muss übergeben werden --> Leon fragen
-    //   Bereits im Konstruktor übergeben
-    //   Group root = new Group();
-    protected void zeichneSchwarz() {
+    protected void zeichneSchwarz(double breite, double hoehe) {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.BLACK);
-        //object.fillRect(xKoor, yKoor, breite, hoehe);
-        //root.getChildren().add(objekt)
+        this.root.getChildren().add(objekt);
     }
 
-    // todo: Diese Methode anpassen, so wie die zeichneSchwarz()-Methode.
-    protected void zeichneWeiss() {
+    protected void zeichneWeiss(double breite, double hoehe) {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
-        objekt.setFill(Color.WHITE);
+        objekt.setFill(new ImagePattern(img));
+        this.root.getChildren().add(objekt);
     }
 
-    // todo: Draw Statement --> nachsehen
+    // Kollisionen von Objekten mit dem rechten Spielrand überprüfen
+    public boolean pruefeKollisionRechts(double xRand) {
+        if (erhalteXKoor() + erhalteBreite() + xBewegung > xRand) {
+            return true;
+        }
+        return false;
+    }
 
-    // Muss das Objekt zurückgegeben werden?
+    // Kollisionen von Objekten mit dem linken Spielrand überprüfen
+    public boolean pruefeKollisionLinks(double xRand) {
+        if (erhalteXKoor() - xBewegung < xRand) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * Prüft, ob eine Kollision zwischen zwei beweglichenObjekten stattfindet.
+     * Die Prüfung erfolgt indem die Flächen der beiden Objekte auf Überlagerung geprüft wird.
+     * @param pruefObjekt Das Objekt welches auf Kollision geprüft werden soll
+     * @return TRUE wenn eine Kollision stattfindet
+     */
+    public boolean pruefeKollision(BeweglicheObjekte pruefObjekt) {
+        if (pruefObjekt.erhalteXKoor() + pruefObjekt.erhalteBreite() >= this.xKoor &&
+            pruefObjekt.erhalteXKoor() <= this.xKoor + breite &&
+            pruefObjekt.erhalteYKoor() + pruefObjekt.erhalteHoehe() >= this.yKoor &&
+            pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe) {
+            return true;
+        }
+        return false;
+    }
+
 }

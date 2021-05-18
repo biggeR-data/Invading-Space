@@ -1,15 +1,22 @@
 package Klassen;
 
+import javafx.scene.Group;
+
 public class Monster extends BeweglicheObjekte {
     private int punkte;
-    private final int YBEWEGUNG = 50;
+    private final double YBEWEGUNG = 50;
 
-    public Monster(int xKoor, int yKoor, int punkte) {
-        super(xKoor, yKoor);
+    // todo: Einer der Konstruktoren muss vermutlich entfernt werden
+    public Monster(double xKoor, double yKoor, Group root, int punkte) {
+        super(xKoor, yKoor, root);
         this.punkte = punkte;
     }
 
-    public int getPunkte() {
+    public Monster(double xKoor, double yKoor, Group root) {
+        super(xKoor, yKoor, root);
+    }
+
+    public int erhaltePunkte() {
         return this.punkte;
     }
 
@@ -20,21 +27,21 @@ public class Monster extends BeweglicheObjekte {
     // todo: Ablauf erstellen --- vielleicht im Main Program und nicht hier in der Klasse
     //  siehe Notizen auf IPad
     public void bewegenRechts() {
-        zeichneSchwarz();
-        this.xKoor =  getXKoor() + XBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.xKoor =  erhalteXKoor() + erhalteXBewegung();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void bewegenLinks() {
-        zeichneSchwarz();
-        this.xKoor = getXKoor() - XBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.xKoor = erhalteXKoor() - erhalteXBewegung();
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void bewegenRunter() {
-        zeichneSchwarz();
-        this.yKoor = getYKoor() + YBEWEGUNG;
-        zeichneWeiss();
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        this.yKoor = erhalteYKoor() + YBEWEGUNG;
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     /*public void bewegenHoch() {
@@ -47,10 +54,12 @@ public class Monster extends BeweglicheObjekte {
         // Aufrufen der Klasse Schuss
     }
 
-    // Macht kreiereMonster überhaupt Sinn? Ein Monster wird ja mit dem Konstruktor erstellt.
-    //  Das müsste dann gleich beim hinzufügen in die Datenstruktur passieren.
-    // Das Löschen macht dementsprechend eigentlich auch keinen Sinn.
-    //  Das würde dann mit dem entfernen aus der Datenstruktur passieren.
+    public boolean pruefeKollisionUnten(int yRand) {
+        if (erhalteYKoor() + YBEWEGUNG > yRand) {
+            return true;
+        }
+        return false;
+    }
 
     // Vielleicht müss die Zeichenfläche hier auch übergeben werden.
     //  Und vieleicht muss auch noch eine Fill Funktion genutzt werden, um das ganze Objekt weiß zu zeichnen.
