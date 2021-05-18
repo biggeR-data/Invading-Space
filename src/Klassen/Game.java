@@ -1,5 +1,7 @@
 package Klassen;
 
+import GUI.Main;
+
 import java.util.ArrayList;
 
 // todo: Stages? GameOver? Score speichern?
@@ -7,18 +9,37 @@ import java.util.ArrayList;
 public class Game extends Thread{
     // Attribute
     private long zeahlerTakt = 0;
-    private int monsterGeschwindigkeit = 20;
-    private int schussGeschwindigkeit = 10;
+    private int monsterGeschwindigkeit; // in millisekunden
+    private int schussGeschwindigkeit; // in millisekunden
 
     private int score;
     private boolean gameover = false;
 
+    private Main gui;
+    private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
     private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
+    private Raumschiff schiff = new Raumschiff(0,0);
 
-    private long lastTickMillis = 0;
-    private int timePerTick = 100; // in milliseconds
-    
+    private long lastSchussMillis = 0; // in millisekunden
+    private long lastTickMillis = 0; // in millisekunden
+    private int timePerTick = 100; // in millisekunden
+
+    public Game(Main gui, Spieler spieler, int mode){
+        this.spieler = spieler;
+        this.gui = gui;
+        switch(mode){
+            case 0:
+                // normal
+                schussGeschwindigkeit = 10;
+                monsterGeschwindigkeit = 5;
+                break;
+            case 1:
+                schussGeschwindigkeit = 10;
+                monsterGeschwindigkeit = 20;
+                break;
+        }
+    }
 
     // run
     public void run(){
@@ -34,13 +55,12 @@ public class Game extends Thread{
                 }
             }
 
-            // mache einen neuen tick
+            // führe tick aus
             System.out.println("neuer tick");
             tick();
         }
 
-        // gameover function GUI?
-        // save score?
+        gameover();
     }
 
     // gametick
@@ -51,14 +71,16 @@ public class Game extends Thread{
         bewegeSchuesse();
         checkMonsterGetroffen();
 
+        // anzeigen aktualisieren
+
         // loese neuen Schuss
+
         if(zeahlerTakt % schussGeschwindigkeit == 0){
             loeseNeuenSchuss();
         }
 
         // nicht jeden Takt ausführen (bei Monster beschleunigung MonsterGeschwindigkeit ändern)
         if(zeahlerTakt % monsterGeschwindigkeit == 0){
-
             bewegeMonster();
         }
 
@@ -84,19 +106,36 @@ public class Game extends Thread{
         System.out.println("bewege Monster");
 
         for(Monster monster:listMonster){
-            //bewege Monster
+            // monster.bewegenLinks();
             // gameover -> true wenn Monster unten
         }
     }
 
     private void loeseNeuenSchuss() {
         System.out.println("schieße");
-        listSchuesse.add(new Schuss());
+        if(System.currentTimeMillis() - lastSchussMillis >= schussGeschwindigkeit) {
+            listSchuesse.add(schiff.schiessen()); // ich brauch den Schuss!
+        }
     }
 
     private void gameover(){
         System.out.println("Game over!");
-        //punktzahl übergeben
+        // punktzahl übergeben -> Spieler
+        // GUI
+    }
+
+    // key events
+    // todo: keyevent
+    public void keyUp(){
+        loeseNeuenSchuss();
+    }
+
+    public void keyLeft(){
+        schiff.bewegenLinks();
+    }
+
+    public void keyRight(){
+        schiff.bewegenRechts();
     }
 
 }
