@@ -19,7 +19,7 @@ public class Game extends Thread{
     private int score;
     private boolean gameover = false;
 
-    private Main gui;
+    private Maingui gui;
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
     private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
@@ -29,7 +29,7 @@ public class Game extends Thread{
     private long lastTickMillis = 0; // in millisekunden
     private int timePerTick = 100; // in millisekunden
 
-    public Game(Main gui, Spieler spieler, int mode){
+    public Game(Maingui gui, Spieler spieler, int mode){
         this.spieler = spieler;
         this.gui = gui;
         switch(mode){
