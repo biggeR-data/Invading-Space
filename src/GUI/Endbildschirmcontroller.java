@@ -14,7 +14,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
-import Klassen.*;
+import Klassen.ScoreListe;
+import Klassen.Spieler;
 
 public class Endbildschirmcontroller {
 
@@ -35,7 +36,7 @@ public class Endbildschirmcontroller {
     private Label lbl_top2score;
     @FXML
     private Label lbl_top3score;
-    private ScoreListe scoreListe = new ScoreListe("res/spielerdaten.txt");
+    private ScoreListe scoreListe = new ScoreListe(".res/spielerdaten.txt");
 
 
 
@@ -47,7 +48,7 @@ public class Endbildschirmcontroller {
         Spieler aktuellerspieler = new Spieler(spielername,aktuellerpunktestand);
         scoreListe.spielerHinzufuegen(aktuellerspieler);
         //lbl_score.setText(aktuellerpunktestand+"");
-
+        System.out.println(scoreListe.spielerlisteIndexAusgabe(0).getName());
         lbl_top1name.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
         lbl_top1score.setText(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()+"");
         lbl_top2name.setText(scoreListe.spielerlisteIndexAusgabe(1).getName());

@@ -13,10 +13,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
-import Klassen.*;
+import Klassen.Raumschiff;
+import Klassen.Monster;
 
 public class Spielbildschirmcontroller {
 
