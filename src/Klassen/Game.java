@@ -1,7 +1,7 @@
 package Klassen;
 
 
-import GUI.Main;
+import GUI.Maingui;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class Game extends Thread{
     // Attribute
+    private Group root;
+
     private long zeahlerTakt = 0;
     private int monsterGeschwindigkeit; // in millisekunden
     private int schussGeschwindigkeit; // in millisekunden
@@ -21,7 +23,7 @@ public class Game extends Thread{
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
     private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
-    private Raumschiff schiff = new Raumschiff(0,0);
+    private Raumschiff schiff = new Raumschiff(0,0, root);
 
     private long lastSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
@@ -42,12 +44,6 @@ public class Game extends Thread{
                 break;
         }
     }
-
-    private long lastTickMillis = 0;
-    private int timePerTick = 100; // in milliseconds
-
-    // Von Jasmin
-    private Group root;
 
     // run
     public void run(){
