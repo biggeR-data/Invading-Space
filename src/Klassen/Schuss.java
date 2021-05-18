@@ -10,7 +10,7 @@ public class Schuss extends BeweglicheObjekte {
         setzeBreite(5);
         setzeHoehe(10);
     }
-}
+
 //todo Schuss als rechteck erstellen und über x und y Koordinaten bewegen
 
     public void schiessenHoch() {
@@ -20,7 +20,8 @@ public class Schuss extends BeweglicheObjekte {
     }
 
     public void schiessenRunter() {
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe()));
+        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
+}
