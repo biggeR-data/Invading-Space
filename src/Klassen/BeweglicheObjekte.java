@@ -27,7 +27,7 @@ public abstract class BeweglicheObjekte {
         this.yKoor = yKoor;
         this.root = root;
         // Bild
-        img = new Image(getClass().getResource("/SpaceInvader_Alien.png").toExternalForm());
+        img = new Image(getClass().getResource("/MilleniumFalke.png").toExternalForm());
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
@@ -40,7 +40,7 @@ public abstract class BeweglicheObjekte {
         return this.yKoor;
     }
 
-    // Höhe und Breite
+    // Erhalten Höhe und Breite
     public double erhalteBreite() {
         return breite;
     }
@@ -58,12 +58,11 @@ public abstract class BeweglicheObjekte {
         this.breite = breite;
     }
 
-    // Setzte XBewegung
+    // xBewegung
     protected void setzeXBewegung(double xBewegung) {
         this.xBewegung = xBewegung;
     }
 
-    // xBewegung
     public double erhalteXBewegung() {
         return xBewegung;
     }
@@ -101,7 +100,6 @@ public abstract class BeweglicheObjekte {
         }
         return false;
     }
-
 
     /**
      * Prüft, ob eine Kollision zwischen zwei beweglichenObjekten stattfindet.

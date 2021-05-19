@@ -48,7 +48,7 @@ public class Monster extends BeweglicheObjekte {
         // Aufrufen der Klasse Schuss
     }
 
-    public boolean pruefeKollisionUnten(int yRand) {
+    public boolean pruefeKollisionUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
         }
