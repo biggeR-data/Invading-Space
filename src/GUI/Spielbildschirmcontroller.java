@@ -17,6 +17,7 @@ import java.io.IOException;
 import Klassen.Raumschiff;
 import Klassen.Monster;
 import Klassen.Spieler;
+import Klassen.ScoreListe;
 
 public class Spielbildschirmcontroller {
 
@@ -29,7 +30,12 @@ public class Spielbildschirmcontroller {
     private Label lbl_spielername;
     @FXML
     private Label lbl_aktuellerscore;
+    @FXML
+    private Label lbl_highscorename;
+    @FXML
+    private Label lbl_highscorepunkte;
     private Spieler spieler;
+    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
 
     //Hier Spieler anstatt String empfangen
     public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel) throws IOException {
@@ -38,6 +44,8 @@ public class Spielbildschirmcontroller {
         Raumschiff raumschiff = new Raumschiff(280, 638, root);
         Monster monster1 = new Monster(30, 100, root);
         lbl_spielername.setText(spieler.getName());
+        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
+        lbl_highscorepunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(raumschiff.erhalteGroup());
         scene.setOnKeyPressed(event ->  {
