@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-// 600 * 768
+// Feste Größe des Spielfensters: 600 * 768 Pixel
 public class Maingui extends Application {
 
     public static void main(String[] args) {

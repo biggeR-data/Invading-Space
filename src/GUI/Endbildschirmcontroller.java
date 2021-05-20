@@ -38,22 +38,20 @@ public class Endbildschirmcontroller {
     @FXML
     private Label lbl_top3score;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
-    private String Spielername;
+    private Spieler spieler;
 
 
-
-    public void aktiviereEndscreen(ActionEvent e,String spielername,int aktuellerpunktestand ,Parent wurzel) throws IOException{
-
+    //Spieler empfangen anstatt string und punktestand
+    public void aktiviereEndscreen(ActionEvent e,Spieler pspieler,Parent wurzel) throws IOException{
+        spieler = pspieler;
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         root = new Group(wurzel);
         scene = new Scene(root);
-        Spielername = spielername;
-        Spieler aktuellerspieler = new Spieler(spielername,aktuellerpunktestand);
-        scoreListe.spielerHinzufuegen(aktuellerspieler);
-        lbl_score.setText(aktuellerpunktestand+"");
+        scoreListe.spielerHinzufuegen(spieler);
+        lbl_score.setText(spieler.getPunkte()+"");
         System.out.println(scoreListe.spielerlisteIndexAusgabe(0).getName());
         lbl_top1name.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
-        lbl_top1score.setText(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()+"");
+        lbl_top1score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()));
         lbl_top2name.setText(scoreListe.spielerlisteIndexAusgabe(1).getName());
         lbl_top2score.setText(scoreListe.spielerlisteIndexAusgabe(1).getPunkte()+"");
         lbl_top3name.setText(scoreListe.spielerlisteIndexAusgabe(2).getName());
@@ -78,11 +76,10 @@ public class Endbildschirmcontroller {
         //Main klasse des Spielbildschirms
         //TODO: Überprüfung text leer und kein komma
 
-        String spielername = Spielername;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
         root = loader.load();
         Spielbildschirmcontroller spielcontroller = loader.getController();
         //ab hier soll der spielbildschirmcontroller übernehmen
-        spielcontroller.aktiviereSpielfeld(e,spielername, root);
+        spielcontroller.aktiviereSpielfeld(e,spieler, root);
     }
 }

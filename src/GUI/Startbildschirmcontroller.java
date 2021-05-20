@@ -1,5 +1,6 @@
 package GUI;
 
+import Klassen.DelimException;
 import Klassen.Raumschiff;
 import Klassen.ScoreListe;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
+import Klassen.Spieler;
 
 public class Startbildschirmcontroller {
 
@@ -41,13 +43,17 @@ public class Startbildschirmcontroller {
     public void wechselZuGamescreen(ActionEvent e) throws IOException {
         //Main klasse des Spielbildschirms
         //TODO: Überprüfung text leer und kein komma
-
-        String spielername = txt_Namensfeld.getText();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
-        root = loader.load();
-        Spielbildschirmcontroller spielcontroller = loader.getController();
-        //ab hier soll der spielbildschirmcontroller übernehmen
-        spielcontroller.aktiviereSpielfeld(e,spielername, root);
+        try {
+            Spieler spieler = new Spieler(txt_Namensfeld.getText());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
+            root = loader.load();
+            Spielbildschirmcontroller spielcontroller = loader.getController();
+            //ab hier soll der spielbildschirmcontroller übernehmen
+            spielcontroller.aktiviereSpielfeld(e, spieler, root);
+        } catch (DelimException ex){
+            System.out.println(ex.getMessage());
+            //TODO: Popup
+        }
     }
 
     public void setzeHighscorespieler() throws IOException{
