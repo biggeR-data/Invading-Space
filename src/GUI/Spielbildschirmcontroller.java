@@ -67,7 +67,7 @@ public class Spielbildschirmcontroller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
         Parent root2 = loader.load();
 
-        Endbildschirmcontroller endbildschirmcontroller = new Endbildschirmcontroller();
+        Endbildschirmcontroller endbildschirmcontroller = loader.getController();
         String spielername = lbl_spielername.getText();
         int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
 
@@ -80,4 +80,5 @@ public class Spielbildschirmcontroller {
         stage.setScene(scene);
         stage.show();
     }
+
 }

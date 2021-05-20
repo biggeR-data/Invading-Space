@@ -1,5 +1,6 @@
 package GUI;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OVERPeer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,6 +38,7 @@ public class Endbildschirmcontroller {
     @FXML
     private Label lbl_top3score;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
+    private String Spielername;
 
 
 
@@ -45,9 +47,10 @@ public class Endbildschirmcontroller {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         root = new Group(wurzel);
         scene = new Scene(root);
+        Spielername = spielername;
         Spieler aktuellerspieler = new Spieler(spielername,aktuellerpunktestand);
         scoreListe.spielerHinzufuegen(aktuellerspieler);
-        //lbl_score.setText(aktuellerpunktestand+"");
+        lbl_score.setText(aktuellerpunktestand+"");
         System.out.println(scoreListe.spielerlisteIndexAusgabe(0).getName());
         lbl_top1name.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
         lbl_top1score.setText(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()+"");
@@ -55,9 +58,31 @@ public class Endbildschirmcontroller {
         lbl_top2score.setText(scoreListe.spielerlisteIndexAusgabe(1).getPunkte()+"");
         lbl_top3name.setText(scoreListe.spielerlisteIndexAusgabe(2).getName());
         lbl_top3score.setText(scoreListe.spielerlisteIndexAusgabe(2).getPunkte()+"");
-
+        scoreListe.txtUpdaten();
         stage.setScene(scene);
         stage.show();
 
+    }
+    public void wechselZuStartscreen(ActionEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        Startbildschirmcontroller startbildschirmcontroller = loader.getController();
+        startbildschirmcontroller.setzeHighscorespieler();
+    }
+
+    public void wechselZuGamescreen(ActionEvent e) throws IOException {
+        //Main klasse des Spielbildschirms
+        //TODO: Überprüfung text leer und kein komma
+
+        String spielername = Spielername;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
+        root = loader.load();
+        Spielbildschirmcontroller spielcontroller = loader.getController();
+        //ab hier soll der spielbildschirmcontroller übernehmen
+        spielcontroller.aktiviereSpielfeld(e,spielername, root);
     }
 }
