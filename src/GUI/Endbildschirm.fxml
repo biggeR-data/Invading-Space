@@ -33,7 +33,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_score" alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textOverrun="CLIP">
+            <Label fx:id="lbl_score" alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font size="23.0" />
                </font>

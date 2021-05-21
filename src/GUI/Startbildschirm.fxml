@@ -58,7 +58,7 @@
                   <Font size="23.0" />
                </font>
             </TextField>
-            <Label contentDisplay="CENTER" layoutX="158.0" layoutY="361.0" prefHeight="43.0" prefWidth="282.0" textAlignment="CENTER">
+            <Label fx:id="lbl_popup" contentDisplay="CENTER" layoutX="158.0" layoutY="361.0" prefHeight="43.0" prefWidth="282.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
