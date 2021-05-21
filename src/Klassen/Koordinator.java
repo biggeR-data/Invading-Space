@@ -87,24 +87,30 @@ public class Koordinator {
     public void ueberpruefenUndBewegenSchuss() {
         // Kollision mit Schuss überprüfen (für jedes Objekt)
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
+        ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
+        ArrayList<Monster> loescheMonster = new ArrayList<Monster>();
+
         for (Schuss schuss : schuesseListe) {
             schuss.schiessenHoch();
             for (Monster monster : this.monsterListe) {
                 if (monster.pruefeKollision(schuss) == true) {
                     // Monster zerstört und aus der ArrayList monsterListe entfernen
                     monster.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
-                    monsterListe.remove(monster);
+                    loescheMonster.add(monster);
                     // Schuss zerstören und aus der ArrayList schusseListe entfernen
                     schuss.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
-                    schuesseListe.remove(schuss);
+                    loescheSchuesse.add(schuss);
                 }
             }
         }
-        for (Schuss schuss : schuesseListe) {
+        /*for (Schuss schuss : schuesseListe) {
             if (schuss.pruefeKollisionOben(RANDOBEN) == true) {
-                schuesseListe.remove(schuss);
+                schuss.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
+                loescheSchuesse.add(schuss);
             }
-        }
+        }*/
+        schuesseListe.removeAll(loescheSchuesse);
+        this.monsterListe.removeAll(loescheMonster);
     }
 
     public boolean neueMonsterListeNotwendig() {

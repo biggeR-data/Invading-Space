@@ -22,7 +22,7 @@ Rüdiger,1001
 sfdg,409
 sfdg,409
 sdf,409
-x<vc<sdf<xc ,409
+x<vc<sdf<xc,409
 sdfgs,409
 435,379
 435,379
@@ -35,6 +35,7 @@ yxc,349
 asd,349
 asd,349
 asd,190
+Jan,109
 asd,82
 Thomas,42
 Jasmin,40
@@ -49,6 +50,10 @@ Tim,10
 Kai,10
 Jan,9
 Maximilian,7
+Patrick,1
+Patrick,1
+Patrick,0
+Patrick,0
 Patrick,1
 Patrick,1
 Patrick,0
