@@ -42,7 +42,7 @@ public class Schuss extends BeweglicheObjekte {
     }
 
     public boolean pruefeKollisionOben(double yRand) {
-        if (erhalteYKoor() + YBEWEGUNG > yRand) {
+        if (erhalteYKoor() - YBEWEGUNG < yRand) {
             return true;
         }
         return false;

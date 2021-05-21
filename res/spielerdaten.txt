@@ -15,10 +15,12 @@ Jasmin,15000
 Jasmin,15000
 Jan,15000
 asd,15000
+jasndadwdawsdsdad,2187
 dsf,1399
 Kai,1003
 Kai,1002
 Rüdiger,1001
+jan,727
 sfdg,409
 sfdg,409
 sdf,409
@@ -26,6 +28,9 @@ x<vc<sdf<xc,409
 sdfgs,409
 435,379
 435,379
+jan,379
+jan,379
+asd,379
 asd,349
 dsf,349
 dfs,349
@@ -43,7 +48,10 @@ Angela,40
 asd,37
 asd,35
 Tim,30
+asd,21
+sdaf,21
 Tim,20
+sdaf,19
 Jasmin,13
 Tom,12
 Tim,10
@@ -52,9 +60,9 @@ Jan,9
 Maximilian,7
 Patrick,1
 Patrick,1
-Patrick,0
-Patrick,0
 Patrick,1
 Patrick,1
+Patrick,0
+Patrick,0
 Patrick,0
 Patrick,0

@@ -99,17 +99,17 @@ public class Koordinator {
                     monster.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
                     loescheMonster.add(monster);
                     // Schuss zerstören und aus der ArrayList schusseListe entfernen
-                    schuss.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
+                    schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
                     loescheSchuesse.add(schuss);
                 }
             }
         }
-        /*for (Schuss schuss : schuesseListe) {
+        for (Schuss schuss : schuesseListe) {
             if (schuss.pruefeKollisionOben(RANDOBEN) == true) {
-                schuss.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
+                schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
                 loescheSchuesse.add(schuss);
             }
-        }*/
+        }
         schuesseListe.removeAll(loescheSchuesse);
         this.monsterListe.removeAll(loescheMonster);
     }

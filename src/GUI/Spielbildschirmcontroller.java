@@ -81,7 +81,7 @@ public class Spielbildschirmcontroller {
             //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
             spieler.setzePunkte(aktuellerscore);
             endbildschirmcontroller.aktiviereEndscreen(stage,spieler,root2, mode);
-            spielthread.interrupt();
+            spielthread.stop();
         } catch (IOException ex){
             ex.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class Spielbildschirmcontroller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        spielthread.interrupt();
+        spielthread.stop();
     }
     //Anbindung an die Gameklasse zur Erhöhung der Punktzeil
     public void setztePunktzahl(int punktzahl){
