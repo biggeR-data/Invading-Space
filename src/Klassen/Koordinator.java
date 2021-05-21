@@ -16,8 +16,13 @@ public class Koordinator {
     private final double RANDUNTENMONSTER = 690;
     private final double RANDUNTENSCHUSS = 700;
     private final double RANDOBEN = 80;
+    private int score = 0;
 
     public Koordinator() {}
+
+    public int erhalteScore() {
+        return score;
+    }
 
     private void setzteRichtung(xBewegung richtung) {
         this.richtung = richtung;
@@ -95,6 +100,7 @@ public class Koordinator {
             schuss.schiessenHoch();
             for (Monster monster : this.monsterListe) {
                 if (monster.pruefeKollision(schuss) == true) {
+                    score =+ monster.erhaltePunkte();
                     // Monster zerstört und aus der ArrayList monsterListe entfernen
                     monster.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
                     loescheMonster.add(monster);
