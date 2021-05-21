@@ -1,13 +1,10 @@
 package Klassen;
 
-import GUI.Maingui;
 import GUI.Spielbildschirmcontroller;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.concurrent.Task;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 // todo: Stages? GameOver? Score speichern?
 
@@ -17,7 +14,7 @@ public class Game extends Thread{
 
     private long zeahlerTakt = 0;
     private int monsterGeschwindigkeit; // in millisekunden
-    private int schussGeschwindigkeit; // in millisekunden
+    private int schussGeschwindigkeitSchiff; // in millisekunden
 
     private int score;
     private boolean gameover = false;
@@ -43,12 +40,12 @@ public class Game extends Thread{
         switch(mode){
             case 0:
                 // normal
-                schussGeschwindigkeit = 10;
+                schussGeschwindigkeitSchiff = 1000;
                 monsterGeschwindigkeit = 20;
                 break;
             case 1:
                 // schnell
-                schussGeschwindigkeit = 10;
+                schussGeschwindigkeitSchiff = 1000;
                 monsterGeschwindigkeit = 5;
                 break;
         }
@@ -59,6 +56,8 @@ public class Game extends Thread{
     public void run(){
         monsterGenerieren();
         lastTickMillis = System.currentTimeMillis();
+        lastSchussMillis = System.currentTimeMillis();
+        lastSchiffSchussMillis = System.currentTimeMillis();
         schiff = new Raumschiff(280,638, root);
         // spiele bis gameover
         while(!gameover){
@@ -102,6 +101,7 @@ public class Game extends Thread{
 
         if(schussloesen){
             loeseNeuenSchuss();
+            schussloesen=!schussloesen;
         }
 
         // nicht jeden Takt ausführen (bei Monster beschleunigung MonsterGeschwindigkeit ändern)
@@ -145,9 +145,11 @@ public class Game extends Thread{
 
     // key events
     public void keyUp(){
-        if((lastSchiffSchussMillis + schussGeschwindigkeit) >= System.currentTimeMillis()){
+        System.out.println("key up");
+        if((lastSchiffSchussMillis + schussGeschwindigkeitSchiff) <= System.currentTimeMillis()){
             schussloesen = true;
             System.out.println("schuss freigegeben");
+            lastSchiffSchussMillis = System.currentTimeMillis();
         }
     }
 

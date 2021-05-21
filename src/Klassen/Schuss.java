@@ -7,7 +7,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class Schuss extends BeweglicheObjekte {
-    private final double YBEWEGUNG = 1;
+    private final double YBEWEGUNG = 10;
 
     protected Schuss(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
