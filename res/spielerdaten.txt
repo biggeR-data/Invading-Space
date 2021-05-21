@@ -26,9 +26,6 @@ x<vc<sdf<xc ,409
 sdfgs,409
 435,379
 435,379
-sdf,379
-sdf,379
-sdf,379
 asd,349
 dsf,349
 dfs,349
@@ -39,14 +36,12 @@ asd,349
 asd,349
 asd,190
 asd,82
-jasmin,77
 Thomas,42
 Jasmin,40
 Angela,40
 asd,37
 asd,35
 Tim,30
-sdf,25
 Tim,20
 Jasmin,13
 Tom,12
@@ -54,7 +49,6 @@ Tim,10
 Kai,10
 Jan,9
 Maximilian,7
-sdf,7
 Patrick,1
 Patrick,1
 Patrick,0
