@@ -2,6 +2,7 @@ package Klassen;
 
 import GUI.Maingui;
 import GUI.Spielbildschirmcontroller;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.concurrent.Task;
 
@@ -31,7 +32,7 @@ public class Game extends Thread{
 
     private long lastSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
-    private int timePerTick = 100; // in millisekunden
+    private int timePerTick = 1000; // in millisekunden
 
     public Game(Spielbildschirmcontroller gui, int mode, Group root){
         this.root = root;
@@ -52,44 +53,17 @@ public class Game extends Thread{
         }
     }
 
-    /*@Override
-    protected Object call() throws Exception {
-        monsterGenerieren();
-        schiff = new Raumschiff(280,638, root);
-
-        // spiele bis gameover
-        while(!gameover){
-
-            // warte bis Zeit vergangen
-            while((lastTickMillis + timePerTick) <= System.currentTimeMillis()){
-                try {
-                    this.sleep(0,100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            // mache nächsten tick
-            System.out.println("neuer tick");
-            tick();
-        }
-
-        gameover();
-
-        return null;
-    }*/
-
-
     // run
     @Override
     public void run(){
         monsterGenerieren();
+        lastTickMillis = System.currentTimeMillis();
         schiff = new Raumschiff(280,638, root);
         // spiele bis gameover
         while(!gameover){
 
             // warte bis Zeit vergangen
-            while((lastTickMillis + timePerTick) <= System.currentTimeMillis()){
+            while((lastTickMillis + timePerTick) >= System.currentTimeMillis()){
                 try {
                     this.sleep(0,100);
                 } catch (InterruptedException e) {
@@ -100,6 +74,7 @@ public class Game extends Thread{
             // mache nächsten tick
             System.out.println("neuer tick");
             tick();
+            lastTickMillis = System.currentTimeMillis();
         }
 
         gameover();
@@ -114,7 +89,13 @@ public class Game extends Thread{
         checkMonsterGetroffen();
 
         // anzeigen aktualisieren
-        gui.setztePunktzahl(gui.getPunktzahl()+5);
+        System.out.println("Punktzahl");
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                gui.setztePunktzahl(score++);
+            }
+        });
+
 
         // loese neuen Schuss
 
@@ -175,11 +156,15 @@ public class Game extends Thread{
     }
 
     public void keyLeft(){
-        schiff.bewegenLinks();
+        if (!schiff.pruefeKollisionLinks(koordinator.erhalteRandLinks())) {
+            schiff.bewegenLinks();
+        }
     }
 
     public void keyRight(){
-        schiff.bewegenRechts();
+        if (!schiff.pruefeKollisionRechts(koordinator.erhalteRandRechts())) {
+            schiff.bewegenRechts();
+        }
     }
 
     public void monsterGenerieren(){

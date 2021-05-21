@@ -13,6 +13,7 @@ asdf,15000
 Jan,15000
 Jasmin,15000
 Jasmin,15000
+Jan,15000
 Kai,1003
 Kai,1002
 Rüdiger,1001
@@ -27,5 +28,7 @@ Tim,10
 Kai,10
 Jan,9
 Maximilian,7
+Patrick,1
+Patrick,0
 Patrick,1
 Patrick,0

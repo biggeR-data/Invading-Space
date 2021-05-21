@@ -9,8 +9,8 @@ public class Koordinator {
     }
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
     private ArrayList<Monster> monsterListe;
-    private final double RANDRECHTS = 545;
-    private final double RANDLINKS = 30;
+    private final double RANDRECHTS = 590;
+    private final double RANDLINKS = 10;
     private final double RANDUNTEN = 640;
 
     public Koordinator() {}
@@ -19,6 +19,13 @@ public class Koordinator {
         this.richtung = richtung;
     }
 
+    public final double erhalteRandRechts(){
+        return RANDRECHTS;
+    }
+
+    public final double erhalteRandLinks(){
+        return RANDLINKS;
+    }
 
     private boolean prüfeKollisionRand() {
         if (richtung == xBewegung.RECHTS) {
