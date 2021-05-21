@@ -28,14 +28,14 @@ public class Startbildschirmcontroller {
 
     public void normal(ActionEvent e)throws IOException{
         System.out.println("Spielmodus: Normal");
-        wechselZuGamescreen(e);
+        wechselZuGamescreen(e,0);
     }
     public void hölle(ActionEvent e) throws IOException {
         System.out.println("Spielmodus: HÖLLE");
-        wechselZuGamescreen(e);
+        wechselZuGamescreen(e,1);
     }
 
-    public void wechselZuGamescreen(ActionEvent e) throws IOException {
+    public void wechselZuGamescreen(ActionEvent e, int mode) throws IOException {
         //Main klasse des Spielbildschirms
         //TODO: Überprüfung text leer und kein komma
         try {
@@ -44,7 +44,7 @@ public class Startbildschirmcontroller {
             root = loader.load();
             Spielbildschirmcontroller spielcontroller = loader.getController();
             //ab hier soll der spielbildschirmcontroller übernehmen
-            spielcontroller.aktiviereSpielfeld(e, spieler, root);
+            spielcontroller.aktiviereSpielfeld(e, spieler, root,mode);
         } catch (DelimException ex){
             System.out.println(ex.getMessage());
             //TODO: Popup

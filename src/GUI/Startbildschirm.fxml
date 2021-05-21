@@ -37,11 +37,6 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Button fx:id="btn_spielen" contentDisplay="CENTER" layoutX="239.0" layoutY="485.0" mnemonicParsing="false" onAction="#wechselZuGamescreen" prefHeight="36.0" prefWidth="120.0" text="Spielen" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
             <Polygon fill="DODGERBLUE" layoutX="102.0" layoutY="157.0" points="-29.5, 40.0, 30.5, 40.0, -0.5, -9.0" rotate="-33.7" stroke="BLACK" strokeType="INSIDE" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="460.0" layoutY="148.0" rotate="40.0" stroke="BLACK" strokeType="INSIDE" width="51.0" />
             <Button fx:id="btn_hölle" contentDisplay="CENTER" layoutX="387.0" layoutY="408.0" mnemonicParsing="false" onAction="#hölle" prefHeight="36.0" prefWidth="120.0" text="Hölle" textAlignment="CENTER">

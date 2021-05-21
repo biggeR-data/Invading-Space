@@ -35,12 +35,11 @@ public class Endbildschirmcontroller {
     private Label lbl_top3score;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
     private Spieler spieler;
+    private int mode;
 
-
-    //Spieler empfangen anstatt string und punktestand
-    public void aktiviereEndscreen(Stage bühne,Spieler pspieler,Parent wurzel) throws IOException{
+    public void aktiviereEndscreen(Stage bühne,Spieler pspieler,Parent wurzel,int mode) throws IOException{
         spieler = pspieler;
-        //stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        mode = mode;
         stage = bühne;
         root = new Group(wurzel);
         scene = new Scene(root);
@@ -70,13 +69,11 @@ public class Endbildschirmcontroller {
     }
 
     public void wechselZuGamescreen(ActionEvent e) throws IOException {
-        //Main klasse des Spielbildschirms
-        //TODO: Überprüfung text leer und kein komma
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
         root = loader.load();
         Spielbildschirmcontroller spielcontroller = loader.getController();
         //ab hier soll der spielbildschirmcontroller übernehmen
-        spielcontroller.aktiviereSpielfeld(e,spieler, root);
+        spielcontroller.aktiviereSpielfeld(e,spieler, root,mode);
     }
 }
