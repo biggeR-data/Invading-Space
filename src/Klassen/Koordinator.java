@@ -14,6 +14,7 @@ public class Koordinator {
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
     private final double RANDUNTEN = 690;
+    private final double RANDOBEN = 80;
 
     public Koordinator() {}
 
@@ -97,6 +98,9 @@ public class Koordinator {
                     schuss.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
                     schuesseListe.remove(schuss);
                 }
+            }
+            if (schuss.pruefeKollisionOben(RANDOBEN) == true) {
+                schuesseListe.remove(schuss);
             }
         }
     }

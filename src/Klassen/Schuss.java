@@ -40,4 +40,11 @@ public class Schuss extends BeweglicheObjekte {
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
+
+    public boolean pruefeKollisionOben(double yRand) {
+        if (erhalteYKoor() + YBEWEGUNG > yRand) {
+            return true;
+        }
+        return false;
+    }
 }
