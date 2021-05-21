@@ -99,6 +99,8 @@ public class Koordinator {
                     schuesseListe.remove(schuss);
                 }
             }
+        }
+        for (Schuss schuss : schuesseListe) {
             if (schuss.pruefeKollisionOben(RANDOBEN) == true) {
                 schuesseListe.remove(schuss);
             }
