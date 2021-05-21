@@ -7,6 +7,9 @@ Leon-derBugfixer,15000
 asdg,15000
 asdf,15000
 asdf,15000
+asdf,15000
+asdf,15000
+asdf,15000
 Kai,1003
 Kai,1002
 Rüdiger,1001

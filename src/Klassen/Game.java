@@ -54,7 +54,7 @@ public class Game extends Thread{
     // run
     public void run(){
         //monsterGenerieren();
-
+        Monster m1 = new Monster(500,500,root);
         // spiele bis gameover
         while(!gameover){
 
