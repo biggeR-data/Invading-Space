@@ -1,5 +1,6 @@
 package Klassen;
 
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -109,13 +110,23 @@ public abstract class BeweglicheObjekte {
     protected void zeichneSchwarz(double breite, double hoehe) {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(Color.BLACK);
-        this.root.getChildren().add(objekt);
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                root.getChildren().add(objekt);
+            }
+        });
+        //this.root.getChildren().add(objekt);
     }
 
     protected void zeichneWeiss(double breite, double hoehe) {
         Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         objekt.setFill(new ImagePattern(img));
-        this.root.getChildren().add(objekt);
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                root.getChildren().add(objekt);
+            }
+        });
+        //this.root.getChildren().add(objekt);
     }
 
     // Kollisionen von Objekten mit dem rechten Spielrand überprüfen

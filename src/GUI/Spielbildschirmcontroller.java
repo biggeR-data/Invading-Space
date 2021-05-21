@@ -44,6 +44,7 @@ public class Spielbildschirmcontroller {
         spieler = pspieler;
         root = new Group(wurzel);
         Game spielthread = new Game(this, 0,root);
+        //new Thread(spielthread).start();
         spielthread.start();
 
         lbl_spielername.setText(spieler.getName());

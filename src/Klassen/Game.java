@@ -3,6 +3,7 @@ package Klassen;
 import GUI.Maingui;
 import GUI.Spielbildschirmcontroller;
 import javafx.scene.Group;
+import javafx.concurrent.Task;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,9 +38,6 @@ public class Game extends Thread{
         this.spieler = spieler;
         this.gui = gui;
 
-        schiff = new Raumschiff(280,638, root);
-        monsterGenerieren();
-
         switch(mode){
             case 0:
                 // normal
@@ -54,10 +52,39 @@ public class Game extends Thread{
         }
     }
 
+    /*@Override
+    protected Object call() throws Exception {
+        monsterGenerieren();
+        schiff = new Raumschiff(280,638, root);
+
+        // spiele bis gameover
+        while(!gameover){
+
+            // warte bis Zeit vergangen
+            while((lastTickMillis + timePerTick) <= System.currentTimeMillis()){
+                try {
+                    this.sleep(0,100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // mache nächsten tick
+            System.out.println("neuer tick");
+            tick();
+        }
+
+        gameover();
+
+        return null;
+    }*/
+
+
     // run
     @Override
     public void run(){
         monsterGenerieren();
+        schiff = new Raumschiff(280,638, root);
         // spiele bis gameover
         while(!gameover){
 
@@ -157,12 +184,9 @@ public class Game extends Thread{
 
     public void monsterGenerieren(){
         listMonster.removeAll(listMonster);
-
-        // 10er Monster
-        for(int y = 0;y<2;y++){
-            for (int x = 0; x < 12; x++) {
-                listMonster.add(new MonsterZehn(x * 40 + 30, y * 50 + 250, root));
-            }
+        // 50er Monster
+        for(int x = 0;x< 12;x++){
+            listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
         }
         // 20er Monster
         for(int y = 0;y< 2;y++){
@@ -170,17 +194,16 @@ public class Game extends Thread{
                 listMonster.add(new MonsterZwanzig(x * 40 + 30, y * 50 + 150, root));
             }
         }
-        // 50er Monster
-        for(int x = 0;x< 12;x++){
-            listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
+        // 10er Monster
+        for(int y = 0;y<2;y++){
+            for (int x = 0; x < 12; x++) {
+                listMonster.add(new MonsterZehn(x * 40 + 30, y * 50 + 250, root));
+            }
         }
+
+
 
         koordinator.neueMonsterListeUebergeben(listMonster);
 
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
