@@ -1,6 +1,7 @@
 package GUI;
 
 import Klassen.DelimException;
+import Klassen.EmptyException;
 import Klassen.ScoreListe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,6 +49,8 @@ public class Startbildschirmcontroller {
         } catch (DelimException ex){
             System.out.println(ex.getMessage());
             //TODO: Popup
+        } catch (EmptyException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

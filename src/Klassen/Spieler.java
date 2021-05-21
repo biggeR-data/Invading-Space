@@ -5,8 +5,10 @@ public class Spieler {
     private String name;
     private int punkte;
 
-    public Spieler(String name) throws DelimException {
-        if (name.contains(",")) {
+    public Spieler(String name) throws DelimException, EmptyException {
+        if ("".equals(name) || name.equals(null)) {
+            throw new EmptyException("Der Spielername darf nicht leer sein.");
+        } else if (name.contains(",")) {
             throw new DelimException("Der Spielername darf kein Komma beinhalten.");
         } else {
             this.name = name;

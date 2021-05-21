@@ -21,6 +21,8 @@ public class ScoreListe {
             absteigendSortieren();
         } catch (DelimException e) {
             System.out.println(e.getMessage());
+        } catch (EmptyException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -28,7 +30,7 @@ public class ScoreListe {
         this.dok_spielerdaten = Paths.get(pfad_zu_spielerdaten);
     }
 
-    private void txtAuslesen() throws DelimException {
+    private void txtAuslesen() throws DelimException, EmptyException {
         try {
             // vorhandene Spielerdaten erfassen
             // Dokument einlesen
