@@ -27,6 +27,7 @@ public class Spieler {
 
     @Override
     public String toString() {
+        // passende Formatierung für csv Speicherart in spielerdaten.txt
         return name + "," + punkte;
     }
 }

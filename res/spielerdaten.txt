@@ -2,6 +2,11 @@ Leon_derBugfixende_Boss,15000
 BIg-P,15000
 lil_Chicken,15000
 lil_Chicken,15000
+Leon-derBugfixer,15000
+Leon-derBugfixer,15000
+asdg,15000
+asdf,15000
+asdf,15000
 Kai,1003
 Kai,1002
 Rüdiger,1001

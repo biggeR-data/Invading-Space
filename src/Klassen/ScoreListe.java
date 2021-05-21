@@ -53,13 +53,15 @@ public class ScoreListe {
             dok_leser.close();
 
         } catch (java.io.IOException e) {
-            System.out.println("Problem :(");
+            System.out.println("Es ist ein Fehler aufgetreten während die Spielerdaten.txt Datei ausgelesen wurde.");
         }
     }
 
     private void absteigendSortieren() {
         // InsertionSort
         int laenge = this.spielerliste.size();
+
+        // benötigt um zwei Elemente tauschen zu können
         Spieler temp;
         int positionstausch_index;
 
@@ -84,19 +86,19 @@ public class ScoreListe {
         try {
             BufferedWriter meinWriter = Files.newBufferedWriter(this.dok_spielerdaten, StandardOpenOption.WRITE);
 
-            // Iteration über Spieler Liste, pro Spieler Iteration über Treeset, Werte ber Kommas getrennt in .txt schreiben
+            // Iteration über Spielerliste, pro Spieler Iteration über Linkedlist, Werte per Kommas getrennt in .txt schreiben
             spielerliste.stream().forEach(spieler -> {
                 try {
                     meinWriter.write(spieler + "\n");
                 } catch (java.io.IOException e) {
-                    System.out.println("problem :(");
+                    System.out.println("Es ist ein Problem aufgetreten beim iterativen abspeichern der Spieler.");
                 }
             });
 
             meinWriter.close();
 
         } catch (java.io.IOException e) {
-            System.out.println("problem :(");
+            System.out.println("Es ist ein Problem aufgetreten bei der Ablage der Spielerdaten.");
         }
     }
 
