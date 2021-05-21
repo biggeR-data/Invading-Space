@@ -1,6 +1,5 @@
 package GUI;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
-import Klassen.Raumschiff;
-import Klassen.Monster;
+
 import Klassen.Spieler;
 import Klassen.ScoreListe;
 import Klassen.Game;
@@ -47,9 +43,9 @@ public class Spielbildschirmcontroller {
         //new Thread(spielthread).start();
         spielthread.start();
 
-        lbl_spielername.setText(spieler.getName());
-        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
-        lbl_highscorepunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()));
+        lbl_spielername.setText(spieler.erhalteName());
+        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lbl_highscorepunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         //Hier zur scene die vollständige Group einfügen
         //raumschiff.erhalteGroup() anstelle root
@@ -80,7 +76,7 @@ public class Spielbildschirmcontroller {
             Endbildschirmcontroller endbildschirmcontroller = loader.getController();
             int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
             //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
-            spieler.setPunkte(aktuellerscore);
+            spieler.setzePunkte(aktuellerscore);
             endbildschirmcontroller.aktiviereEndscreen(stage,spieler, root2);
         } catch (IOException ex){
             ex.printStackTrace();

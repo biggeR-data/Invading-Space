@@ -42,7 +42,7 @@ public class ScoreListe {
 
                 // Spieler anlegen
                 Spieler neuer_spieler = new Spieler(st.nextToken());
-                neuer_spieler.setPunkte(Integer.parseInt(st.nextToken()));
+                neuer_spieler.setzePunkte(Integer.parseInt(st.nextToken()));
 
                 // Spieler hinzufügen
                 this.spielerliste.add(neuer_spieler);
@@ -66,12 +66,12 @@ public class ScoreListe {
         int positionstausch_index;
 
         for (int indexzeiger = 1; indexzeiger < laenge; indexzeiger++) {
-            if (this.spielerliste.get(indexzeiger).getPunkte() > this.spielerliste.get(indexzeiger - 1).getPunkte()) {
+            if (this.spielerliste.get(indexzeiger).erhaltePunkte() > this.spielerliste.get(indexzeiger - 1).erhaltePunkte()) {
                 // zwischenspeichern des Spielers mit mehr Punkten
                 temp = this.spielerliste.get(indexzeiger);
                 // Index zum tauschen zwischenspeichern
                 positionstausch_index = indexzeiger;
-                while ((positionstausch_index > 0) && (this.spielerliste.get(positionstausch_index - 1).getPunkte() < temp.getPunkte())) {
+                while ((positionstausch_index > 0) && (this.spielerliste.get(positionstausch_index - 1).erhaltePunkte() < temp.erhaltePunkte())) {
                     this.spielerliste.set(positionstausch_index, this.spielerliste.get(positionstausch_index - 1));
                     positionstausch_index -= 1;
                 }
@@ -89,7 +89,7 @@ public class ScoreListe {
             // Iteration über Spielerliste, pro Spieler Iteration über Linkedlist, Werte per Kommas getrennt in .txt schreiben
             spielerliste.stream().forEach(spieler -> {
                 try {
-                    dok_schreiber.write(spieler + "\n");
+                    dok_schreiber.write(spieler.zuString() + "\n");
                 } catch (java.io.IOException e) {
                     System.out.println("Es ist ein Problem aufgetreten beim iterativen abspeichern der Spieler.");
                 }

@@ -1,19 +1,14 @@
 package GUI;
 
 import Klassen.DelimException;
-import Klassen.Raumschiff;
 import Klassen.ScoreListe;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
 import Klassen.Spieler;
@@ -58,8 +53,8 @@ public class Startbildschirmcontroller {
 
     public void setzeHighscorespieler() throws IOException{
         ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
-        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
-        lbl_highcorepunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()+"");
+        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lbl_highcorepunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()+"");
     }
 
 }

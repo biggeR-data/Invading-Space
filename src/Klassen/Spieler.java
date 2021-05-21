@@ -13,20 +13,19 @@ public class Spieler {
         }
     }
 
-    public void setPunkte(int punkte) {
+    public void setzePunkte(int punkte) {
         this.punkte = punkte;
     }
 
-    public int getPunkte() {
+    public int erhaltePunkte() {
         return punkte;
     }
 
-    public String getName() {
+    public String erhalteName() {
         return name;
     }
 
-    @Override
-    public String toString() {
+    public String zuString() {
         // passende Formatierung für csv Speicherart in spielerdaten.txt
         return name + "," + punkte;
     }
