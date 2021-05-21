@@ -10,7 +10,7 @@ public class Koordinator {
     }
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
     private ArrayList<Monster> monsterListe;
-    private ArrayList<Schuss> schuesseListe;
+    private ArrayList<Schuss> schuesseListe = new ArrayList<Schuss>();
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
     private final double RANDUNTEN = 690;
