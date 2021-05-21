@@ -21,12 +21,12 @@ public class Game extends Thread{
     private boolean gameover = false;
     private boolean schussloesen = false;
 
-    private Koordiantor koordiantor = new Koordinator();
+    //private Koordiantor koordiantor = new Koordinator();
     private Spielbildschirmcontroller gui;
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
     private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
-    private Raumschiff schiff = new Raumschiff(280,638, root);
+    private Raumschiff schiff;
 
     private long lastSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
@@ -36,6 +36,7 @@ public class Game extends Thread{
         this.root = root;
         this.spieler = spieler;
         this.gui = gui;
+        schiff = new Raumschiff(280,638, root);
         switch(mode){
             case 0:
                 // normal
@@ -52,7 +53,7 @@ public class Game extends Thread{
 
     // run
     public void run(){
-        monsterGenerieren();
+        //monsterGenerieren();
 
         // spiele bis gameover
         while(!gameover){
@@ -83,11 +84,11 @@ public class Game extends Thread{
         checkMonsterGetroffen();
 
         // anzeigen aktualisieren
-        gui.setPunktzahl();
+        gui.setztePunktzahl(gui.getPunktzahl()+5);
 
         // loese neuen Schuss
 
-        if(){
+        if(schussloesen){
             loeseNeuenSchuss();
         }
 
@@ -148,11 +149,11 @@ public class Game extends Thread{
     }
 
     public void keyRight(){
-        schiff.bewegenRechts()
+        schiff.bewegenRechts();
     }
 
-    public monsterGenerieren(){
-        listMonster.add(New Monster())
+    public void monsterGenerieren(){
+        listMonster.add(new Monster(100,100,root));
     }
 
 }

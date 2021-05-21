@@ -18,6 +18,7 @@ import Klassen.Raumschiff;
 import Klassen.Monster;
 import Klassen.Spieler;
 import Klassen.ScoreListe;
+import Klassen.Game;
 
 public class Spielbildschirmcontroller {
 
@@ -39,40 +40,50 @@ public class Spielbildschirmcontroller {
 
     //Hier Spieler anstatt String empfangen
     public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel) throws IOException {
+
         spieler = pspieler;
         root = new Group(wurzel);
-        Raumschiff raumschiff = new Raumschiff(280, 638, root);
-        Monster monster1 = new Monster(30, 100, root);
+        Game spielthread = new Game(this, 0,root);
+        spielthread.start();
+
         lbl_spielername.setText(spieler.getName());
         lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
         lbl_highscorepunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(raumschiff.erhalteGroup());
+        //Hier zur scene die vollständige Group einfügen
+        //raumschiff.erhalteGroup() anstelle root
+        scene = new Scene(root);
         scene.setOnKeyPressed(event ->  {
             if(event.getCode().equals(KeyCode.D) ||event.getCode().equals(KeyCode.RIGHT) ){
                 //raumschiffrechts();
-                raumschiff.bewegenRechts();
+                spielthread.keyRight();
                 System.out.println(event.getCode());
             } else if(event.getCode().equals(KeyCode.A) ||event.getCode().equals(KeyCode.LEFT)){
                 //raumschifflinks();
-                raumschiff.bewegenLinks();
+                //raumschiff.bewegenLinks();
+                spielthread.keyLeft();
                 System.out.println(event.getCode());
-            } else if(event.getCode().equals(KeyCode.SPACE)){
+            } else if(event.getCode().equals(KeyCode.UP)){
+                spielthread.keyUp();
             }
         });
         stage.setScene(scene);
         stage.show();
     }
 
-    public void wechselZuGameover(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
-        Parent root2 = loader.load();
+    public void wechselZuGameover() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
+            Parent root2 = loader.load();
 
-        Endbildschirmcontroller endbildschirmcontroller = loader.getController();
-        int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
-        //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
-        spieler.setPunkte(aktuellerscore);
-        endbildschirmcontroller.aktiviereEndscreen(e,spieler,root2);
+            Endbildschirmcontroller endbildschirmcontroller = loader.getController();
+            int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
+            //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
+            spieler.setPunkte(aktuellerscore);
+            endbildschirmcontroller.aktiviereEndscreen(stage,spieler, root2);
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
     public void wechselZuStartscreen(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));

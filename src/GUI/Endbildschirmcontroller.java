@@ -42,9 +42,10 @@ public class Endbildschirmcontroller {
 
 
     //Spieler empfangen anstatt string und punktestand
-    public void aktiviereEndscreen(ActionEvent e,Spieler pspieler,Parent wurzel) throws IOException{
+    public void aktiviereEndscreen(Stage bühne,Spieler pspieler,Parent wurzel) throws IOException{
         spieler = pspieler;
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        //stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage = bühne;
         root = new Group(wurzel);
         scene = new Scene(root);
         scoreListe.spielerHinzufuegen(spieler);
