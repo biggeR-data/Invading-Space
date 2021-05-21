@@ -1,6 +1,7 @@
 package Klassen;
 
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 
 // todo: Abstrakte Klasse
 public class Monster extends BeweglicheObjekte {
@@ -10,6 +11,9 @@ public class Monster extends BeweglicheObjekte {
 
     public Monster(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
+        Image img = new Image(getClass().getResource("/Testing/DarthVaderKopf.png").toExternalForm());
+        setzteBild(img);
+        zeichneWeiss(erhalteXKoor(), erhalteYKoor());
     }
 
     protected void setzePunkte(int punkte) {
@@ -24,8 +28,6 @@ public class Monster extends BeweglicheObjekte {
     //  Altes Monster "entfernen"
     //  Neue Koordinaten berechnen
     //  "Neues" Monster zeichnen
-    // todo: Ablauf erstellen --- vielleicht im Main Program und nicht hier in der Klasse
-    //  siehe Notizen auf IPad
     public void bewegenRechts() {
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.xKoor =  erhalteXKoor() + erhalteXBewegung();
@@ -54,7 +56,4 @@ public class Monster extends BeweglicheObjekte {
         }
         return false;
     }
-
-    // Vielleicht müss die Zeichenfläche hier auch übergeben werden.
-    //  Und vieleicht muss auch noch eine Fill Funktion genutzt werden, um das ganze Objekt weiß zu zeichnen.
 }
