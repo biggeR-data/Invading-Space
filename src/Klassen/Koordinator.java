@@ -11,7 +11,7 @@ public class Koordinator {
     private ArrayList<Monster> monsterListe;
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 10;
-    private final double RANDUNTEN = 640;
+    private final double RANDUNTEN = 690;
 
     public Koordinator() {}
 
@@ -51,6 +51,7 @@ public class Koordinator {
                 if (prüfeKollisionRand() == true) {
                     for (Monster monster : this.monsterListe) {
                         monster.bewegenRunter();
+                        monster.zeichneWeiss(monster.erhalteBreite(), monster.erhalteHoehe());
                     }
                     setzteRichtung(xBewegung.RECHTS);
                 } else {
@@ -64,6 +65,7 @@ public class Koordinator {
                 if (prüfeKollisionRand() == true) {
                     for (Monster monster : this.monsterListe) {
                         monster.bewegenRunter();
+                        monster.zeichneWeiss(monster.erhalteBreite(), monster.erhalteHoehe());
                     }
                     setzteRichtung(xBewegung.LINKS);
                 } else {
