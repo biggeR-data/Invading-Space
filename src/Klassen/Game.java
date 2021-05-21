@@ -157,7 +157,7 @@ public class Game extends Thread{
     }
 
     public void keyLeft(){
-        if (!schiff.pruefeKollisionLinks(koordinator.erhalteRandLinks())) {
+        if (!schiff.pruefeKollisionLinks(koordinator.erhalteRandLinks() - 5)) {
             schiff.bewegenLinks();
         }
     }

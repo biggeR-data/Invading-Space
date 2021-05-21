@@ -1,6 +1,7 @@
 package Klassen;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Koordinator {
     private enum xBewegung {
@@ -10,7 +11,7 @@ public class Koordinator {
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
     private ArrayList<Monster> monsterListe;
     private final double RANDRECHTS = 590;
-    private final double RANDLINKS = 10;
+    private final double RANDLINKS = 15;
     private final double RANDUNTEN = 690;
 
     public Koordinator() {}
@@ -104,6 +105,7 @@ public class Koordinator {
     }
 
     public void neueMonsterListeUebergeben(ArrayList<Monster> monster) {
+        Collections.reverse(monster);
         this.monsterListe = monster;
     }
 
