@@ -33,13 +33,14 @@ public class Spielbildschirmcontroller {
     private Label lbl_highscorepunkte;
     private Spieler spieler;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
+    private int mode;
 
     //Hier Spieler anstatt String empfangen
-    public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel) throws IOException {
-
+    public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel,int mode) throws IOException {
+        mode = mode;
         spieler = pspieler;
         root = new Group(wurzel);
-        Game spielthread = new Game(this, 0,root);
+        Game spielthread = new Game(this, mode,root);
         //new Thread(spielthread).start();
         spielthread.start();
 
@@ -77,7 +78,7 @@ public class Spielbildschirmcontroller {
             int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
             //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
             spieler.setzePunkte(aktuellerscore);
-            endbildschirmcontroller.aktiviereEndscreen(stage,spieler, root2);
+            endbildschirmcontroller.aktiviereEndscreen(stage,spieler,root2, mode);
         } catch (IOException ex){
             ex.printStackTrace();
         }
