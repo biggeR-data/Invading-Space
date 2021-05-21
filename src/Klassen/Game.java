@@ -2,6 +2,7 @@ package Klassen;
 
 
 import GUI.Maingui;
+import GUI.Spielbildschirmcontroller;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
@@ -18,8 +19,10 @@ public class Game extends Thread{
 
     private int score;
     private boolean gameover = false;
+    private boolean schussloesen = false;
 
-    private Maingui gui;
+    private Koordiantor koordiantor = new Koordinator();
+    private Spielbildschirmcontroller gui;
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
     private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
@@ -29,7 +32,8 @@ public class Game extends Thread{
     private long lastTickMillis = 0; // in millisekunden
     private int timePerTick = 100; // in millisekunden
 
-    public Game(Maingui gui, Spieler spieler, int mode){
+    public Game(Spielbildschirmcontroller gui, int mode, Group root){
+        this.root = root;
         this.spieler = spieler;
         this.gui = gui;
         switch(mode){
@@ -39,6 +43,7 @@ public class Game extends Thread{
                 monsterGeschwindigkeit = 5;
                 break;
             case 1:
+                // schnell
                 schussGeschwindigkeit = 10;
                 monsterGeschwindigkeit = 20;
                 break;
@@ -47,6 +52,8 @@ public class Game extends Thread{
 
     // run
     public void run(){
+        monsterGenerieren();
+
         // spiele bis gameover
         while(!gameover){
 
@@ -59,7 +66,7 @@ public class Game extends Thread{
                 }
             }
 
-            // führe tick aus
+            // mache nächsten tick
             System.out.println("neuer tick");
             tick();
         }
@@ -76,10 +83,11 @@ public class Game extends Thread{
         checkMonsterGetroffen();
 
         // anzeigen aktualisieren
+        gui.setPunkte();
 
         // loese neuen Schuss
 
-        if(zeahlerTakt % schussGeschwindigkeit == 0){
+        if(){
             loeseNeuenSchuss();
         }
 
@@ -101,7 +109,7 @@ public class Game extends Thread{
         System.out.println("bewege Schüsse");
 
         for(Schuss schuss:listSchuesse) {
-            // bewege
+            //bewegen
         }
         // entferne wenn ausserhalb
     }
@@ -121,20 +129,20 @@ public class Game extends Thread{
         if(System.currentTimeMillis() - lastSchussMillis >= schussGeschwindigkeit) {
             listSchuesse.add(new Schuss(5,5, root));
         }
-
-
     }
 
     private void gameover(){
         System.out.println("Game over!");
-        // punktzahl übergeben -> Spieler
-        // GUI
+        // punktzahl übergeben
+        spieler.setPunkte(score);
+        gui.wechselZuGameover();
     }
 
     // key events
-    // todo: keyevent
     public void keyUp(){
-        loeseNeuenSchuss();
+        if(zeahlerTakt % schussGeschwindigkeit == 0){
+            schussloesen = true;
+        }
     }
 
     public void keyLeft(){
@@ -142,7 +150,11 @@ public class Game extends Thread{
     }
 
     public void keyRight(){
-        schiff.bewegenRechts();
+        schiff.bewegenRechts()
+    }
+
+    public monsterGenerieren(){
+        //hier neue monster generieren
     }
 
 }
