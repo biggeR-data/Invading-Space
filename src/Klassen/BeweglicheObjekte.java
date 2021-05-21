@@ -31,33 +31,62 @@ public abstract class BeweglicheObjekte {
     }
 
     // X und Y Koordinaten
+    /**
+     * Erhalte die aktuelle X-Koordinate des Objekts
+     * @return Einen double-Wert
+     */
     public double erhalteXKoor() {
         return this.xKoor;
     }
 
+    /**
+     * Erhalte die aktuelle Y-Koordinate des Objekts
+     * @return Einen double-Wert
+     */
     public double erhalteYKoor() {
         return this.yKoor;
     }
 
     // Erhalten Höhe und Breite
+
+    /**
+     * Erhalte die aktuelle Breite des Objekts
+     * @return Einen double-Wert
+     */
     public double erhalteBreite() {
         return breite;
     }
 
+    /**
+     * Erhalte die aktuelle Höhe des Objekts
+     * @return Einen double-Wert
+     */
     public double erhalteHoehe() {
         return hoehe;
     }
 
     // Setzte Höhe und Breite
+    /**
+     * Setze eine neue Höhe für das akuelle Objekt
+     * @param hoehe Die neue Höhe
+     */
     protected void setzeHoehe(double hoehe) {
         this.hoehe = hoehe;
     }
 
+    /**
+     * Setze eine neue Breite für das aktuelle Objekt
+     * @param breite Die nee Breite
+     */
     protected void setzeBreite(double breite) {
         this.breite = breite;
     }
 
     // xBewegung
+    /**
+     * Setze eine neue Größe für den Schritt der X-Achse entlang
+     * @param xBewegung Die neue X-Bewegung
+     */
     protected void setzeXBewegung(double xBewegung) {
         this.xBewegung = xBewegung;
     }
