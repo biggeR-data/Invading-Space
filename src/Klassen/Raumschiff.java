@@ -2,6 +2,7 @@ package Klassen;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 import java.awt.*;
 
@@ -11,6 +12,9 @@ public class Raumschiff extends BeweglicheObjekte {
         super(xKoor, yKoor, root);
         setzeBreite(40);
         setzeHoehe(40);
+        Image img = new Image(getClass().getResource("/MilleniumFalke.png").toExternalForm());
+        setzteBild(img);
+        zeichneWeiss(erhalteXKoor(), erhalteYKoor());
     }
 
     // Raumschiff nach rechts und links bewegen

@@ -26,7 +26,7 @@ public class Game extends Thread{
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
     private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
-    private Raumschiff schiff = new Raumschiff(0,0, root);
+    private Raumschiff schiff = new Raumschiff(280,638, root);
 
     private long lastSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
@@ -83,7 +83,7 @@ public class Game extends Thread{
         checkMonsterGetroffen();
 
         // anzeigen aktualisieren
-        gui.setPunkte();
+        gui.setPunktzahl();
 
         // loese neuen Schuss
 
@@ -102,7 +102,7 @@ public class Game extends Thread{
     private void checkMonsterGetroffen(){
         System.out.println("checke Monster getroffen");
         // wenn Monster getroffen - entfernen
-        // Score anpassen
+        // Punktzahl aktualisieren
     }
 
     private void bewegeSchuesse(){
@@ -133,8 +133,6 @@ public class Game extends Thread{
 
     private void gameover(){
         System.out.println("Game over!");
-        // punktzahl übergeben
-        spieler.setPunkte(score);
         gui.wechselZuGameover();
     }
 
@@ -154,7 +152,7 @@ public class Game extends Thread{
     }
 
     public monsterGenerieren(){
-        //hier neue monster generieren
+        listMonster.add(New Monster())
     }
 
 }
