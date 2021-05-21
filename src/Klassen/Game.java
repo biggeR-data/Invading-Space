@@ -32,7 +32,7 @@ public class Game extends Thread{
 
     private long lastSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
-    private int timePerTick = 1000; // in millisekunden
+    private int timePerTick = 50; // in millisekunden
 
     public Game(Spielbildschirmcontroller gui, int mode, Group root){
         this.root = root;
@@ -43,12 +43,12 @@ public class Game extends Thread{
             case 0:
                 // normal
                 schussGeschwindigkeit = 10;
-                monsterGeschwindigkeit = 5;
+                monsterGeschwindigkeit = 20;
                 break;
             case 1:
                 // schnell
                 schussGeschwindigkeit = 10;
-                monsterGeschwindigkeit = 20;
+                monsterGeschwindigkeit = 5;
                 break;
         }
     }
@@ -128,11 +128,8 @@ public class Game extends Thread{
 
     private void bewegeMonster(){
         System.out.println("bewege Monster");
-
-        for(Monster monster:listMonster){
-            // monster.bewegenLinks();
-            // gameover -> true wenn Monster unten
-        }
+        koordinator.ueberprüfenUndBewegenMonster();
+        gameover = koordinator.gameOver();
     }
 
     private void loeseNeuenSchuss() {
@@ -145,7 +142,11 @@ public class Game extends Thread{
 
     private void gameover(){
         System.out.println("Game over!");
-        gui.wechselZuGameover();
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                gui.wechselZuGameover();
+            }
+        });
     }
 
     // key events

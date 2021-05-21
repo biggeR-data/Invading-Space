@@ -39,7 +39,7 @@ public class Endbildschirmcontroller {
 
     public void aktiviereEndscreen(Stage bühne,Spieler pspieler,Parent wurzel,int mode) throws IOException{
         spieler = pspieler;
-        mode = mode;
+        this.mode = mode;
         stage = bühne;
         root = new Group(wurzel);
         scene = new Scene(root);

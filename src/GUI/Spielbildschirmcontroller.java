@@ -34,13 +34,14 @@ public class Spielbildschirmcontroller {
     private Spieler spieler;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
     private int mode;
+    private Game spielthread;
 
     //Hier Spieler anstatt String empfangen
     public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel,int mode) throws IOException {
-        mode = mode;
+        this.mode = mode;
         spieler = pspieler;
         root = new Group(wurzel);
-        Game spielthread = new Game(this, mode,root);
+        spielthread = new Game(this, mode,root);
         //new Thread(spielthread).start();
         spielthread.start();
 
@@ -79,6 +80,7 @@ public class Spielbildschirmcontroller {
             //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
             spieler.setzePunkte(aktuellerscore);
             endbildschirmcontroller.aktiviereEndscreen(stage,spieler,root2, mode);
+            spielthread.interrupt();
         } catch (IOException ex){
             ex.printStackTrace();
         }
@@ -89,6 +91,7 @@ public class Spielbildschirmcontroller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        spielthread.interrupt();
     }
     //Anbindung an die Gameklasse zur Erhöhung der Punktzeil
     public void setztePunktzahl(int punktzahl){
