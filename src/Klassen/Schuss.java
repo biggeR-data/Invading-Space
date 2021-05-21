@@ -47,4 +47,11 @@ public class Schuss extends BeweglicheObjekte {
         }
         return false;
     }
+
+    public boolean pruefeKollisionUnten(double yRand) {
+        if (erhalteYKoor() + YBEWEGUNG > yRand) {
+            return true;
+        }
+        return false;
+    }
 }

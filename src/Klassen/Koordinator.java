@@ -13,7 +13,8 @@ public class Koordinator {
     private ArrayList<Schuss> schuesseListe = new ArrayList<Schuss>();
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
-    private final double RANDUNTEN = 690;
+    private final double RANDUNTENMONSTER = 690;
+    private final double RANDUNTENSCHUSS = 700;
     private final double RANDOBEN = 80;
 
     public Koordinator() {}
@@ -127,7 +128,7 @@ public class Koordinator {
 
     public boolean gameOver() {
         for (Monster monster : this.monsterListe) {
-            if (monster.pruefeKollisionUnten(RANDUNTEN) == true) {
+            if (monster.pruefeKollisionUnten(RANDUNTENMONSTER) == true) {
                 return true;
             }
         }
