@@ -25,6 +25,8 @@ public class Startbildschirmcontroller {
     private Label lbl_highscorename;
     @FXML
     private Label lbl_highcorepunkte;
+    @FXML
+    private Label lbl_popup;
 
 
     public void normal(ActionEvent e)throws IOException{
@@ -37,8 +39,6 @@ public class Startbildschirmcontroller {
     }
 
     public void wechselZuGamescreen(ActionEvent e, int mode) throws IOException {
-        //Main klasse des Spielbildschirms
-        //TODO: Überprüfung text leer und kein komma
         try {
             Spieler spieler = new Spieler(txt_Namensfeld.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
@@ -47,11 +47,9 @@ public class Startbildschirmcontroller {
             //ab hier soll der spielbildschirmcontroller übernehmen
             spielcontroller.aktiviereSpielfeld(e, spieler, root,mode);
         } catch (DelimException ex){
-            System.out.println(ex.getMessage());
-            //TODO: Popup
+            lbl_popup.setText(ex.getMessage());
         } catch (EmptyException ex) {
-            System.out.println(ex.getMessage());
-            //TODO: Popup
+            lbl_popup.setText(ex.getMessage());
         }
     }
 
