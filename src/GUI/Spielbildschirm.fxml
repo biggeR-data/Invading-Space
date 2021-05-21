@@ -8,19 +8,19 @@
 
 <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Spielbildschirmcontroller">
   <items>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
          <children>
-            <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="70.0" prefWidth="138.0" text="HIGHSCORE:" textAlignment="CENTER">
+            <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="70.0" prefWidth="138.0" text="HIGHSCORE:" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highscorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" text="999999" textAlignment="RIGHT">
+            <Label fx:id="lbl_highscorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" text="999999" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="209.0" text="Leon">
+            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="209.0" text="Leon" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -30,22 +30,22 @@
          <items>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="628.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
                <children>
-                  <Label fx:id="lbl_popup" layoutX="156.0" layoutY="14.0" prefHeight="50.0" prefWidth="288.0" text="Popup / Messagespace" textAlignment="JUSTIFY" visible="false">
+                  <Label fx:id="lbl_popup" contentDisplay="CENTER" layoutX="155.0" layoutY="14.0" prefHeight="50.0" prefWidth="288.0" text="Popup / Messagespace" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0">
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
                <children>
-                  <Label fx:id="lbl_aktuellerscore" layoutX="390.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="202.0" text="15000" textAlignment="RIGHT">
+                  <Label fx:id="lbl_aktuellerscore" layoutX="390.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="202.0" textAlignment="RIGHT" textFill="WHITE">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
                   <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuGameover" text="Weltraum verlassen" />
-                  <Label fx:id="lbl_spielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="232.0" textAlignment="RIGHT">
+                  <Label fx:id="lbl_spielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="232.0" textAlignment="RIGHT" textFill="WHITE">
                      <font>
                         <Font size="23.0" />
                      </font>
