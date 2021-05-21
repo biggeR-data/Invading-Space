@@ -40,13 +40,13 @@ public class Game extends Thread{
         switch(mode){
             case 0:
                 // normal
-                schussGeschwindigkeitSchiff = 1000;
+                schussGeschwindigkeitSchiff = 850;
                 monsterGeschwindigkeit = 20;
                 break;
             case 1:
                 // schnell
-                schussGeschwindigkeitSchiff = 1000;
-                monsterGeschwindigkeit = 5;
+                schussGeschwindigkeitSchiff = 850;
+                monsterGeschwindigkeit = 4;
                 break;
         }
     }
@@ -86,19 +86,16 @@ public class Game extends Thread{
 
         // jeder Takt
         bewegeSchuesse();
-        checkMonsterGetroffen();
 
-        // anzeigen aktualisieren
-        System.out.println("Punktzahl");
+        // update score
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                gui.setztePunktzahl(score++);
+                gui.setztePunktzahl(koordinator.erhalteScore());
             }
         });
-
+        checkMonsterGetroffen();
 
         // loese neuen Schuss
-
         if(schussloesen){
             loeseNeuenSchuss();
             schussloesen=!schussloesen;
@@ -107,6 +104,21 @@ public class Game extends Thread{
         // nicht jeden Takt ausführen (bei Monster beschleunigung MonsterGeschwindigkeit ändern)
         if(zeahlerTakt % monsterGeschwindigkeit == 0){
             bewegeMonster();
+        }
+
+        // neue Welle notwendig?
+        if(koordinator.neueMonsterListeNotwendig()){
+            monsterGenerieren();
+            try {
+                this.sleep(0,500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //geschwindigkeit erhöhen
+            if(monsterGeschwindigkeit>8) {
+                monsterGeschwindigkeit -= 2;
+            }
         }
 
     }
@@ -183,8 +195,6 @@ public class Game extends Thread{
                 listMonster.add(new MonsterZehn(x * 40 + 30, y * 50 + 250, root));
             }
         }
-
-
 
         koordinator.neueMonsterListeUebergeben(listMonster);
 

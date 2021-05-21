@@ -17,6 +17,7 @@ Jan,15000
 asd,15000
 jasndadwdawsdsdad,2187
 dsf,1399
+Jan,1320
 Kai,1003
 Kai,1002
 Rüdiger,1001
@@ -40,6 +41,7 @@ yxc,349
 asd,349
 asd,349
 asd,190
+Jan,180
 Jan,109
 asd,82
 Thomas,42

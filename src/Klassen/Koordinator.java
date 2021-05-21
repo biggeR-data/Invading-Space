@@ -100,7 +100,7 @@ public class Koordinator {
             schuss.schiessenHoch();
             for (Monster monster : this.monsterListe) {
                 if (monster.pruefeKollision(schuss) == true) {
-                    score =+ monster.erhaltePunkte();
+                    score += monster.erhaltePunkte();
                     // Monster zerstört und aus der ArrayList monsterListe entfernen
                     monster.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
                     loescheMonster.add(monster);
