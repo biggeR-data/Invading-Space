@@ -11,8 +11,8 @@ public abstract class Monster extends BeweglicheObjekte {
 
     public Monster(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
-        Image img = new Image(getClass().getResource("/Testing/DarthVaderKopf.png").toExternalForm());
-        setzteBild(img);
+        //Image img = new Image(getClass().getResource("/Testing/DarthVaderKopf.png").toExternalForm());
+        //setzteBild(img);
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 

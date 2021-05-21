@@ -1,11 +1,11 @@
 package Klassen;
 
-
 import GUI.Maingui;
 import GUI.Spielbildschirmcontroller;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 // todo: Stages? GameOver? Score speichern?
 
@@ -21,7 +21,7 @@ public class Game extends Thread{
     private boolean gameover = false;
     private boolean schussloesen = false;
 
-    //private Koordiantor koordiantor = new Koordinator();
+    private Koordinator koordinator = new Koordinator();
     private Spielbildschirmcontroller gui;
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
@@ -36,8 +36,10 @@ public class Game extends Thread{
         this.root = root;
         this.spieler = spieler;
         this.gui = gui;
-        Monster m1 = new Monster(500,500,root);
+
         schiff = new Raumschiff(280,638, root);
+        monsterGenerieren();
+
         switch(mode){
             case 0:
                 // normal
@@ -53,8 +55,9 @@ public class Game extends Thread{
     }
 
     // run
+    @Override
     public void run(){
-        //monsterGenerieren();
+        monsterGenerieren();
         // spiele bis gameover
         while(!gameover){
 
@@ -153,7 +156,31 @@ public class Game extends Thread{
     }
 
     public void monsterGenerieren(){
-        listMonster.add(new Monster(100,100,root));
+        listMonster.removeAll(listMonster);
+
+        // 10er Monster
+        for(int y = 0;y<2;y++){
+            for (int x = 0; x < 12; x++) {
+                listMonster.add(new MonsterZehn(x * 40 + 30, y * 50 + 250, root));
+            }
+        }
+        // 20er Monster
+        for(int y = 0;y< 2;y++){
+            for (int x = 0; x < 12; x++) {
+                listMonster.add(new MonsterZwanzig(x * 40 + 30, y * 50 + 150, root));
+            }
+        }
+        // 50er Monster
+        for(int x = 0;x< 12;x++){
+            listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
+        }
+
+        koordinator.neueMonsterListeUebergeben(listMonster);
+
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

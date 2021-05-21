@@ -8,7 +8,7 @@ public class MonsterZehn extends Monster {
     public MonsterZehn(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
         setzePunkte(10);
-        Image img = new Image(getClass().getResource("/TIEFighterFront.png").toExternalForm());
+        Image img = new Image(getClass().getResource("../TIEFigtherFront.png").toExternalForm());
         setzteBild(img);
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
