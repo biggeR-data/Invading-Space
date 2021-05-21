@@ -84,18 +84,18 @@ public class ScoreListe {
     public void txtUpdaten() {
         // Spiel soll beendet werden -> sync Spielerdaten in .txt
         try {
-            BufferedWriter meinWriter = Files.newBufferedWriter(this.dok_spielerdaten, StandardOpenOption.WRITE);
+            BufferedWriter dok_schreiber = Files.newBufferedWriter(this.dok_spielerdaten, StandardOpenOption.WRITE);
 
             // Iteration über Spielerliste, pro Spieler Iteration über Linkedlist, Werte per Kommas getrennt in .txt schreiben
             spielerliste.stream().forEach(spieler -> {
                 try {
-                    meinWriter.write(spieler + "\n");
+                    dok_schreiber.write(spieler + "\n");
                 } catch (java.io.IOException e) {
                     System.out.println("Es ist ein Problem aufgetreten beim iterativen abspeichern der Spieler.");
                 }
             });
 
-            meinWriter.close();
+            dok_schreiber.close();
 
         } catch (java.io.IOException e) {
             System.out.println("Es ist ein Problem aufgetreten bei der Ablage der Spielerdaten.");
