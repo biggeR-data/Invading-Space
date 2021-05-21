@@ -58,7 +58,25 @@ public class ScoreListe {
     }
 
     private void absteigendSortieren() {
-        this.spielerliste.sort((spieler1, spieler2) -> spieler2.getPunkte() - spieler1.getPunkte());
+        // InsertionSort
+        int laenge = this.spielerliste.size();
+        Spieler temp;
+        int positionstausch_index;
+
+        for (int indexzeiger = 1; indexzeiger < laenge; indexzeiger++) {
+            if (this.spielerliste.get(indexzeiger).getPunkte() > this.spielerliste.get(indexzeiger - 1).getPunkte()) {
+                // zwischenspeichern des Spielers mit mehr Punkten
+                temp = this.spielerliste.get(indexzeiger);
+                // Index zum tauschen zwischenspeichern
+                positionstausch_index = indexzeiger;
+                while ((positionstausch_index > 0) && (this.spielerliste.get(positionstausch_index - 1).getPunkte() < temp.getPunkte())) {
+                    this.spielerliste.set(positionstausch_index, this.spielerliste.get(positionstausch_index - 1));
+                    positionstausch_index -= 1;
+                }
+                // Einfügen des Elements an vorgesehener Stelle
+                this.spielerliste.set(positionstausch_index, temp);
+            }
+        }
     }
 
     public void txtUpdaten() {
