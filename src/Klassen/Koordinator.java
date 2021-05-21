@@ -13,9 +13,7 @@ public class Koordinator {
     private final double RANDLINKS = 30;
     private final double RANDUNTEN = 640;
 
-    public Koordinator(ArrayList<Monster> monster) {
-        this.monsterListe = monster;
-    }
+    public Koordinator() {}
 
     private void setzteRichtung(xBewegung richtung) {
         this.richtung = richtung;
