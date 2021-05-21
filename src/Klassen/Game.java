@@ -31,6 +31,7 @@ public class Game extends Thread{
     private Raumschiff schiff;
 
     private long lastSchussMillis = 0; // in millisekunden
+    private long lastSchiffSchussMillis = 0;
     private long lastTickMillis = 0; // in millisekunden
     private int timePerTick = 50; // in millisekunden
 
@@ -119,11 +120,7 @@ public class Game extends Thread{
 
     private void bewegeSchuesse(){
         System.out.println("bewege Schüsse");
-
-        for(Schuss schuss:listSchuesse) {
-            //bewegen
-        }
-        // entferne wenn ausserhalb
+        koordinator.ueberpruefenUndBewegenSchuss();
     }
 
     private void bewegeMonster(){
@@ -134,10 +131,7 @@ public class Game extends Thread{
 
     private void loeseNeuenSchuss() {
         System.out.println("schieße");
-
-        if(System.currentTimeMillis() - lastSchussMillis >= schussGeschwindigkeit) {
-            listSchuesse.add(new Schuss(5,5, root));
-        }
+        koordinator.hinzufuegenSchuss(schiff.schiessen());
     }
 
     private void gameover(){
@@ -151,8 +145,9 @@ public class Game extends Thread{
 
     // key events
     public void keyUp(){
-        if(zeahlerTakt % schussGeschwindigkeit == 0){
+        if((lastSchiffSchussMillis + schussGeschwindigkeit) >= System.currentTimeMillis()){
             schussloesen = true;
+            System.out.println("schuss freigegeben");
         }
     }
 
