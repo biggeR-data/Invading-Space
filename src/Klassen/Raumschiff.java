@@ -12,7 +12,7 @@ public class Raumschiff extends BeweglicheObjekte {
         super(xKoor, yKoor, root);
         setzeBreite(40);
         setzeHoehe(40);
-        Image img = new Image(getClass().getResource("/MilleniumFalke.png").toExternalForm());
+        Image img = new Image(getClass().getResource("/Testing/583784_millennium-falcon-pixel-art-hd-png-download.jpg").toExternalForm());
         setzteBild(img);
         zeichneWeiss(erhalteXKoor(), erhalteYKoor());
     }
