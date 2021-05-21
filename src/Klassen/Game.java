@@ -36,6 +36,7 @@ public class Game extends Thread{
         this.root = root;
         this.spieler = spieler;
         this.gui = gui;
+        Monster m1 = new Monster(500,500,root);
         schiff = new Raumschiff(280,638, root);
         switch(mode){
             case 0:
@@ -54,7 +55,6 @@ public class Game extends Thread{
     // run
     public void run(){
         //monsterGenerieren();
-        Monster m1 = new Monster(500,500,root);
         // spiele bis gameover
         while(!gameover){
 
