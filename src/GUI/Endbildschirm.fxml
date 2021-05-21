@@ -10,10 +10,10 @@
 
 <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Endbildschirmcontroller">
   <items>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" />
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="600.0">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
          <children>
-            <Label alignment="CENTER" layoutX="239.0" layoutY="14.0" prefHeight="50.0" prefWidth="120.0" text="Game" textAlignment="CENTER" textOverrun="CLIP">
+            <Label alignment="CENTER" layoutX="239.0" layoutY="14.0" prefHeight="50.0" prefWidth="120.0" text="Game" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font size="40.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="258.0" layoutY="57.0" text="Over" textAlignment="CENTER">
+            <Label layoutX="258.0" layoutY="57.0" text="Over" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>
@@ -40,12 +40,12 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="265.0" layoutY="135.0" text="Score:" textAlignment="CENTER">
+            <Label layoutX="265.0" layoutY="135.0" text="Score:" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="227.0" layoutY="216.0" text="Top 3 Players:" textAlignment="CENTER">
+            <Label layoutX="227.0" layoutY="216.0" text="Top 3 Players:" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>

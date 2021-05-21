@@ -51,6 +51,7 @@ public class Startbildschirmcontroller {
             //TODO: Popup
         } catch (EmptyException ex) {
             System.out.println(ex.getMessage());
+            //TODO: Popup
         }
     }
 

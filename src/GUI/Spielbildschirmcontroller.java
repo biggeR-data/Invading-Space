@@ -62,7 +62,7 @@ public class Spielbildschirmcontroller {
                 //raumschiff.bewegenLinks();
                 spielthread.keyLeft();
                 System.out.println(event.getCode());
-            } else if(event.getCode().equals(KeyCode.UP)){
+            } else if(event.getCode().equals(KeyCode.W) ||event.getCode().equals(KeyCode.UP)){
                 spielthread.keyUp();
             }
         });

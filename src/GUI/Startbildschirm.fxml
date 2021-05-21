@@ -39,12 +39,12 @@
             </Label>
             <Polygon fill="DODGERBLUE" layoutX="102.0" layoutY="157.0" points="-29.5, 40.0, 30.5, 40.0, -0.5, -9.0" rotate="-33.7" stroke="BLACK" strokeType="INSIDE" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="460.0" layoutY="148.0" rotate="40.0" stroke="BLACK" strokeType="INSIDE" width="51.0" />
-            <Button fx:id="btn_hölle" contentDisplay="CENTER" layoutX="387.0" layoutY="408.0" mnemonicParsing="false" onAction="#hölle" prefHeight="36.0" prefWidth="120.0" text="Hölle" textAlignment="CENTER">
+            <Button fx:id="btn_hölle" contentDisplay="CENTER" layoutX="327.0" layoutY="463.0" mnemonicParsing="false" onAction="#hölle" prefHeight="36.0" prefWidth="120.0" text="Hölle" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_normal" contentDisplay="CENTER" layoutX="95.0" layoutY="408.0" mnemonicParsing="false" onAction="#normal" prefHeight="36.0" prefWidth="120.0" text="Normal" textAlignment="CENTER">
+            <Button fx:id="btn_normal" contentDisplay="CENTER" layoutX="141.0" layoutY="463.0" mnemonicParsing="false" onAction="#normal" prefHeight="36.0" prefWidth="120.0" text="Normal" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -60,6 +60,11 @@
                   <Font size="23.0" />
                </font>
             </TextField>
+            <Label contentDisplay="CENTER" layoutX="158.0" layoutY="361.0" prefHeight="43.0" prefWidth="282.0" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
   </items>

@@ -20,7 +20,7 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" text="Leon">
+            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="209.0" text="Leon">
                <font>
                   <Font size="23.0" />
                </font>
@@ -44,13 +44,8 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label layoutX="299.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="82.0" text="SCORE:" textAlignment="RIGHT">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
                   <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuGameover" text="Weltraum verlassen" />
-                  <Label fx:id="lbl_spielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="138.0" textAlignment="RIGHT">
+                  <Label fx:id="lbl_spielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="232.0" textAlignment="RIGHT">
                      <font>
                         <Font size="23.0" />
                      </font>
