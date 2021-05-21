@@ -15,16 +15,20 @@ public class ScoreListe {
     private Path dok_spielerdaten;
 
     public ScoreListe(String pfad_zu_spielerdaten) {
-        setDok_spielerdaten(pfad_zu_spielerdaten);
-        txtAuslesen();
-        absteigendSortieren();
+        try {
+            setDok_spielerdaten(pfad_zu_spielerdaten);
+            txtAuslesen();
+            absteigendSortieren();
+        } catch (DelimException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void setDok_spielerdaten(String pfad_zu_spielerdaten) {
         this.dok_spielerdaten = Paths.get(pfad_zu_spielerdaten);
     }
 
-    private void txtAuslesen() {
+    private void txtAuslesen() throws DelimException {
         try {
             // vorhandene Spielerdaten erfassen
             // Dokument einlesen

@@ -2,18 +2,18 @@ package Klassen;
 
 import javafx.scene.Group;
 
+// todo: Abstrakte Klasse
 public class Monster extends BeweglicheObjekte {
-    private int punkte;
+    private static final int PUNKTE = 10;
     private final double YBEWEGUNG = 50;
-
-    // todo: Einer der Konstruktoren muss vermutlich entfernt werden
-    public Monster(double xKoor, double yKoor, Group root, int punkte) {
-        super(xKoor, yKoor, root);
-        this.punkte = punkte;
-    }
+    private int punkte = PUNKTE;
 
     public Monster(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
+    }
+
+    protected void setzePunkte(int punkte) {
+        this.punkte = punkte;
     }
 
     public int erhaltePunkte() {
@@ -44,17 +44,11 @@ public class Monster extends BeweglicheObjekte {
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
-    /*public void bewegenHoch() {
-        zeichneSchwarz();
-        this.yKoor = getYKoor() - BEWEGUNG;
-        zeichneWeiss();
-    }*/
-
     public void schiessen() {
         // Aufrufen der Klasse Schuss
     }
 
-    public boolean pruefeKollisionUnten(int yRand) {
+    public boolean pruefeKollisionUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
         }

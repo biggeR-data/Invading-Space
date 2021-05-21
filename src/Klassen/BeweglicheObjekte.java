@@ -9,27 +9,25 @@ import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 
 public abstract class BeweglicheObjekte {
+    // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     private static final double STANDARD_HOEHE = 25;
     protected static final double STANDARD_BREITE= 25;
     protected static final double STANDARD_XBEWEGUNG = 10;
-    public double xKoor; // oben links
-    public double yKoor; // oben links
+    public double xKoor; // von oben links
+    public double yKoor; // von oben links
     private double hoehe = STANDARD_HOEHE;
     private double breite = STANDARD_BREITE;
     private double xBewegung = STANDARD_XBEWEGUNG;
     public Group root;
     private Image img = null;
-    // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
-    // todo: hoehe und breite sind beim Raumschiff und beim Monster unterschiedlich.
-    //  reicht eine neue hoehen und breiten Var in der Raumhschiff-Klasse? --Nein
 
     // Konstruktor
     protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
         this.xKoor = xKoor;
         this.yKoor = yKoor;
         this.root = root;
-        System.out.println(System.getProperty("user.dir"));
-        img = new Image(getClass().getResource("/SpaceInvader_Alien.png").toExternalForm());
+        // Bild
+        img = new Image(getClass().getResource("/MilleniumFalke.png").toExternalForm());
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
@@ -42,7 +40,7 @@ public abstract class BeweglicheObjekte {
         return this.yKoor;
     }
 
-    // Höhe und Breite
+    // Erhalten Höhe und Breite
     public double erhalteBreite() {
         return breite;
     }
@@ -60,12 +58,11 @@ public abstract class BeweglicheObjekte {
         this.breite = breite;
     }
 
-    // Setzte XBewegung
+    // xBewegung
     protected void setzeXBewegung(double xBewegung) {
         this.xBewegung = xBewegung;
     }
 
-    // xBewegung
     public double erhalteXBewegung() {
         return xBewegung;
     }
@@ -103,7 +100,6 @@ public abstract class BeweglicheObjekte {
         }
         return false;
     }
-
 
     /**
      * Prüft, ob eine Kollision zwischen zwei beweglichenObjekten stattfindet.

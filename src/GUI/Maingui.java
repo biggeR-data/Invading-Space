@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-// 600 * 768
+// Feste Größe des Spielfensters: 600 * 768 Pixel
 public class Maingui extends Application {
 
     public static void main(String[] args) {
@@ -20,6 +20,8 @@ public class Maingui extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
             Parent root = loader.load();
+            Startbildschirmcontroller startcontroller = loader.getController();
+            startcontroller.setzeHighscorespieler();
             primaryStage.setTitle("Space Invader - aber besser");
             Scene startscreen = new Scene(root);
             primaryStage.setScene(startscreen);

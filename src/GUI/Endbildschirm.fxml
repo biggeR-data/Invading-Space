@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Endbildschirmcontroller">
   <items>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" />
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="600.0">
@@ -20,12 +20,12 @@
             </Label>
             <Polygon fill="DODGERBLUE" layoutX="102.0" layoutY="157.0" points="-29.5, 40.0, 30.5, 40.0, -0.5, -9.0" rotate="-33.7" stroke="BLACK" strokeType="INSIDE" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="460.0" layoutY="148.0" rotate="40.0" stroke="BLACK" strokeType="INSIDE" width="51.0" />
-            <Button contentDisplay="CENTER" layoutX="359.0" layoutY="476.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" text="Startseite" textAlignment="CENTER">
+            <Button fx:id="btn_startseite" contentDisplay="CENTER" layoutX="359.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuStartscreen" prefHeight="36.0" prefWidth="120.0" text="Startseite" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button contentDisplay="CENTER" layoutX="119.0" layoutY="476.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" text="Erneut spielen" textAlignment="CENTER">
+            <Button fx:id="btn_erneutspielen" contentDisplay="CENTER" layoutX="119.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuGamescreen" prefHeight="36.0" prefWidth="120.0" text="Erneut spielen" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -35,7 +35,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" text="6969420" textAlignment="CENTER" textOverrun="CLIP">
+            <Label fx:id="lbl_score" alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textOverrun="CLIP">
                <font>
                   <Font size="23.0" />
                </font>
@@ -50,32 +50,32 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="126.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" text="Name1" textAlignment="CENTER">
+            <Label fx:id="lbl_top1name" layoutX="126.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="126.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" text="Name2" textAlignment="CENTER">
+            <Label fx:id="lbl_top2name" layoutX="126.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="126.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" text="Name3" textAlignment="CENTER">
+            <Label fx:id="lbl_top3name" layoutX="126.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="313.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" text="Score1" textAlignment="RIGHT">
+            <Label fx:id="lbl_top1score" layoutX="313.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="313.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" text="Score2" textAlignment="RIGHT">
+            <Label fx:id="lbl_top2score" layoutX="313.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="313.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" text="Score3" textAlignment="RIGHT">
+            <Label fx:id="lbl_top3score" layoutX="313.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT">
                <font>
                   <Font size="23.0" />
                </font>

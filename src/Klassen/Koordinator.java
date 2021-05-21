@@ -13,7 +13,6 @@ public class Koordinator {
     private final double RANDLINKS = 30;
     private final double RANDUNTEN = 640;
 
-    // todo Datenstruktur ggf. abändern. Auch an die anderen Stellen denken!
     public Koordinator(ArrayList<Monster> monster) {
         this.monsterListe = monster;
     }
@@ -32,7 +31,7 @@ public class Koordinator {
             }
         } else {
             for (Monster monster : this.monsterListe) {
-                if (monster.pruefeKollisionRechts(RANDLINKS) == true) {
+                if (monster.pruefeKollisionLinks(RANDLINKS) == true) {
                     return true;
                 }
             }
@@ -71,35 +70,42 @@ public class Koordinator {
         }
     }
 
-    /*public ArrayList<Schuss> ueberpruefenUndBewegenSchuss(ArrayList<Schuss> schuesseListe) {
+    public ArrayList<Schuss> ueberpruefenUndBewegenSchuss(ArrayList<Schuss> schuesseListe) {
         // Kollision mit Schuss überprüfen (für jedes Objekt)
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
         for (Schuss schuss : schuesseListe) {
-            schuss.bewegeHoch();
+            schuss.schiessenHoch();
             for (Monster monster : this.monsterListe) {
                 if (monster.pruefeKollision(schuss) == true) {
                     // Monster zerstört und aus der ArrayList monsterListe entfernen
-                    monster.zeichneSchwarz();
+                    monster.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
                     monsterListe.remove(monster);
                     // Schuss zerstören und aus der ArrayList schusseListe entfernen
-                    schuss.zeichneSchwarz();
+                    schuss.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
                     schuesseListe.remove(schuss);
                 }
             }
         }
         return schuesseListe;
-    }*/
+    }
 
-    /*public boolean gameOver() {
+    public boolean neueMonsterListeNotwendig() {
         if (this.monsterListe.isEmpty()) {
             return true;
         }
-        // todo: Prüfen ob Monster mit Raumschiff kollidiert bzw. eine bestimmte Höhe erreicht.
+        return false;
+    }
+
+    public void neueMonsterListeUebergeben(ArrayList<Monster> monster) {
+        this.monsterListe = monster;
+    }
+
+    public boolean gameOver() {
         for (Monster monster : this.monsterListe) {
             if (monster.pruefeKollisionUnten(RANDUNTEN) == true) {
                 return true;
             }
         }
         return false;
-    }*/
+    }
 }

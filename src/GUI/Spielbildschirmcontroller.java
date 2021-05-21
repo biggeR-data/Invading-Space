@@ -13,10 +13,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
-import Klassen.*;
+import Klassen.Raumschiff;
+import Klassen.Monster;
+import Klassen.Spieler;
+import Klassen.ScoreListe;
 
 public class Spielbildschirmcontroller {
 
@@ -27,23 +28,24 @@ public class Spielbildschirmcontroller {
     //Import des FMXL files und erstellung von Objekten der Gui elemente
     @FXML
     private Label lbl_spielername;
-    //@FXML
-    //private Polygon raumschiff;
+    @FXML
+    private Label lbl_aktuellerscore;
+    @FXML
+    private Label lbl_highscorename;
+    @FXML
+    private Label lbl_highscorepunkte;
+    private Spieler spieler;
+    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
 
-    /*public void raumschifflinks(){
-        raumschiff.setLayoutX(raumschiff.getLayoutX()-10);
-    }
-    public void raumschiffrechts(){
-        raumschiff.setLayoutX(raumschiff.getLayoutX()+10);
-    }*/
-
-    public void aktiviereSpielfeld(ActionEvent e,String spielername, Parent wurzel) throws IOException {
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
-        //root = wurzel;
+    //Hier Spieler anstatt String empfangen
+    public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel) throws IOException {
+        spieler = pspieler;
         root = new Group(wurzel);
         Raumschiff raumschiff = new Raumschiff(280, 638, root);
         Monster monster1 = new Monster(30, 100, root);
-        lbl_spielername.setText(spielername);
+        lbl_spielername.setText(spieler.getName());
+        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).getName());
+        lbl_highscorepunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).getPunkte()));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(raumschiff.erhalteGroup());
         scene.setOnKeyPressed(event ->  {
@@ -63,11 +65,14 @@ public class Spielbildschirmcontroller {
     }
 
     public void wechselZuGameover(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Endbildschirm.fxml"));
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
+        Parent root2 = loader.load();
+
+        Endbildschirmcontroller endbildschirmcontroller = loader.getController();
+        int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
+        //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
+        spieler.setPunkte(aktuellerscore);
+        endbildschirmcontroller.aktiviereEndscreen(e,spieler,root2);
     }
     public void wechselZuStartscreen(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
@@ -76,4 +81,12 @@ public class Spielbildschirmcontroller {
         stage.setScene(scene);
         stage.show();
     }
+    //Anbindung an die Gameklasse zur Erhöhung der Punktzeil
+    public void setztePunktzahl(int punktzahl){
+        lbl_aktuellerscore.setText(String.valueOf(punktzahl));
+    }
+    public int getPunktzahl(){
+        return Integer.parseInt(lbl_aktuellerscore.getText());
+    }
+
 }
