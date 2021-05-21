@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 
 // todo: Abstrakte Klasse
-public class Monster extends BeweglicheObjekte {
+public abstract class Monster extends BeweglicheObjekte {
     private static final int PUNKTE = 10;
     private final double YBEWEGUNG = 50;
     private int punkte = PUNKTE;
