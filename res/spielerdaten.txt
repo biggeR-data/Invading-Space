@@ -11,6 +11,8 @@ asdf,15000
 asdf,15000
 asdf,15000
 Jan,15000
+Jasmin,15000
+Jasmin,15000
 Kai,1003
 Kai,1002
 Rüdiger,1001

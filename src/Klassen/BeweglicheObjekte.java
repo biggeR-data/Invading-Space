@@ -13,14 +13,14 @@ public abstract class BeweglicheObjekte {
     private static final double STANDARD_HOEHE = 25;
     protected static final double STANDARD_BREITE= 25;
     protected static final double STANDARD_XBEWEGUNG = 10;
-    //protected final Image STANDART_BILD = new Image(getClass().getResource("/MilleniumFalke.png").toExternalForm());
+    protected final Image STANDART_BILD = new Image(getClass().getResource("../Transparent.png").toExternalForm());
     public double xKoor; // von oben links
     public double yKoor; // von oben links
     private double hoehe = STANDARD_HOEHE;
     private double breite = STANDARD_BREITE;
     private double xBewegung = STANDARD_XBEWEGUNG;
     public Group root;
-    private Image img;
+    private Image img = STANDART_BILD;
 
     // Konstruktor
     protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
