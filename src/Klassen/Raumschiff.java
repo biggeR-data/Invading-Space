@@ -34,9 +34,7 @@ public class Raumschiff extends BeweglicheObjekte {
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
-    public void schiessen() {
-        // Aufrufen der Klasse Schuss
-        // X und Y Koordinaten setzten
-        // Schuss in Liste hinzufügen
+    public Schuss schiessen() {
+        return new Schuss(erhalteXKoor() + (erhalteBreite()/2), erhalteYKoor(), root);
     }
 }

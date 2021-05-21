@@ -10,6 +10,7 @@ public class Koordinator {
     }
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
     private ArrayList<Monster> monsterListe;
+    private ArrayList<Schuss> schuesseListe;
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
     private final double RANDUNTEN = 690;
@@ -20,12 +21,16 @@ public class Koordinator {
         this.richtung = richtung;
     }
 
-    public final double erhalteRandRechts(){
+    public final double erhalteRandRechts() {
         return RANDRECHTS;
     }
 
-    public final double erhalteRandLinks(){
+    public final double erhalteRandLinks() {
         return RANDLINKS;
+    }
+
+    public void hinzufuegenSchuss(Schuss schuss) {
+        schuesseListe.add(schuss);
     }
 
     private boolean prüfeKollisionRand() {
@@ -78,7 +83,7 @@ public class Koordinator {
         }
     }
 
-    public ArrayList<Schuss> ueberpruefenUndBewegenSchuss(ArrayList<Schuss> schuesseListe) {
+    public void ueberpruefenUndBewegenSchuss() {
         // Kollision mit Schuss überprüfen (für jedes Objekt)
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
         for (Schuss schuss : schuesseListe) {
@@ -94,7 +99,6 @@ public class Koordinator {
                 }
             }
         }
-        return schuesseListe;
     }
 
     public boolean neueMonsterListeNotwendig() {
