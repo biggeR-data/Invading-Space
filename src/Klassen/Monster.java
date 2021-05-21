@@ -13,7 +13,7 @@ public class Monster extends BeweglicheObjekte {
         super(xKoor, yKoor, root);
         Image img = new Image(getClass().getResource("/Testing/DarthVaderKopf.png").toExternalForm());
         setzteBild(img);
-        zeichneWeiss(erhalteXKoor(), erhalteYKoor());
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     protected void setzePunkte(int punkte) {

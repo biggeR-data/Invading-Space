@@ -9,6 +9,6 @@ public class MonsterFuenfzig extends Monster {
         setzePunkte(50);
         Image img = new Image(getClass().getResource("/MilleniumFalke.png").toExternalForm());
         setzteBild(img);
-        zeichneWeiss(erhalteXKoor(), erhalteYKoor());
+        zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 }
