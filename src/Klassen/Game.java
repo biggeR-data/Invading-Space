@@ -196,7 +196,7 @@ public class Game extends Thread{
         System.out.println("Game over!");
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                gui.wechselZuGameover();
+                gui.wechselZuEndbildschirm();
             }
         });
     }

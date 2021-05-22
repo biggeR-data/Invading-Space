@@ -83,6 +83,36 @@
                   <Image url="@../MileniumFalke3.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="106.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../TIEFigtherFront.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="264.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../HyenaClassBomber.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="421.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Großschiff_Separatisten.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="128.0" layoutY="565.0" text="10" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="287.0" layoutY="565.0" text="20" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="443.0" layoutY="565.0" text="50" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
   </items>

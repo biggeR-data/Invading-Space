@@ -40,32 +40,25 @@ public class Spielbildschirmcontroller {
     private static Game spielThread;
 
     //Hier Spieler anstatt String empfangen
-    public void aktiviereSpielfeld(ActionEvent acEv, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
+    public void aktiviereSpielbildschirm(ActionEvent acEv, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
         this.modus = modus;
         spieler = pSpieler;
         root = new Group(wurzel);
         spielThread = new Game(this, modus, root);
-        //new Thread(spielthread).start();
         spielThread.start();
 
         lblSpielername.setText(spieler.erhalteName());
         lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
         lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
-        //Hier zur scene die vollständige Group einfügen
-        //raumschiff.erhalteGroup() anstelle root
         scene = new Scene(root);
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.D) || event.getCode().equals(KeyCode.RIGHT)) {
-                //raumschiffrechts();
                 spielThread.keyRight();
                 System.out.println(event.getCode());
             } else if (event.getCode().equals(KeyCode.A) || event.getCode().equals(KeyCode.LEFT)) {
-                //raumschifflinks();
-                //raumschiff.bewegenLinks();
                 spielThread.keyLeft();
                 System.out.println(event.getCode());
-                //toll 2
             } else if (event.getCode().equals(KeyCode.W) || event.getCode().equals(KeyCode.UP)) {
                 spielThread.keyUp();
             }
@@ -74,23 +67,23 @@ public class Spielbildschirmcontroller {
         stage.show();
     }
 
-    public void wechselZuGameover() {
+    public void wechselZuEndbildschirm() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
             Parent root2 = loader.load();
 
             Endbildschirmcontroller endbildschirmController = loader.getController();
             int aktuellerScore = Integer.parseInt(lblAktuellerScore.getText());
-            //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
             spieler.setzePunkte(aktuellerScore);
-            endbildschirmController.aktiviereEndscreen(stage, spieler, root2, modus);
+            //Stage wird übergeben, da kein acEv besteht aus der später die stage generiert werden könnte
+            endbildschirmController.aktiviereEndbildschirm(stage, spieler, root2, modus);
             spielThread.stop();
         } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
     }
 
-    public void wechselZuStartscreen(ActionEvent acEv) throws IOException {
+    public void wechselZuStartbildschirm(ActionEvent acEv) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         scene = new Scene(root);

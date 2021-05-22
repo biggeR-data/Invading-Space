@@ -19,7 +19,7 @@ public class MainGui extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
             Parent root = loader.load();
             Startbildschirmcontroller startController = loader.getController();
-            startController.setzeHighscoreSpieler();
+            startController.aktiviereStartbildschirm();
             primaryStage.setTitle("Space Invader - aber besser");
             Scene startScreen = new Scene(root);
             primaryStage.setScene(startScreen);

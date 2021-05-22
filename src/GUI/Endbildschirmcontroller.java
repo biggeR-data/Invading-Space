@@ -40,7 +40,7 @@ public class Endbildschirmcontroller {
     private Spieler spieler;
     private int modus;
 
-    public void aktiviereEndscreen(Stage bühne, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
+    public void aktiviereEndbildschirm(Stage bühne, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
         spieler = pSpieler;
         this.modus = modus;
         stage = bühne;
@@ -60,7 +60,7 @@ public class Endbildschirmcontroller {
         stage.show();
     }
 
-    public void wechselZuStartscreen(ActionEvent acEv) throws IOException {
+    public void wechselZuStartbildschirm(ActionEvent acEv) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
@@ -68,15 +68,15 @@ public class Endbildschirmcontroller {
         stage.setScene(scene);
         stage.show();
         Startbildschirmcontroller startbildschirmController = loader.getController();
-        startbildschirmController.setzeHighscoreSpieler();
+        startbildschirmController.aktiviereStartbildschirm();
     }
 
-    public void wechselZuGamescreen(ActionEvent acEv) throws IOException {
+    public void wechselZuSpielbildschirm(ActionEvent acEv) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
         root = loader.load();
         Spielbildschirmcontroller spielController = loader.getController();
         //ab hier soll der spielbildschirmcontroller übernehmen
-        spielController.aktiviereSpielfeld(acEv, spieler, root, modus);
+        spielController.aktiviereSpielbildschirm(acEv, spieler, root, modus);
     }
 
 }

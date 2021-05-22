@@ -18,12 +18,12 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Button fx:id="btn_startseite" contentDisplay="CENTER" layoutX="359.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuStartscreen" prefHeight="36.0" prefWidth="120.0" text="Startseite" textAlignment="CENTER">
+            <Button fx:id="btn_startseite" contentDisplay="CENTER" layoutX="359.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuStartbildschirm" prefHeight="36.0" prefWidth="120.0" text="Startseite" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_erneutspielen" contentDisplay="CENTER" layoutX="119.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuGamescreen" prefHeight="36.0" prefWidth="120.0" text="Erneut spielen" textAlignment="CENTER">
+            <Button fx:id="btn_erneutspielen" contentDisplay="CENTER" layoutX="119.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuSpielbildschirm" prefHeight="36.0" prefWidth="120.0" text="Erneut spielen" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>

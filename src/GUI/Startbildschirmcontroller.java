@@ -30,36 +30,34 @@ public class Startbildschirmcontroller {
     @FXML
     private Label lblPopup;
 
+    public void aktiviereStartbildschirm() throws IOException {
+        ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
+        lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte() + "");
+    }
 
     public void normal(ActionEvent acEv) throws IOException {
         System.out.println("Spielmodus: Normal");
-        wechselZuGamescreen(acEv, 0);
+        wechselZuSpielbildschirm(acEv, 0);
     }
 
     public void hölle(ActionEvent acEv) throws IOException {
         System.out.println("Spielmodus: HÖLLE");
-        wechselZuGamescreen(acEv, 1);
+        wechselZuSpielbildschirm(acEv, 1);
     }
 
-    public void wechselZuGamescreen(ActionEvent acEv, int modus) throws IOException {
+    public void wechselZuSpielbildschirm(ActionEvent acEv, int modus) throws IOException {
         try {
             Spieler spieler = new Spieler(txtNamensfeld.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
             root = loader.load();
             Spielbildschirmcontroller spielController = loader.getController();
-            //todo:ab hier soll der spielbildschirmcontroller übernehmen
-            spielController.aktiviereSpielfeld(acEv, spieler, root, modus);
+            spielController.aktiviereSpielbildschirm(acEv, spieler, root, modus);
         } catch (DelimException delEx) {
             lblPopup.setText(delEx.getMessage());
         } catch (EmptyException empEx) {
             lblPopup.setText(empEx.getMessage());
         }
-    }
-
-    public void setzeHighscoreSpieler() throws IOException {
-        ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
-        lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte() + "");
     }
 
 }

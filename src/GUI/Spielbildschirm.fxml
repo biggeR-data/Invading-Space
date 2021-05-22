@@ -48,7 +48,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Button focusTraversable="false" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuGameover" text="Weltraum verlassen" />
+                  <Button focusTraversable="false" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuEndbildschirm" text="Weltraum verlassen" />
                   <Label fx:id="lblSpielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="232.0" textAlignment="RIGHT" textFill="WHITE">
                      <font>
                         <Font size="23.0" />
