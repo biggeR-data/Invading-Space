@@ -3,21 +3,34 @@ package Klassen.Entities.Handling;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Der Koordinator koordiniert verschiede bewegliche Objekte
+ * Überprüfungen von Kollisionen mit Rändern und anderen Objekten
+ * Bearbeitung der Gegner- und Schussliste
+ */
 public class Koordinator {
+    // Rechts-Links Bewegung
     private enum xBewegung {
         LINKS,
         RECHTS
     }
 
-    private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
+    // todo: Alles mögliche Monster in Gegner umwandeln
+    private xBewegung richtung = xBewegung.RECHTS;
+
+    // Anlegen von Listen
     private ArrayList<Gegner> gegnerListe;
     private ArrayList<Schuss> schuesseRaumschiff = new ArrayList<Schuss>();
     private ArrayList<Schuss> schuesseMonster = new ArrayList<Schuss>();
+
+    // Koordinaten der Ränder
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
     private final double RANDUNTENMONSTER = 690;
     private final double RANDUNTENSCHUSS = 670;
     private final double RANDOBEN = 80;
+
+    // Startwert des Punktestands
     private int score = 0;
 
     public Koordinator() {
@@ -39,10 +52,19 @@ public class Koordinator {
         return RANDLINKS;
     }
 
+    /**
+     * Der Übergebene Schuss des Klasse Raumschiff in die entsprechende Array-List aufnehmen
+     * @param schuss
+     */
     public void hinzufuegenSchussRaumschiff(Schuss schuss) {
         schuesseRaumschiff.add(schuss);
     }
 
+    /**
+     * Ermittlung des Gegners, das dem Raumschiff am nächsten ist
+     * Dieser Gegner feuert einen Schuss ab
+     * @param xKoorRaumschiff
+     */
     public void schiessenMonster(double xKoorRaumschiff) {
         ArrayList<Gegner> naechsteGegner = new ArrayList<Gegner>();
         for (Gegner gegner : this.gegnerListe) {
@@ -64,6 +86,10 @@ public class Koordinator {
 
     }
 
+    /**
+     * Überprüfen, ob die Gegner an die Seitenränder gelangen
+     * @return
+     */
     private boolean prüfeKollisionRand() {
         if (richtung == xBewegung.RECHTS) {
             for (Gegner gegner : this.gegnerListe) {
@@ -81,6 +107,9 @@ public class Koordinator {
         return false;
     }
 
+    /**
+     * Die Gegner, je nach ihrer Position, bewegen
+     */
     public void ueberprüfenUndBewegenMonster() {
         // Kollision mit Rand überprüfen, Gegner bewegen und ggf. Richtung wechseln
         switch (richtung) {
@@ -114,8 +143,15 @@ public class Koordinator {
         }
     }
 
+    /**
+     * Überprüfen, ob die abgefeuerten Schüsse des Raumschiffs ein Gegner treffen
+     * Bei einem Treffer den Schuss aus der Schussliste und der grafischen Oberfläche entfernen
+     * Bei einem Treffer den Gegner aus der Gegnerliste und der grafischen Oberfläche entfernen
+     * Bei einem Treffer den aktuellen Punktestand um die Punkte des getroffenen Gegners erhöhen
+     * Schüsse die keine Gegner treffen werden beim erreichen des oberen Rands entfernt
+     */
     public void ueberpruefenMonsterUndBewegenSchuss() {
-        // Kollision mit Schuss überprüfen (für jedes Objekt)
+        // Kollision mit Schuss überprüfen
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
         ArrayList<Gegner> loescheGegner = new ArrayList<Gegner>();
@@ -134,16 +170,24 @@ public class Koordinator {
                 }
             }
         }
+        // Überprüfen, ob die Schüsse den oberen Rand erreichen
         for (Schuss schuss : schuesseRaumschiff) {
             if (schuss.pruefeTrefferOben(RANDOBEN) == true) {
                 schuss.entferneObjekt();
                 loescheSchuesse.add(schuss);
             }
         }
+        //  Getroffene Schüsse und Gegner aus den Listen entfernen
         schuesseRaumschiff.removeAll(loescheSchuesse);
         this.gegnerListe.removeAll(loescheGegner);
     }
 
+    /**
+     * Überprüfen, ob die Schüsse der Gegner das Raumschiff treffen
+     * Bei einem Treffer den Schuss aus der Schussliste entfernen
+     * @param raumschiff
+     * @return Ein boolescher Wert
+     */
     public boolean ueberpruefenRaumschiffUndBewegeSchuss(Raumschiff raumschiff) {
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
         for (Schuss schuss : schuesseMonster) {
@@ -162,6 +206,10 @@ public class Koordinator {
         return false;
     }
 
+    /**
+     * Rückgabewert sagt aus, ob die Gegnerliste leer ist und eine neue benötigt wird.
+     * @return Ein boolescher Wert
+     */
     public boolean neueMonsterListeNotwendig() {
         if (this.gegnerListe.isEmpty()) {
             return true;
@@ -169,12 +217,20 @@ public class Koordinator {
         return false;
     }
 
+    /**
+     * Neue Gegnerliste übergeben
+     * @param gegner
+     */
     public void neueMonsterListeUebergeben(ArrayList<Gegner> gegner) {
         Collections.reverse(gegner);
         this.gegnerListe = gegner;
         this.setzteRichtung(xBewegung.RECHTS);
     }
 
+    /**
+     * Rückgabewert sagt aus, ob das Spiel "Game Over" und damit verloren ist
+     * @return
+     */
     public boolean gameOver() {
         for (Gegner gegner : this.gegnerListe) {
             if (gegner.pruefeKollisionUnten(RANDUNTENMONSTER) == true) {

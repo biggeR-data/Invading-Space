@@ -1,3 +1,5 @@
+Jasmin,730
+Jasmin,370
 patrick,80
 Jan,10
 Jasmin,10
