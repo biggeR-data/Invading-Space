@@ -36,10 +36,8 @@ public class MainGui extends Application {
     }
 
     public void beenden() {
-        try {
+        if(Spielbildschirmcontroller.getSpielThread()!= null){
             Spielbildschirmcontroller.getSpielThread().stop();
-        } catch(Exception ex) {
-            ex.printStackTrace();
         }
     }
 
