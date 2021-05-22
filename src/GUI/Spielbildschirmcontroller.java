@@ -3,7 +3,6 @@ package GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -13,23 +12,20 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
 import Klassen.Spieler;
 import Klassen.ScoreListe;
 import Klassen.Game;
 
-import static java.awt.Color.WHITE;
-import static java.awt.Color.white;
-
 public class Spielbildschirmcontroller {
 
+    // Zugriff auf GUI
     private Stage stage;
     private Scene scene;
-    //private Parent root;
     private Group root;
-    //Import des FMXL files und erstellung von Objekten der Gui elemente
+
+    //Import des FMXL files
     @FXML
     private Label lblSpielername;
     @FXML
@@ -38,25 +34,38 @@ public class Spielbildschirmcontroller {
     private Label lblHighscoreName;
     @FXML
     private Label lblHighscorePunkte;
-    @FXML
-    private Label lblPopup;
+
+    private Label lblPopUp;
+
     private Spieler spieler;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private int modus;
     private static Game spielThread;
-    private Label labelPopUp;
 
-    //Hier Spieler anstatt String empfangen
-    public void aktiviereSpielbildschirm(ActionEvent acEv, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
+    /**
+     * Thread starten für Spiel
+     * KeyEvents des Spielers verarbeiten
+     *
+     * @param acEv
+     * @param pSpieler
+     * @param pRoot
+     * @param modus
+     */
+    public void aktiviereSpielbildschirm(ActionEvent acEv, Spieler pSpieler, Parent pRoot, int modus) {
+        // Spieleigenschaften
         this.modus = modus;
         spieler = pSpieler;
-        root = new Group(wurzel);
+        root = new Group(pRoot);
         spielThread = new Game(this, modus, root);
         spielThread.start();
 
+        // Highscore Spieler
         lblSpielername.setText(spieler.erhalteName());
         lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
         lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+
+        // Aufbau der Oberfläche
+        // KeyEvents des Spielablaufs verarbeiten
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.setOnKeyPressed(event -> {
@@ -74,22 +83,35 @@ public class Spielbildschirmcontroller {
         stage.show();
     }
 
+    /**
+     * Logik transferieren zum geladenen Endbildschirm
+     */
     public void wechselZuEndbildschirm() {
         try {
+            // Laden der Endbildschirmoberfläche
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
             Parent root2 = loader.load();
 
+            // Controller Erstellung
+            // Spielergebnis übergeben
             Endbildschirmcontroller endbildschirmController = loader.getController();
             int aktuellerScore = Integer.parseInt(lblAktuellerScore.getText());
             spieler.setzePunkte(aktuellerScore);
-            //Stage wird übergeben, da kein acEv besteht aus der später die stage generiert werden könnte
             endbildschirmController.aktiviereEndbildschirm(stage, spieler, root2, modus);
+
+            // Beenden des Spiels
             spielThread.stop();
         } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
     }
 
+    /**
+     * Logik transferieren zum geladenen Startbildschirm auf Knopfdruck
+     *
+     * @param acEv
+     * @throws IOException
+     */
     public void wechselZuStartbildschirm(ActionEvent acEv) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
@@ -99,30 +121,29 @@ public class Spielbildschirmcontroller {
         spielThread.stop();
     }
 
-    //Anbindung an die Gameklasse zur Erhöhung der Punktzeil
     public void setztePunktzahl(int punktzahl) {
         lblAktuellerScore.setText(String.valueOf(punktzahl));
     }
 
-    public int getPunktzahl() {
-        return Integer.parseInt(lblAktuellerScore.getText());
+    /**
+     * dynamisches Popup
+     * @param nachricht
+     */
+    public void setztePopup(String nachricht) {
+        lblPopUp = new Label(nachricht);
+        lblPopUp.setLayoutX(270);
+        lblPopUp.setLayoutY(298);
+        lblPopUp.setTextFill(javafx.scene.paint.Color.WHITE);
+        lblPopUp.setFont(Font.font("System", 23));
+        root.getChildren().add(lblPopUp);
+        lblPopUp.setText(nachricht);
     }
 
-    public void setztePopup(String m) {
-        labelPopUp = new Label(m);
-        labelPopUp.setLayoutX(270);
-        labelPopUp.setLayoutY(298);
-        labelPopUp.setTextFill(javafx.scene.paint.Color.WHITE);
-        labelPopUp.setFont(Font.font ("System", 23));
-        root.getChildren().add(labelPopUp);
-        lblPopup.setText(m);
+    public void entfernePopup() {
+        root.getChildren().remove(lblPopUp);
     }
 
-    public void entfernePopup(){
-        root.getChildren().remove(labelPopUp);
-    }
-
-    public static Game getSpielThread() {
+    public static Game erhalteSpielThread() {
         return spielThread;
     }
 
