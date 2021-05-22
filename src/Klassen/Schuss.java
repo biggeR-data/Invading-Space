@@ -17,7 +17,7 @@ public class Schuss extends BeweglicheObjekte {
     }
 
     public void schiessenHoch() {
-        Image img = new Image(getClass().getResource("../Schuss_Blau.png").toExternalForm());
+        Image img = erhalteBild("Schuss_Blau.png");
         setzteBild(img);
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor =  erhalteYKoor() - YBEWEGUNG;
@@ -25,7 +25,7 @@ public class Schuss extends BeweglicheObjekte {
     }
 
     public void schiessenRunter() {
-        Image img = new Image(getClass().getResource("../Schuss_Rot.png").toExternalForm());
+        Image img = erhalteBild("Schuss_Rot.png");
         setzteBild(img);
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor = erhalteYKoor() + YBEWEGUNG;

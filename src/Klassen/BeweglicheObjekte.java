@@ -9,12 +9,14 @@ import javafx.scene.paint.Color;
 //import java.awt.*;
 import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
+
 public abstract class BeweglicheObjekte {
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     private static final double STANDARD_HOEHE = 25;
     protected static final double STANDARD_BREITE= 25;
     protected static final double STANDARD_XBEWEGUNG = 10;
-    protected final Image STANDART_BILD = new Image(getClass().getResource("../Transparent.png").toExternalForm());
+    protected Image STANDART_BILD;
     public double xKoor; // von oben links
     public double yKoor; // von oben links
     private double hoehe = STANDARD_HOEHE;
@@ -22,14 +24,15 @@ public abstract class BeweglicheObjekte {
     private double xBewegung = STANDARD_XBEWEGUNG;
     private Rectangle zeichenObjekt;
     public Group root;
-    private Image img = STANDART_BILD;
+    private Image img;
 
     // Konstruktor
     protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
         this.xKoor = xKoor;
         this.yKoor = yKoor;
         this.root = root;
-        //zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        STANDART_BILD = erhalteBild("Transparent.png");
+        img = STANDART_BILD;
     }
 
     // X und Y Koordinaten
@@ -78,7 +81,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Setze eine neue Breite für das aktuelle Objekt
-     * @param breite Die nee Breite
+     * @param breite Die neue Breite
      */
     protected void setzeBreite(double breite) {
         this.breite = breite;
@@ -93,21 +96,35 @@ public abstract class BeweglicheObjekte {
         this.xBewegung = xBewegung;
     }
 
+    /**
+     * Erhalte die Größe für den Schritt der X-Achse entlang
+     * @return Einen double-Wert
+     */
     public double erhalteXBewegung() {
         return xBewegung;
     }
 
-    // Setzte Bild
+    /**
+     * Setze ein neues Bild für die Objekte
+     * @param image Das neue Bild der JavaFX-Klasse Image
+     */
     protected void setzteBild(Image image) {
         img = image;
     }
 
-    // Group Root
+    /**
+     * Erhalte die aktuelle Group
+     * @return Eine Group
+     */
     public Group erhalteGroup() {
         return this.root;
     }
 
-    // Rechteck zeichnen schwarz und weiß
+    /**
+     * Enferne das entsprechende Objekt von grafischen Oberfläche
+     * @param breite Ein double-Wert
+     * @param hoehe Ein double-Wert
+     */
     protected void zeichneSchwarz(double breite, double hoehe) {
         //Rectangle objekt  = new Rectangle(xKoor, yKoor, breite, hoehe);
         if (zeichenObjekt != null) {
@@ -120,7 +137,14 @@ public abstract class BeweglicheObjekte {
         });
         //this.root.getChildren().add(objekt);
     }
+    // todo: refactor zeichneSchwarz zu entferneObjekt oder so
+    //  und zeichneWeiss zu zeichneObjekt oder so
 
+    /**
+     * Zeichne ein rechteckiges Objekt mit ausgewähltem Image auf der grafischen Oberfläche
+     * @param breite Ein double-Wert
+     * @param hoehe Ein double-Wert
+     */
     protected void zeichneWeiss(double breite, double hoehe) {
         zeichenObjekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         zeichenObjekt.setFill(new ImagePattern(img));
@@ -135,7 +159,11 @@ public abstract class BeweglicheObjekte {
         //this.root.getChildren().add(objekt);
     }
 
-    // Kollisionen von Objekten mit dem rechten Spielrand überprüfen
+    /**
+     * Kollision von einem Objekt mit dem rechten Rand überprüfen
+     * @param xRand Ein double-Wert
+     * @return Ein boolescher Wert
+     */
     public boolean pruefeKollisionRechts(double xRand) {
         if (erhalteXKoor() + erhalteBreite() + xBewegung > xRand) {
             return true;
@@ -143,7 +171,11 @@ public abstract class BeweglicheObjekte {
         return false;
     }
 
-    // Kollisionen von Objekten mit dem linken Spielrand überprüfen
+    /**
+     * Kollision von einem Objekt mit dem linken Rand überprüfen
+     * @param xRand Ein double-Wert
+     * @return Ein boolescher Wert
+     */
     public boolean pruefeKollisionLinks(double xRand) {
         if (erhalteXKoor() - xBewegung < xRand) {
             return true;
@@ -165,6 +197,15 @@ public abstract class BeweglicheObjekte {
             return true;
         }
         return false;
+    }
+
+    protected static Image erhalteBild(String name) {
+        try {
+            return new Image(new FileInputStream("./res/Images/" + name));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

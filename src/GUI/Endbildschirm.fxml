@@ -80,22 +80,22 @@
             </Label>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="384.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../HyenaClassBomber.png" />
+                  <Image url="@../../res/Images/HyenaClassBomber.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../TIEFigtherFront.png" />
+                  <Image url="@../../res/Images/TIEFigtherFront.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Großschiff_Separatisten.png" />
+                  <Image url="@../../res/Images/Großschiff_Separatisten.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="91.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../MileniumFalke3.png" />
+                  <Image url="@../../res/Images/MileniumFalke3.png" />
                </image>
             </ImageView>
          </children>

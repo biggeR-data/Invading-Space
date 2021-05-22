@@ -65,37 +65,37 @@
             </Label>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="421.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../HyenaClassBomber.png" />
+                  <Image url="@../../res/Images/HyenaClassBomber.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="491.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../TIEFigtherFront.png" />
+                  <Image url="@../../res/Images/TIEFigtherFront.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="491.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Großschiff_Separatisten.png" />
+                  <Image url="@../../res/Images/Großschiff_Separatisten.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="77.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../MileniumFalke3.png" />
+                  <Image url="@../../res/Images/MileniumFalke3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="106.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../TIEFigtherFront.png" />
+                  <Image url="@../../res/Images/TIEFigtherFront.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="264.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../HyenaClassBomber.png" />
+                  <Image url="@../../res/Images/HyenaClassBomber.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="421.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Großschiff_Separatisten.png" />
+                  <Image url="@../../res/Images/Großschiff_Separatisten.png" />
                </image>
             </ImageView>
             <Label layoutX="128.0" layoutY="565.0" text="10" textAlignment="CENTER" textFill="WHITE">

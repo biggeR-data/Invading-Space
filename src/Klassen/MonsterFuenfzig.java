@@ -7,7 +7,7 @@ public class MonsterFuenfzig extends Monster {
     public MonsterFuenfzig(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
         setzePunkte(50);
-        Image img = new Image(getClass().getResource("/Großschiff_Separatisten.png").toExternalForm());
+        Image img = erhalteBild("Großschiff_Separatisten.png");
         setzteBild(img);
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
