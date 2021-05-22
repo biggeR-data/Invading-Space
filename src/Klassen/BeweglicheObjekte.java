@@ -112,8 +112,6 @@ public abstract class BeweglicheObjekte {
         //Rectangle objekt  = new Rectangle(xKoor, yKoor, breite, hoehe);
         if (zeichenObjekt != null) {
             zeichenObjekt.setFill(Color.BLACK);
-        } else {
-            System.out.println("zeichenobjekt ist null");
         }
         Platform.runLater(new Runnable() {
             @Override public void run() {

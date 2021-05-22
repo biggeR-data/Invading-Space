@@ -83,7 +83,7 @@ public class Game extends Thread{
             }
 
             // mache nächsten tick
-            System.out.println("neuer tick");
+            //System.out.println("neuer tick");
             tick();
             lastTickMillis = System.currentTimeMillis();
         }
@@ -113,10 +113,10 @@ public class Game extends Thread{
 
         // Monster schuss loesen
         if(lastMonsterSchussMillis + schussGeschwindigkeitMonster <= System.currentTimeMillis()){
-            System.out.println("Monster schießt");
+            //System.out.println("Monster schießt");
             koordinator.schiessenMonster(schiff.xKoor);
             schussGeschwindigkeitMonster = (long) (Math.random()*(rangeSchussGeschwindigkeitMonster.get("max") - rangeSchussGeschwindigkeitMonster.get("min")) + rangeSchussGeschwindigkeitMonster.get("min"));
-            System.out.println("Nächster Schuss:" + schussGeschwindigkeitMonster);
+            //System.out.println("Nächster Schuss:" + schussGeschwindigkeitMonster);
             lastMonsterSchussMillis = System.currentTimeMillis();
         }
 
@@ -129,7 +129,7 @@ public class Game extends Thread{
         if(koordinator.neueMonsterListeNotwendig()){
             // stage erhöhen
             stage ++;
-            System.out.println("Neue Stage erreicht: " + stage);
+            //System.out.println("Neue Stage erreicht: " + stage);
 
             // text ausgeben
             Platform.runLater(new Runnable() {
@@ -166,7 +166,7 @@ public class Game extends Thread{
 
     // private Operationen
     private void bewegeSchuesse(){
-        System.out.println("bewege Schüsse");
+        //System.out.println("bewege Schüsse");
         // Schüsse vom Schiff
         koordinator.ueberpruefenMonsterUndBewegenSchuss();
 
@@ -178,7 +178,7 @@ public class Game extends Thread{
     }
 
     private void bewegeMonster(){
-        System.out.println("bewege Monster");
+        //System.out.println("bewege Monster");
         koordinator.ueberprüfenUndBewegenMonster();
 
         // überprüfe gameover
@@ -188,12 +188,12 @@ public class Game extends Thread{
     }
 
     private void loeseNeuenSchuss() {
-        System.out.println("schieße");
+        //System.out.println("schieße");
         koordinator.hinzufuegenSchussRaumschiff(schiff.schiessen());
     }
 
     private void gameover(){
-        System.out.println("Game over!");
+        //System.out.println("Game over!");
         Platform.runLater(new Runnable() {
             @Override public void run() {
                 gui.wechselZuEndbildschirm();
@@ -203,10 +203,10 @@ public class Game extends Thread{
 
     // key events
     public void keyUp(){
-        System.out.println("key up");
+        //System.out.println("key up");
         if((lastSchiffSchussMillis + schussGeschwindigkeitSchiff) <= System.currentTimeMillis()){
             schussLoesenSchiff = true;
-            System.out.println("schuss freigegeben");
+            //System.out.println("schuss freigegeben");
             lastSchiffSchussMillis = System.currentTimeMillis();
         }
     }

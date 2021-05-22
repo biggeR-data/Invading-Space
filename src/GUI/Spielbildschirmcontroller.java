@@ -55,10 +55,10 @@ public class Spielbildschirmcontroller {
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.D) || event.getCode().equals(KeyCode.RIGHT)) {
                 spielThread.keyRight();
-                System.out.println(event.getCode());
+                //System.out.println(event.getCode());
             } else if (event.getCode().equals(KeyCode.A) || event.getCode().equals(KeyCode.LEFT)) {
                 spielThread.keyLeft();
-                System.out.println(event.getCode());
+                //System.out.println(event.getCode());
             } else if (event.getCode().equals(KeyCode.W) || event.getCode().equals(KeyCode.UP)) {
                 spielThread.keyUp();
             }
