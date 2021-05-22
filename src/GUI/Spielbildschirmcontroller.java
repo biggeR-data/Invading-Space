@@ -40,8 +40,9 @@ public class Spielbildschirmcontroller {
 
     private Label lblPopUp;
 
+    private ScoreListe scoreListe;
+    private String pfadZuSpielerdaten;
     private Spieler spieler;
-    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private int modus;
     private static Game spielThread;
 
@@ -62,7 +63,19 @@ public class Spielbildschirmcontroller {
         spielThread = new Game(this, modus, root);
         spielThread.start();
 
+        // Zugriff auf Spielerdaten Textdatei abhängig von Modus
+        // Modus spezifische Highscores
+        switch (modus) {
+            case 0:
+                pfadZuSpielerdaten = "./res/spielerdaten_normal.txt";
+                break;
+            case 1:
+                pfadZuSpielerdaten = "./res/spielerdaten_hölle.txt";
+                break;
+        }
+
         // Highscore Spieler
+        scoreListe = new ScoreListe(pfadZuSpielerdaten);
         lblSpielername.setText(spieler.erhalteName());
         lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
         lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));

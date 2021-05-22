@@ -42,7 +42,8 @@ public class Endbildschirmcontroller {
     private Label lblTop3Score;
 
     // Score relevant Attribute
-    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
+    private ScoreListe scoreListe;
+    private String pfadZuSpielerdaten;
     private Spieler spieler;
     private int modus;
 
@@ -64,7 +65,19 @@ public class Endbildschirmcontroller {
         root = new Group(pRoot);
         scene = new Scene(root);
 
+        // Zugriff auf Spielerdaten Textdatei abhängig von Modus
+        // Modus spezifische Highscores
+        switch (modus) {
+            case 0:
+                pfadZuSpielerdaten = "./res/spielerdaten_normal.txt";
+                break;
+            case 1:
+                pfadZuSpielerdaten = "./res/spielerdaten_hölle.txt";
+                break;
+        }
+
         // Punktzahl Verarbeitung
+        scoreListe = new ScoreListe(pfadZuSpielerdaten);
         scoreListe.spielerHinzufuegen(spieler);
         lblScore.setText(String.valueOf(spieler.erhaltePunkte()));
 
