@@ -47,9 +47,16 @@ asd,349
 asd,190
 hejhi,190
 Jan,180
+Jan,160
+Jan,160
 Jan,150
+Jan,150
+Jan,130
+Jan,120
+Jan,110
 Jan,109
 asd,82
+Jan,60
 Thomas,42
 Jasmin,40
 Angela,40
