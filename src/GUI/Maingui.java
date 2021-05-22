@@ -27,6 +27,16 @@ public class Maingui extends Application {
             primaryStage.setScene(startscreen);
             primaryStage.setResizable(false);
             primaryStage.show();
+            primaryStage.setOnCloseRequest(event -> {
+                event.consume();
+                beenden();
+                primaryStage.close();
+            });
         } catch (Exception ex){ex.printStackTrace();};
     }
+
+    public void beenden(){
+        Spielbildschirmcontroller.getSpielthread().stop();
+    }
+
 }

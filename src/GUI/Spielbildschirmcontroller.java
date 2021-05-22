@@ -36,7 +36,7 @@ public class Spielbildschirmcontroller {
     private Spieler spieler;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private int mode;
-    private Game spielthread;
+    private static Game spielthread;
 
     //Hier Spieler anstatt String empfangen
     public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel,int mode) throws IOException {
@@ -106,6 +106,9 @@ public class Spielbildschirmcontroller {
 
     public void setztePopup(String m){
         lbl_popup.setText(m);
+    }
+    public static Game getSpielthread(){
+        return spielthread;
     }
 
 }
