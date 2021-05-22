@@ -36,7 +36,7 @@ public class Startbildschirmcontroller {
     public void aktiviereStartbildschirm() {
         ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
         lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte() + "");
+        lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
     }
 
     public void normal(ActionEvent acEv) throws IOException {
