@@ -31,6 +31,8 @@ public class Spielbildschirmcontroller {
     private Label lbl_highscorename;
     @FXML
     private Label lbl_highscorepunkte;
+    @FXML
+    private Label lbl_popup;
     private Spieler spieler;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
     private int mode;
@@ -100,6 +102,10 @@ public class Spielbildschirmcontroller {
     }
     public int getPunktzahl(){
         return Integer.parseInt(lbl_aktuellerscore.getText());
+    }
+
+    public void setztePopup(String m){
+        lbl_popup.setText(m);
     }
 
 }

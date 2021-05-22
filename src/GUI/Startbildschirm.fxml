@@ -18,12 +18,12 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" text="Leon" textFill="WHITE">
+            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highcorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" text="999999" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lbl_highcorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Font size="23.0" />
                </font>
             </TextField>
-            <Label fx:id="lbl_popup" contentDisplay="CENTER" layoutX="158.0" layoutY="361.0" prefHeight="43.0" prefWidth="282.0" textAlignment="CENTER">
+            <Label fx:id="lbl_popup" contentDisplay="CENTER" layoutX="18.0" layoutY="361.0" prefHeight="43.0" prefWidth="562.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>

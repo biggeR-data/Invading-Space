@@ -34,7 +34,7 @@
          <items>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="628.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
                <children>
-                  <Label fx:id="lbl_popup" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="14.0" prefHeight="50.0" prefWidth="288.0" text="Popup / Messagespace" textAlignment="CENTER" textFill="WHITE" visible="false">
+                  <Label fx:id="lbl_popup" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="14.0" prefHeight="50.0" prefWidth="288.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="23.0" />
                      </font>
