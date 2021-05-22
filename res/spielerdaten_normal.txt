@@ -53,6 +53,7 @@ asd,82
 Thomas,42
 Jasmin,40
 Angela,40
+Jan,40
 asd,37
 asd,35
 Tim,30
@@ -83,3 +84,4 @@ Patrick,0
 Patrick,0
 Jan,0
 jan,0
+Jan,0

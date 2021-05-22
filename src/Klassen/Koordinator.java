@@ -56,7 +56,7 @@ public class Koordinator {
         }
         for (Monster monster : naechsteMonster) {
             if (monster.erhalteYKoor() == yKoorMonsterMax) {
-                monster.schiessen();
+                schuesseMonster.add(monster.schiessen());
             }
         }
 
