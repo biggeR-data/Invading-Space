@@ -46,8 +46,8 @@ public class Monster extends BeweglicheObjekte {
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
-    public void schiessen() {
-        // Aufrufen der Klasse Schuss
+    public Schuss schiessen() {
+        return new Schuss(erhalteXKoor() + (erhalteBreite()/2), erhalteYKoor(), root);
     }
 
     public boolean pruefeKollisionUnten(double yRand) {

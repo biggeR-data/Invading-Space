@@ -35,8 +35,6 @@ public class Raumschiff extends BeweglicheObjekte {
     }
 
     public Schuss schiessen() {
-        //Schuss schuss = new Schuss(erhalteXKoor() + (erhalteBreite()/2), erhalteYKoor(), root);
-        //schuss.schiessenHoch();
         return new Schuss(erhalteXKoor() + (erhalteBreite()/2), erhalteYKoor(), root);
     }
 }

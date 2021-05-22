@@ -10,7 +10,8 @@ public class Koordinator {
     }
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
     private ArrayList<Monster> monsterListe;
-    private ArrayList<Schuss> schuesseListe = new ArrayList<Schuss>();
+    private ArrayList<Schuss> schuesseRaumschiff = new ArrayList<Schuss>();
+    private ArrayList<Schuss> schuesseMonster = new ArrayList<Schuss>();
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
     private final double RANDUNTENMONSTER = 690;
@@ -36,8 +37,12 @@ public class Koordinator {
         return RANDLINKS;
     }
 
-    public void hinzufuegenSchuss(Schuss schuss) {
-        schuesseListe.add(schuss);
+    public void hinzufuegenSchussRaumschiff(Schuss schuss) {
+        schuesseRaumschiff.add(schuss);
+    }
+
+    public void hinzufuegenSchussMonster(Schuss schuss) {
+        schuesseMonster.add(schuss);
     }
 
     private boolean prüfeKollisionRand() {
@@ -96,7 +101,7 @@ public class Koordinator {
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
         ArrayList<Monster> loescheMonster = new ArrayList<Monster>();
 
-        for (Schuss schuss : schuesseListe) {
+        for (Schuss schuss : schuesseRaumschiff) {
             schuss.schiessenHoch();
             for (Monster monster : this.monsterListe) {
                 if (monster.pruefeKollision(schuss) == true) {
@@ -110,18 +115,18 @@ public class Koordinator {
                 }
             }
         }
-        for (Schuss schuss : schuesseListe) {
+        for (Schuss schuss : schuesseRaumschiff) {
             if (schuss.pruefeKollisionOben(RANDOBEN) == true) {
                 schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
                 loescheSchuesse.add(schuss);
             }
         }
-        schuesseListe.removeAll(loescheSchuesse);
+        schuesseRaumschiff.removeAll(loescheSchuesse);
         this.monsterListe.removeAll(loescheMonster);
     }
 
     public boolean ueberprüfeRaumschiffGetroffen(Raumschiff raumschiff) {
-        for (Schuss schuss : schuesseListe) {
+        for (Schuss schuss : schuesseMonster) {
             schuss.schiessenRunter();
             if (raumschiff.pruefeKollision(schuss)) {
                 return true;

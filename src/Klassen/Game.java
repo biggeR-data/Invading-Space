@@ -167,7 +167,7 @@ public class Game extends Thread{
 
     private void loeseNeuenSchuss() {
         System.out.println("schieße");
-        koordinator.hinzufuegenSchuss(schiff.schiessen());
+        koordinator.hinzufuegenSchussRaumschiff(schiff.schiessen());
     }
 
     private void gameover(){
