@@ -150,12 +150,11 @@ public class Game extends Thread{
         // Schüsse vom Schiff
         koordinator.ueberpruefenUndBewegenSchuss();
 
-        /*
+
         // Schüsse von den Monstern
         if(!koordinator.ueberprüfeRaumschiffGetroffen(schiff)) {
             gameover = false;
         }
-         */
     }
 
     private void bewegeMonster(){
