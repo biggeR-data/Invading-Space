@@ -8,6 +8,7 @@ public class Koordinator {
         LINKS,
         RECHTS
     }
+
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
     private ArrayList<Gegner> gegnerListe;
     private ArrayList<Schuss> schuesseRaumschiff = new ArrayList<Schuss>();
@@ -19,7 +20,8 @@ public class Koordinator {
     private final double RANDOBEN = 80;
     private int score = 0;
 
-    public Koordinator() {}
+    public Koordinator() {
+    }
 
     public int erhalteScore() {
         return score;

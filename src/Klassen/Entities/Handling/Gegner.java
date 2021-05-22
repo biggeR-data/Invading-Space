@@ -16,6 +16,7 @@ public abstract class Gegner extends BeweglicheObjekte {
 
     /**
      * Eine neue Punktzahl für das Gegner-Objekt setzen.
+     *
      * @param punkte Ein int-Wert
      */
     protected void setzePunkte(int punkte) {
@@ -24,6 +25,7 @@ public abstract class Gegner extends BeweglicheObjekte {
 
     /**
      * Erhalte die aktuelle Punktzahl des Gegner-Objekts
+     *
      * @return
      */
     public int erhaltePunkte() {
@@ -38,7 +40,7 @@ public abstract class Gegner extends BeweglicheObjekte {
      */
     public void bewegenRechts() {
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
-        this.xKoor =  erhalteXKoor() + erhalteXBewegung();
+        this.xKoor = erhalteXKoor() + erhalteXBewegung();
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
@@ -61,7 +63,7 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     public Schuss schiessen() {
-        return new Schuss(erhalteXKoor() + (erhalteBreite()/2), erhalteYKoor(), root);
+        return new Schuss(erhalteXKoor() + (erhalteBreite() / 2), erhalteYKoor(), root);
     }
 
     public boolean pruefeKollisionUnten(double yRand) {

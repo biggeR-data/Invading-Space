@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 public abstract class BeweglicheObjekte {
     // Konstanten für die Höhe und Breite des Objekts und die Bewegungseinheit für einen "Schritt"
     private static final double STANDARD_HOEHE = 25;
-    protected static final double STANDARD_BREITE= 25;
+    protected static final double STANDARD_BREITE = 25;
     protected static final double STANDARD_XBEWEGUNG = 10;
     protected Image STANDART_BILD;
     public double xKoor; // von oben links
@@ -36,8 +36,10 @@ public abstract class BeweglicheObjekte {
     }
 
     // X und Y Koordinaten
+
     /**
      * Erhalte die aktuelle X-Koordinate des Objekts
+     *
      * @return Einen double-Wert
      */
     public double erhalteXKoor() {
@@ -46,6 +48,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Erhalte die aktuelle Y-Koordinate des Objekts
+     *
      * @return Einen double-Wert
      */
     public double erhalteYKoor() {
@@ -56,6 +59,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Erhalte die aktuelle Breite des Objekts
+     *
      * @return Einen double-Wert
      */
     public double erhalteBreite() {
@@ -64,6 +68,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Erhalte die aktuelle Höhe des Objekts
+     *
      * @return Einen double-Wert
      */
     public double erhalteHoehe() {
@@ -71,8 +76,10 @@ public abstract class BeweglicheObjekte {
     }
 
     // Setzte Höhe und Breite
+
     /**
      * Setze eine neue Höhe für das akuelle Objekt
+     *
      * @param hoehe Die neue Höhe
      */
     protected void setzeHoehe(double hoehe) {
@@ -81,6 +88,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Setze eine neue Breite für das aktuelle Objekt
+     *
      * @param breite Die neue Breite
      */
     protected void setzeBreite(double breite) {
@@ -88,8 +96,10 @@ public abstract class BeweglicheObjekte {
     }
 
     // xBewegung
+
     /**
      * Setze eine neue Größe für den Schritt der X-Achse entlang
+     *
      * @param xBewegung Die neue X-Bewegung
      */
     protected void setzeXBewegung(double xBewegung) {
@@ -98,6 +108,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Erhalte die Größe für den Schritt der X-Achse entlang
+     *
      * @return Einen double-Wert
      */
     public double erhalteXBewegung() {
@@ -106,6 +117,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Setze ein neues Bild für die Objekte
+     *
      * @param image Das neue Bild der JavaFX-Klasse Image
      */
     protected void setzteBild(Image image) {
@@ -114,6 +126,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Erhalte die aktuelle Group
+     *
      * @return Eine Group
      */
     public Group erhalteGroup() {
@@ -122,8 +135,9 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Enferne das entsprechende Objekt von grafischen Oberfläche
+     *
      * @param breite Ein double-Wert
-     * @param hoehe Ein double-Wert
+     * @param hoehe  Ein double-Wert
      */
     protected void zeichneSchwarz(double breite, double hoehe) {
         //Rectangle objekt  = new Rectangle(xKoor, yKoor, breite, hoehe);
@@ -131,7 +145,8 @@ public abstract class BeweglicheObjekte {
             zeichenObjekt.setFill(Color.BLACK);
         }
         Platform.runLater(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 root.getChildren().remove(zeichenObjekt);
             }
         });
@@ -142,14 +157,16 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Zeichne ein rechteckiges Objekt mit ausgewähltem Image auf der grafischen Oberfläche
+     *
      * @param breite Ein double-Wert
-     * @param hoehe Ein double-Wert
+     * @param hoehe  Ein double-Wert
      */
     protected void zeichneWeiss(double breite, double hoehe) {
         zeichenObjekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         zeichenObjekt.setFill(new ImagePattern(img));
         Platform.runLater(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 if (root.getChildren() != null && root.getChildren().contains(zeichenObjekt)) {
                     return;
                 }
@@ -161,6 +178,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Kollision von einem Objekt mit dem rechten Rand überprüfen
+     *
      * @param xRand Ein double-Wert
      * @return Ein boolescher Wert
      */
@@ -173,6 +191,7 @@ public abstract class BeweglicheObjekte {
 
     /**
      * Kollision von einem Objekt mit dem linken Rand überprüfen
+     *
      * @param xRand Ein double-Wert
      * @return Ein boolescher Wert
      */
@@ -186,14 +205,15 @@ public abstract class BeweglicheObjekte {
     /**
      * Prüft, ob eine Kollision zwischen zwei beweglichenObjekten stattfindet.
      * Die Prüfung erfolgt indem die Flächen der beiden Objekte auf Überlagerung geprüft wird.
+     *
      * @param pruefObjekt Das Objekt welches auf Kollision geprüft werden soll
      * @return TRUE wenn eine Kollision stattfindet
      */
     public boolean pruefeKollision(BeweglicheObjekte pruefObjekt) {
         if (pruefObjekt.erhalteXKoor() + pruefObjekt.erhalteBreite() >= this.xKoor &&
-            pruefObjekt.erhalteXKoor() <= this.xKoor + breite &&
-            pruefObjekt.erhalteYKoor() + pruefObjekt.erhalteHoehe() >= this.yKoor &&
-            pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe) {
+                pruefObjekt.erhalteXKoor() <= this.xKoor + breite &&
+                pruefObjekt.erhalteYKoor() + pruefObjekt.erhalteHoehe() >= this.yKoor &&
+                pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe) {
             return true;
         }
         return false;
@@ -202,7 +222,7 @@ public abstract class BeweglicheObjekte {
     protected static Image erhalteBild(String name) {
         try {
             return new Image(new FileInputStream("./res/Images/" + name));
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

@@ -22,7 +22,7 @@ public class Raumschiff extends BeweglicheObjekte {
      */
     public void bewegenRechts() {
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
-        this.xKoor =  erhalteXKoor() + erhalteXBewegung();
+        this.xKoor = erhalteXKoor() + erhalteXBewegung();
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
@@ -42,6 +42,6 @@ public class Raumschiff extends BeweglicheObjekte {
      * Das Raumschiff-Objekt schießen lassen
      */
     public Schuss schiessen() {
-        return new Schuss(erhalteXKoor() + (erhalteBreite()/2), erhalteYKoor(), root);
+        return new Schuss(erhalteXKoor() + (erhalteBreite() / 2), erhalteYKoor(), root);
     }
 }
