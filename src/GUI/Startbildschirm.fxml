@@ -18,12 +18,12 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" textFill="WHITE">
+            <Label fx:id="lblHighscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_highcorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblHighscorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -53,12 +53,12 @@
                </font>
             </Label>
             <Label layoutX="260.0" layoutY="241.0" prefHeight="17.0" prefWidth="78.0" text="- aber besser" textFill="WHITE" />
-            <TextField fx:id="txt_Namensfeld" alignment="CENTER" layoutX="158.0" layoutY="288.0" promptText="Enter your Name">
+            <TextField fx:id="txtNamensfeld" alignment="CENTER" layoutX="158.0" layoutY="288.0" promptText="Enter your Name">
                <font>
                   <Font size="23.0" />
                </font>
             </TextField>
-            <Label fx:id="lbl_popup" contentDisplay="CENTER" layoutX="18.0" layoutY="361.0" prefHeight="43.0" prefWidth="562.0" textAlignment="CENTER">
+            <Label fx:id="lblPopup" contentDisplay="CENTER" layoutX="18.0" layoutY="361.0" prefHeight="43.0" prefWidth="562.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
