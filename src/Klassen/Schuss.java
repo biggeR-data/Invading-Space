@@ -14,17 +14,19 @@ public class Schuss extends BeweglicheObjekte {
         super(xKoor, yKoor, root);
         setzeBreite(5);
         setzeHoehe(10);
-        Image img = new Image(getClass().getResource("../Schuss_Rot.png").toExternalForm());
-        setzteBild(img);
     }
 
     public void schiessenHoch() {
+        Image img = new Image(getClass().getResource("../Schuss_Blau.png").toExternalForm());
+        setzteBild(img);
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor =  erhalteYKoor() - YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
     public void schiessenRunter() {
+        Image img = new Image(getClass().getResource("../Schuss_Rot.png").toExternalForm());
+        setzteBild(img);
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
