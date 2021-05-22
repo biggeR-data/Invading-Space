@@ -1,30 +1,28 @@
 package GUI;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 // Feste Größe des Spielfensters: 600 * 768 Pixel
-public class Maingui extends Application {
+public class MainGui extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
             Parent root = loader.load();
-            Startbildschirmcontroller startcontroller = loader.getController();
-            startcontroller.setzeHighscorespieler();
+            Startbildschirmcontroller startController = loader.getController();
+            startController.setzeHighscoreSpieler();
             primaryStage.setTitle("Space Invader - aber besser");
-            Scene startscreen = new Scene(root);
-            primaryStage.setScene(startscreen);
+            Scene startScreen = new Scene(root);
+            primaryStage.setScene(startScreen);
             primaryStage.setResizable(false);
             primaryStage.show();
             primaryStage.setOnCloseRequest(event -> {
@@ -32,11 +30,13 @@ public class Maingui extends Application {
                 beenden();
                 primaryStage.close();
             });
-        } catch (Exception ex){ex.printStackTrace();};
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-    public void beenden(){
-        Spielbildschirmcontroller.getSpielthread().stop();
+    public void beenden() {
+        Spielbildschirmcontroller.getSpielThread().stop();
     }
 
 }

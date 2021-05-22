@@ -33,7 +33,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_score" alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <Label fx:id="lblScore" alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font size="23.0" />
                </font>
@@ -48,32 +48,32 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_top1name" layoutX="126.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop1Name" layoutX="126.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_top2name" layoutX="126.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop2Name" layoutX="126.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_top3name" layoutX="126.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop3Name" layoutX="126.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_top1score" layoutX="313.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblTop1Score" layoutX="313.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_top2score" layoutX="313.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblTop2Score" layoutX="313.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_top3score" layoutX="313.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblTop3Score" layoutX="313.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>

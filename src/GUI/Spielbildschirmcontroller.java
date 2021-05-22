@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 import Klassen.Spieler;
@@ -24,49 +25,49 @@ public class Spielbildschirmcontroller {
     private Group root;
     //Import des FMXL files und erstellung von Objekten der Gui elemente
     @FXML
-    private Label lbl_spielername;
+    private Label lblSpielername;
     @FXML
-    private Label lbl_aktuellerscore;
+    private Label lblAktuellerScore;
     @FXML
-    private Label lbl_highscorename;
+    private Label lblHighscoreName;
     @FXML
-    private Label lbl_highscorepunkte;
+    private Label lblHighscorePunkte;
     @FXML
-    private Label lbl_popup;
+    private Label lblPopup;
     private Spieler spieler;
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
-    private int mode;
-    private static Game spielthread;
+    private int modus;
+    private static Game spielThread;
 
     //Hier Spieler anstatt String empfangen
-    public void aktiviereSpielfeld(ActionEvent e,Spieler pspieler, Parent wurzel,int mode) throws IOException {
-        this.mode = mode;
-        spieler = pspieler;
+    public void aktiviereSpielfeld(ActionEvent acEv, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
+        this.modus = modus;
+        spieler = pSpieler;
         root = new Group(wurzel);
-        spielthread = new Game(this, mode,root);
+        spielThread = new Game(this, modus, root);
         //new Thread(spielthread).start();
-        spielthread.start();
+        spielThread.start();
 
-        lbl_spielername.setText(spieler.erhalteName());
-        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lbl_highscorepunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        lblSpielername.setText(spieler.erhalteName());
+        lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         //Hier zur scene die vollständige Group einfügen
         //raumschiff.erhalteGroup() anstelle root
         scene = new Scene(root);
-        scene.setOnKeyPressed(event ->  {
-            if(event.getCode().equals(KeyCode.D) ||event.getCode().equals(KeyCode.RIGHT) ){
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.D) || event.getCode().equals(KeyCode.RIGHT)) {
                 //raumschiffrechts();
-                spielthread.keyRight();
+                spielThread.keyRight();
                 System.out.println(event.getCode());
-            } else if(event.getCode().equals(KeyCode.A) ||event.getCode().equals(KeyCode.LEFT)){
+            } else if (event.getCode().equals(KeyCode.A) || event.getCode().equals(KeyCode.LEFT)) {
                 //raumschifflinks();
                 //raumschiff.bewegenLinks();
-                spielthread.keyLeft();
+                spielThread.keyLeft();
                 System.out.println(event.getCode());
                 //toll 2
-            } else if(event.getCode().equals(KeyCode.W) ||event.getCode().equals(KeyCode.UP)){
-                spielthread.keyUp();
+            } else if (event.getCode().equals(KeyCode.W) || event.getCode().equals(KeyCode.UP)) {
+                spielThread.keyUp();
             }
         });
         stage.setScene(scene);
@@ -78,37 +79,41 @@ public class Spielbildschirmcontroller {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
             Parent root2 = loader.load();
 
-            Endbildschirmcontroller endbildschirmcontroller = loader.getController();
-            int aktuellerscore = Integer.parseInt(lbl_aktuellerscore.getText());
+            Endbildschirmcontroller endbildschirmController = loader.getController();
+            int aktuellerScore = Integer.parseInt(lblAktuellerScore.getText());
             //Spieler und Punktestand übergeben || Spieler mit punktestand füllen und übergeben
-            spieler.setzePunkte(aktuellerscore);
-            endbildschirmcontroller.aktiviereEndscreen(stage,spieler,root2, mode);
-            spielthread.stop();
-        } catch (IOException ex){
-            ex.printStackTrace();
+            spieler.setzePunkte(aktuellerScore);
+            endbildschirmController.aktiviereEndscreen(stage, spieler, root2, modus);
+            spielThread.stop();
+        } catch (IOException ioEx) {
+            ioEx.printStackTrace();
         }
     }
-    public void wechselZuStartscreen(ActionEvent e) throws IOException {
+
+    public void wechselZuStartscreen(ActionEvent acEv) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        spielthread.stop();
-    }
-    //Anbindung an die Gameklasse zur Erhöhung der Punktzeil
-    public void setztePunktzahl(int punktzahl){
-        lbl_aktuellerscore.setText(String.valueOf(punktzahl));
-    }
-    public int getPunktzahl(){
-        return Integer.parseInt(lbl_aktuellerscore.getText());
+        spielThread.stop();
     }
 
-    public void setztePopup(String m){
-        lbl_popup.setText(m);
+    //Anbindung an die Gameklasse zur Erhöhung der Punktzeil
+    public void setztePunktzahl(int punktzahl) {
+        lblAktuellerScore.setText(String.valueOf(punktzahl));
     }
-    public static Game getSpielthread(){
-        return spielthread;
+
+    public int getPunktzahl() {
+        return Integer.parseInt(lblAktuellerScore.getText());
+    }
+
+    public void setztePopup(String m) {
+        lblPopup.setText(m);
+    }
+
+    public static Game getSpielThread() {
+        return spielThread;
     }
 
 }

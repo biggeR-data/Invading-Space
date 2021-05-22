@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+
 import Klassen.ScoreListe;
 import Klassen.Spieler;
 
@@ -20,60 +22,61 @@ public class Endbildschirmcontroller {
     private Scene scene;
     private Parent root;
     @FXML
-    private Label lbl_score;
+    private Label lblScore;
     @FXML
-    private Label lbl_top1name;
+    private Label lblTop1Name;
     @FXML
-    private Label lbl_top2name;
+    private Label lblTop2Name;
     @FXML
-    private Label lbl_top3name;
+    private Label lblTop3Name;
     @FXML
-    private Label lbl_top1score;
+    private Label lblTop1Score;
     @FXML
-    private Label lbl_top2score;
+    private Label lblTop2Score;
     @FXML
-    private Label lbl_top3score;
+    private Label lblTop3Score;
+
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private Spieler spieler;
-    private int mode;
+    private int modus;
 
-    public void aktiviereEndscreen(Stage bühne,Spieler pspieler,Parent wurzel,int mode) throws IOException{
-        spieler = pspieler;
-        this.mode = mode;
+    public void aktiviereEndscreen(Stage bühne, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
+        spieler = pSpieler;
+        this.modus = modus;
         stage = bühne;
         root = new Group(wurzel);
         scene = new Scene(root);
         scoreListe.spielerHinzufuegen(spieler);
-        lbl_score.setText(spieler.erhaltePunkte()+"");
+        lblScore.setText(spieler.erhaltePunkte() + "");
         System.out.println(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lbl_top1name.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lbl_top1score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
-        lbl_top2name.setText(scoreListe.spielerlisteIndexAusgabe(1).erhalteName());
-        lbl_top2score.setText(scoreListe.spielerlisteIndexAusgabe(1).erhaltePunkte()+"");
-        lbl_top3name.setText(scoreListe.spielerlisteIndexAusgabe(2).erhalteName());
-        lbl_top3score.setText(scoreListe.spielerlisteIndexAusgabe(2).erhaltePunkte()+"");
+        lblTop1Name.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblTop1Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        lblTop2Name.setText(scoreListe.spielerlisteIndexAusgabe(1).erhalteName());
+        lblTop2Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(1).erhaltePunkte()));
+        lblTop3Name.setText(scoreListe.spielerlisteIndexAusgabe(2).erhalteName());
+        lblTop3Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(2).erhaltePunkte()));
         scoreListe.txtUpdaten();
         stage.setScene(scene);
         stage.show();
-
     }
-    public void wechselZuStartscreen(ActionEvent e) throws IOException {
+
+    public void wechselZuStartscreen(ActionEvent acEv) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
         root = loader.load();
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        Startbildschirmcontroller startbildschirmcontroller = loader.getController();
-        startbildschirmcontroller.setzeHighscorespieler();
+        Startbildschirmcontroller startbildschirmController = loader.getController();
+        startbildschirmController.setzeHighscoreSpieler();
     }
 
-    public void wechselZuGamescreen(ActionEvent e) throws IOException {
-
+    public void wechselZuGamescreen(ActionEvent acEv) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
         root = loader.load();
-        Spielbildschirmcontroller spielcontroller = loader.getController();
+        Spielbildschirmcontroller spielController = loader.getController();
         //ab hier soll der spielbildschirmcontroller übernehmen
-        spielcontroller.aktiviereSpielfeld(e,spieler, root,mode);
+        spielController.aktiviereSpielfeld(acEv, spieler, root, modus);
     }
+
 }

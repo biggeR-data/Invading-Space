@@ -24,9 +24,9 @@ public class Startbildschirmcontroller {
     @FXML
     private TextField txtNamensfeld;
     @FXML
-    private Label lblHighscorename;
+    private Label lblHighscoreName;
     @FXML
-    private Label lblHighscorepunkte;
+    private Label lblHighscorePunkte;
     @FXML
     private Label lblPopup;
 
@@ -46,20 +46,20 @@ public class Startbildschirmcontroller {
             Spieler spieler = new Spieler(txtNamensfeld.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
             root = loader.load();
-            Spielbildschirmcontroller spielcontroller = loader.getController();
-            //ab hier soll der spielbildschirmcontroller übernehmen
-            spielcontroller.aktiviereSpielfeld(acEv, spieler, root, modus);
-        } catch (DelimException ex) {
-            lblPopup.setText(ex.getMessage());
-        } catch (EmptyException ex) {
-            lblPopup.setText(ex.getMessage());
+            Spielbildschirmcontroller spielController = loader.getController();
+            //todo:ab hier soll der spielbildschirmcontroller übernehmen
+            spielController.aktiviereSpielfeld(acEv, spieler, root, modus);
+        } catch (DelimException delEx) {
+            lblPopup.setText(delEx.getMessage());
+        } catch (EmptyException empEx) {
+            lblPopup.setText(empEx.getMessage());
         }
     }
 
-    public void setzeHighscorespieler() throws IOException {
+    public void setzeHighscoreSpieler() throws IOException {
         ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
-        lblHighscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorepunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte() + "");
+        lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte() + "");
     }
 
 }

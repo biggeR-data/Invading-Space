@@ -18,12 +18,12 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblHighscorename" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" textFill="WHITE">
+            <Label fx:id="lblHighscoreName" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblHighscorepunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblHighscorePunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
