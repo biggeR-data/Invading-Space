@@ -12,49 +12,49 @@ import java.util.StringTokenizer;
 public class ScoreListe {
 
     private LinkedList<Spieler> spielerliste = new LinkedList<>();
-    private Path dok_spielerdaten;
+    private Path dokSpielerdaten;
 
     public ScoreListe(String pfad_zu_spielerdaten) {
         try {
-            setDok_spielerdaten(pfad_zu_spielerdaten);
+            setDokSpielerdaten(pfad_zu_spielerdaten);
             txtAuslesen();
             absteigendSortieren();
-        } catch (DelimException e) {
-            System.out.println(e.getMessage());
-        } catch (EmptyException e) {
-            System.out.println(e.getMessage());
+        } catch (DelimException ex) {
+            System.out.println(ex.getMessage());
+        } catch (EmptyException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
-    private void setDok_spielerdaten(String pfad_zu_spielerdaten) {
-        this.dok_spielerdaten = Paths.get(pfad_zu_spielerdaten);
+    private void setDokSpielerdaten(String pfadZuSpielerdaten) {
+        this.dokSpielerdaten = Paths.get(pfadZuSpielerdaten);
     }
 
     private void txtAuslesen() throws DelimException, EmptyException {
         try {
             // vorhandene Spielerdaten erfassen
             // Dokument einlesen
-            BufferedReader dok_leser = Files.newBufferedReader(this.dok_spielerdaten);
+            BufferedReader dokLeser = Files.newBufferedReader(this.dokSpielerdaten);
 
-            String momentane_zeile = dok_leser.readLine();
+            String momentaneZeile = dokLeser.readLine();
 
             // iterativ Spieler pro Zeile anlegen und zwischenspeichern
-            while (momentane_zeile != null) {
-                StringTokenizer st = new StringTokenizer(momentane_zeile, ",");
+            while (momentaneZeile != null) {
+                StringTokenizer st = new StringTokenizer(momentaneZeile, ",");
 
                 // Spieler anlegen
-                Spieler neuer_spieler = new Spieler(st.nextToken());
-                neuer_spieler.setzePunkte(Integer.parseInt(st.nextToken()));
+                Spieler neuerSpieler = new Spieler(st.nextToken());
+                neuerSpieler.setzePunkte(Integer.parseInt(st.nextToken()));
 
                 // Spieler hinzufügen
-                this.spielerliste.add(neuer_spieler);
+                this.spielerliste.add(neuerSpieler);
 
-                momentane_zeile = dok_leser.readLine();
+                momentaneZeile = dokLeser.readLine();
             }
 
-            dok_leser.close();
+            dokLeser.close();
 
-        } catch (java.io.IOException e) {
+        } catch (java.io.IOException ex) {
             System.out.println("Es ist ein Fehler aufgetreten während die Spielerdaten.txt Datei ausgelesen wurde.");
         }
     }
@@ -65,20 +65,20 @@ public class ScoreListe {
 
         // benötigt um zwei Elemente tauschen zu können
         Spieler temp;
-        int positionstausch_index;
+        int positionstauschIndex;
 
         for (int indexzeiger = 1; indexzeiger < laenge; indexzeiger++) {
             if (this.spielerliste.get(indexzeiger).erhaltePunkte() > this.spielerliste.get(indexzeiger - 1).erhaltePunkte()) {
                 // zwischenspeichern des Spielers mit mehr Punkten
                 temp = this.spielerliste.get(indexzeiger);
                 // Index zum tauschen zwischenspeichern
-                positionstausch_index = indexzeiger;
-                while ((positionstausch_index > 0) && (this.spielerliste.get(positionstausch_index - 1).erhaltePunkte() < temp.erhaltePunkte())) {
-                    this.spielerliste.set(positionstausch_index, this.spielerliste.get(positionstausch_index - 1));
-                    positionstausch_index -= 1;
+                positionstauschIndex = indexzeiger;
+                while ((positionstauschIndex > 0) && (this.spielerliste.get(positionstauschIndex - 1).erhaltePunkte() < temp.erhaltePunkte())) {
+                    this.spielerliste.set(positionstauschIndex, this.spielerliste.get(positionstauschIndex - 1));
+                    positionstauschIndex -= 1;
                 }
-                // Einfügen des Elements an vorgesehener Stelle
-                this.spielerliste.set(positionstausch_index, temp);
+                // Einfügen des zwischengespeicherten Elements an vorgesehener Stelle
+                this.spielerliste.set(positionstauschIndex, temp);
             }
         }
     }
@@ -86,31 +86,31 @@ public class ScoreListe {
     public void txtUpdaten() {
         // Spiel soll beendet werden -> sync Spielerdaten in .txt
         try {
-            BufferedWriter dok_schreiber = Files.newBufferedWriter(this.dok_spielerdaten, StandardOpenOption.WRITE);
+            BufferedWriter dokSchreiber = Files.newBufferedWriter(this.dokSpielerdaten, StandardOpenOption.WRITE);
 
             // Iteration über Spielerliste, pro Spieler Iteration über Linkedlist, Werte per Kommas getrennt in .txt schreiben
             spielerliste.stream().forEach(spieler -> {
                 try {
-                    dok_schreiber.write(spieler.zuString() + "\n");
-                } catch (java.io.IOException e) {
+                    dokSchreiber.write(spieler.zuString() + "\n");
+                } catch (java.io.IOException ex) {
                     System.out.println("Es ist ein Problem aufgetreten beim iterativen abspeichern der Spieler.");
                 }
             });
 
-            dok_schreiber.close();
+            dokSchreiber.close();
 
-        } catch (java.io.IOException e) {
+        } catch (java.io.IOException ex) {
             System.out.println("Es ist ein Problem aufgetreten bei der Ablage der Spielerdaten.");
         }
     }
 
-    public void spielerHinzufuegen(Spieler neuer_spieler) {
-        this.spielerliste.add(neuer_spieler);
+    public void spielerHinzufuegen(Spieler neuerSpieler) {
+        this.spielerliste.add(neuerSpieler);
         absteigendSortieren();
     }
 
-    public Spieler spielerlisteIndexAusgabe(int punkte_index) {
-        return this.spielerliste.get(punkte_index);
+    public Spieler spielerlisteIndexAusgabe(int punkteIndex) {
+        return this.spielerliste.get(punkteIndex);
     }
 
 }
