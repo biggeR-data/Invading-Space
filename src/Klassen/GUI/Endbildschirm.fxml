@@ -3,101 +3,83 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klassen.GUI.Endbildschirmcontroller">
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klassen.GUI.Endbildschirmcontroller">
   <items>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;" />
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
          <children>
-            <Label alignment="CENTER" layoutX="239.0" layoutY="14.0" prefHeight="50.0" prefWidth="120.0" text="Game" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <Label fx:id="lblGame" alignment="CENTER" layoutX="234.0" layoutY="82.0" prefHeight="50.0" prefWidth="120.0" text="Game" textAlignment="CENTER" textFill="#facc15" textOverrun="CLIP">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Button fx:id="btn_startseite" contentDisplay="CENTER" layoutX="359.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuStartbildschirm" prefHeight="36.0" prefWidth="120.0" text="Startseite" textAlignment="CENTER">
+            <Button fx:id="btnStartseite" alignment="CENTER" contentDisplay="CENTER" layoutX="358.0" layoutY="544.0" mnemonicParsing="false" onAction="#wechselZuStartbildschirm" prefHeight="36.0" prefWidth="173.0" style="-fx-background-color: &quot;black&quot;;" text="Startseite" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_erneutspielen" contentDisplay="CENTER" layoutX="119.0" layoutY="476.0" mnemonicParsing="false" onAction="#wechselZuSpielbildschirm" prefHeight="36.0" prefWidth="120.0" text="Erneut spielen" textAlignment="CENTER">
+            <Button fx:id="btnErneutspielen" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="544.0" mnemonicParsing="false" onAction="#wechselZuSpielbildschirm" prefHeight="36.0" prefWidth="246.0" style="-fx-background-color: &quot;black&quot;;" text="Erneut spielen" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="258.0" layoutY="57.0" text="Over" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblOver" layoutX="253.0" layoutY="132.0" text="over" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="lblScore" alignment="CENTER" layoutX="148.0" layoutY="160.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <Label fx:id="lblScore" alignment="CENTER" layoutX="148.0" layoutY="228.0" prefHeight="50.0" prefWidth="296.0" textAlignment="CENTER" textFill="#facc15" textOverrun="CLIP">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="265.0" layoutY="135.0" text="Score:" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblPunktzahl" layoutX="244.0" layoutY="196.0" text="Punktzahl:" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="227.0" layoutY="216.0" text="Top 3 Players:" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop3Spieler" layoutX="227.0" layoutY="284.0" text="Top 3 Spieler:" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblTop1Name" layoutX="126.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop1Name" alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="325.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblTop2Name" layoutX="126.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop2Name" alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="363.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblTop3Name" layoutX="126.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTop3Name" alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="400.0" prefHeight="28.0" prefWidth="173.0" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblTop1Score" layoutX="313.0" layoutY="257.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblTop1Score" alignment="CENTER" contentDisplay="CENTER" layoutX="313.0" layoutY="325.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblTop2Score" layoutX="313.0" layoutY="295.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblTop2Score" alignment="CENTER" contentDisplay="CENTER" layoutX="313.0" layoutY="363.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblTop3Score" layoutX="313.0" layoutY="332.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblTop3Score" alignment="CENTER" contentDisplay="CENTER" layoutX="313.0" layoutY="400.0" prefHeight="28.0" prefWidth="173.0" textAlignment="RIGHT" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="384.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/HyenaClassBomber.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/TIEFigtherFront.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/Großschiff_Separatisten.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="91.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/MileniumFalke3.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="imgvBomber" fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvTiefighter" fitHeight="70.0" fitWidth="70.0" layoutX="486.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvGrossschiff" fitHeight="70.0" fitWidth="70.0" layoutX="410.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvMilenium" fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
   </items>

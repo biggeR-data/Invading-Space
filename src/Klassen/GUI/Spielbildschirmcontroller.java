@@ -7,11 +7,16 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import Klassen.Scores.Spieler;
@@ -27,16 +32,16 @@ public class Spielbildschirmcontroller {
     private Stage stage;
     private Scene scene;
     private Group root;
-
+    private Font starwarsfontvoll = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjedi.ttf",18);
+    private Font starwarsfontleer = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjhol.ttf",30);
     // Import des FMXL files
-    @FXML
-    private Label lblSpielername;
-    @FXML
-    private Label lblAktuellerScore;
-    @FXML
-    private Label lblHighscoreName;
-    @FXML
-    private Label lblHighscorePunkte;
+    @FXML private Label lblHighscore;
+    @FXML private Label lblSpielername;
+    @FXML private Label lblAktuellerScore;
+    @FXML private Label lblHighscoreName;
+    @FXML private Label lblHighscorePunkte;
+    @FXML private Button btnWeltraumverlassen;
+
 
     private Label lblPopUp;
 
@@ -62,7 +67,7 @@ public class Spielbildschirmcontroller {
         root = new Group(pRoot);
         spielThread = new Game(this, modus, root);
         spielThread.start();
-
+        formatieren();
         // Zugriff auf Spielerdaten Textdatei abhängig von Modus
         // Modus spezifische Highscores
         switch (modus) {
@@ -160,6 +165,15 @@ public class Spielbildschirmcontroller {
 
     public static Game erhalteSpielThread() {
         return spielThread;
+    }
+
+    public void formatieren(){
+        lblHighscore.setFont(starwarsfontvoll);
+        lblSpielername.setFont(starwarsfontvoll);
+        lblAktuellerScore.setFont(starwarsfontvoll);
+        lblHighscoreName.setFont(starwarsfontvoll);
+        lblHighscorePunkte.setFont(starwarsfontvoll);
+        btnWeltraumverlassen.setFont(starwarsfontvoll);
     }
 
 }

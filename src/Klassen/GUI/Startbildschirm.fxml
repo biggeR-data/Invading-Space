@@ -4,115 +4,94 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klassen.GUI.Startbildschirmcontroller">
+<SplitPane minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klassen.GUI.Startbildschirmcontroller">
   <items>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
          <children>
-            <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="70.0" prefWidth="138.0" text="HIGHSCORE:" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblSpace" alignment="CENTER" layoutX="224.0" layoutY="178.0" prefHeight="44.0" prefWidth="155.0" text="invading" textAlignment="CENTER" textFill="#facc15" textOverrun="CLIP">
                <font>
-                  <Font size="23.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="lblHighscoreName" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="183.0" textFill="WHITE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblHighscorePunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" textAlignment="RIGHT" textFill="WHITE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
-         <children>
-            <Label alignment="CENTER" layoutX="239.0" layoutY="148.0" prefHeight="50.0" prefWidth="120.0" text="Space" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
-            <Button fx:id="btn_hölle" contentDisplay="CENTER" layoutX="327.0" layoutY="463.0" mnemonicParsing="false" onAction="#hölle" prefHeight="36.0" prefWidth="120.0" text="Hölle" textAlignment="CENTER">
+            <Button fx:id="btn_hölle" contentDisplay="CENTER" layoutX="328.0" layoutY="490.0" mnemonicParsing="false" onAction="#hölle" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: &quot;black&quot;;" text="Hölle" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_normal" contentDisplay="CENTER" layoutX="141.0" layoutY="463.0" mnemonicParsing="false" onAction="#normal" prefHeight="36.0" prefWidth="120.0" text="Normal" textAlignment="CENTER">
+            <Button fx:id="btn_normal" contentDisplay="CENTER" layoutX="142.0" layoutY="490.0" mnemonicParsing="false" onAction="#normal" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: &quot;black&quot;;" text="Normal" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="237.0" layoutY="191.0" text="Invader" textFill="WHITE">
+            <Label fx:id="lblInvader" alignment="CENTER" layoutX="223.0" layoutY="214.0" prefHeight="43.0" prefWidth="155.0" text="Space" textFill="#facc15">
                <font>
-                  <Font size="40.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="260.0" layoutY="241.0" prefHeight="17.0" prefWidth="78.0" text="- aber besser" textFill="WHITE" />
-            <TextField fx:id="txtNamensfeld" alignment="CENTER" layoutX="158.0" layoutY="288.0" promptText="Enter your Name">
+            <Label fx:id="lblaberbesser" alignment="CENTER" layoutX="240.0" layoutY="268.0" prefHeight="28.0" prefWidth="120.0" textFill="#facc15" />
+            <TextField fx:id="txtNamensfeld" alignment="CENTER" layoutX="202.0" layoutY="317.0" promptText="Enter your Name" style="-fx-background-color: &quot;black&quot;;">
                <font>
                   <Font size="23.0" />
                </font>
             </TextField>
-            <Label fx:id="lblPopup" contentDisplay="CENTER" layoutX="18.0" layoutY="361.0" prefHeight="43.0" prefWidth="562.0" textAlignment="CENTER">
+            <Label fx:id="lblPopup" contentDisplay="CENTER" layoutX="19.0" layoutY="388.0" prefHeight="43.0" prefWidth="562.0" textAlignment="CENTER">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="421.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/HyenaClassBomber.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="491.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/TIEFigtherFront.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="491.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/Großschiff_Separatisten.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="77.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/MileniumFalke3.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="106.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/TIEFigtherFront.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="264.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/HyenaClassBomber.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="421.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../res/Images/Großschiff_Separatisten.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="128.0" layoutY="565.0" text="10" textAlignment="CENTER" textFill="WHITE">
+            <ImageView fx:id="imgvBomber" fitHeight="70.0" fitWidth="70.0" layoutX="422.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvTiefighter" fitHeight="70.0" fitWidth="70.0" layoutX="492.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvGrossschiff" fitHeight="70.0" fitWidth="70.0" layoutX="492.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvMilenium" fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvTiefighter2" fitHeight="70.0" fitWidth="70.0" layoutX="107.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvBomber2" fitHeight="70.0" fitWidth="70.0" layoutX="265.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgvGrossschiff2" fitHeight="70.0" fitWidth="70.0" layoutX="422.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lbl10" layoutX="129.0" layoutY="592.0" text="10" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="287.0" layoutY="565.0" text="20" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lbl20" layoutX="288.0" layoutY="592.0" text="20" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="443.0" layoutY="565.0" text="50" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lbl50" layoutX="444.0" layoutY="592.0" text="50" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
+            <Label fx:id="lblHighscore" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="32.0" prefHeight="17.0" prefWidth="138.0" text="Highscore" textAlignment="CENTER" textFill="#facc15">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblHighscoreNameNormal" layoutX="15.0" layoutY="39.0" prefHeight="50.0" prefWidth="100.0" textFill="#facc15">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblHighscorePunkteNormal" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="113.0" layoutY="46.0" prefHeight="36.0" prefWidth="100.0" textFill="#facc15">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblHighscoreNameHölle" layoutX="378.0" layoutY="33.0" prefHeight="62.0" prefWidth="100.0" textAlignment="RIGHT" textFill="#facc15">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblHighscorePunkteHölle" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="484.0" layoutY="42.0" prefHeight="43.0" prefWidth="100.0" textAlignment="RIGHT" textFill="#facc15">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNormal" layoutX="79.0" layoutY="14.0" prefHeight="17.0" prefWidth="100.0" text="Normal" textFill="#facc15" />
+            <Label fx:id="lblHölle" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="449.0" layoutY="14.0" prefHeight="17.0" prefWidth="70.0" text="Hölle" textFill="#facc15" />
          </children>
       </AnchorPane>
   </items>

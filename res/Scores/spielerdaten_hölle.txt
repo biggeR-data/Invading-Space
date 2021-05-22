@@ -1,5 +1,16 @@
+Leon ,190
 Patrick,60
+jasmin,40
+Leon,20
+asdg,20
 Jan,10
 Jasmin,10
 Leon,10
 Patrick,10
+Leon,10
+Leon Henne,0
+sV,0
+ASDF ,0
+asdg,0
+adsg,0
+Leon,0

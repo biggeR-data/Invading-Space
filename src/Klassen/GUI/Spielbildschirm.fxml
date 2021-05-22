@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klassen.GUI.Spielbildschirmcontroller">
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="768.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klassen.GUI.Spielbildschirmcontroller">
   <items>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
          <children>
-            <Label blendMode="LIGHTEN" contentDisplay="CENTER" layoutX="14.0" prefHeight="70.0" prefWidth="138.0" text="HIGHSCORE:" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblHighscore" blendMode="LIGHTEN" contentDisplay="CENTER" layoutX="14.0" prefHeight="70.0" prefWidth="138.0" text="Highscore:" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
@@ -19,44 +19,32 @@
                   <Glow />
                </effect>
             </Label>
-            <Label fx:id="lblHighscorePunkte" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" text="999999" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="lblHighscorePunkte" alignment="CENTER_RIGHT" layoutX="383.0" layoutY="17.0" prefHeight="36.0" prefWidth="209.0" text="999999" textAlignment="RIGHT" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label fx:id="lblHighscoreName" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="209.0" text="Leon" textFill="WHITE">
+            <Label fx:id="lblHighscoreName" layoutX="157.0" layoutY="10.0" prefHeight="50.0" prefWidth="209.0" text="Leon" textFill="#facc15">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPopup" alignment="CENTER" contentDisplay="CENTER" layoutX="152.0" layoutY="145.0" prefHeight="50.0" prefWidth="308.0" textAlignment="CENTER" textFill="#facc15">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAktuellerScore" layoutX="446.0" layoutY="686.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="146.0" textAlignment="RIGHT" textFill="#facc15">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnWeltraumverlassen" alignment="CENTER" focusTraversable="false" layoutX="10.0" layoutY="689.0" mnemonicParsing="false" onAction="#wechselZuEndbildschirm" prefHeight="50.0" prefWidth="146.0" style="-fx-background-color: &quot;black&quot;;" text="verlassen" textFill="#facc15" />
+            <Label fx:id="lblSpielername" layoutX="206.0" layoutY="686.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="209.0" textAlignment="RIGHT" textFill="#facc15">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
          </children></AnchorPane>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL">
-         <items>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="628.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
-               <children>
-                  <Label fx:id="lblPopup" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="14.0" prefHeight="50.0" prefWidth="288.0" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: &quot;black&quot;;">
-               <children>
-                  <Label fx:id="lblAktuellerScore" layoutX="390.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="202.0" textAlignment="RIGHT" textFill="WHITE">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-                  <Button focusTraversable="false" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#wechselZuEndbildschirm" text="Weltraum verlassen" />
-                  <Label fx:id="lblSpielername" layoutX="151.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="232.0" textAlignment="RIGHT" textFill="WHITE">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </items>
-      </SplitPane>
   </items>
 </SplitPane>
