@@ -25,7 +25,7 @@ public class MainGui extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Startbildschirm.fxml"));
             Parent root = loader.load();
 
-            // Übergäbe an den Startbildschirmcontroller
+            // Übergabe an den Startbildschirmcontroller
             Startbildschirmcontroller startController = loader.getController();
             startController.aktiviereStartbildschirm();
 

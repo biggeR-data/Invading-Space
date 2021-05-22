@@ -35,6 +35,7 @@ public class Startbildschirmcontroller {
     @FXML
     private Label lblPopup;
 
+    // todo: Highscore auf Startbildschirm - Unterscheidung zwischen Normal und Hölle
     public void aktiviereStartbildschirm() {
         ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
         lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
@@ -42,12 +43,10 @@ public class Startbildschirmcontroller {
     }
 
     public void normal(ActionEvent acEv) throws IOException {
-        System.out.println("Spielmodus: Normal");
         wechselZuSpielbildschirm(acEv, 0);
     }
 
     public void hölle(ActionEvent acEv) throws IOException {
-        System.out.println("Spielmodus: HÖLLE");
         wechselZuSpielbildschirm(acEv, 1);
     }
 
