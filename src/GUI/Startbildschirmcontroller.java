@@ -11,7 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+
 import Klassen.Spieler;
 
 public class Startbildschirmcontroller {
@@ -20,43 +22,44 @@ public class Startbildschirmcontroller {
     private Scene scene;
     private Parent root;
     @FXML
-    private TextField txt_Namensfeld;
+    private TextField txtNamensfeld;
     @FXML
-    private Label lbl_highscorename;
+    private Label lblHighscorename;
     @FXML
-    private Label lbl_highcorepunkte;
+    private Label lblHighscorepunkte;
     @FXML
-    private Label lbl_popup;
+    private Label lblPopup;
 
 
-    public void normal(ActionEvent e)throws IOException{
+    public void normal(ActionEvent acEv) throws IOException {
         System.out.println("Spielmodus: Normal");
-        wechselZuGamescreen(e,0);
-    }
-    public void hölle(ActionEvent e) throws IOException {
-        System.out.println("Spielmodus: HÖLLE");
-        wechselZuGamescreen(e,1);
+        wechselZuGamescreen(acEv, 0);
     }
 
-    public void wechselZuGamescreen(ActionEvent e, int mode) throws IOException {
+    public void hölle(ActionEvent acEv) throws IOException {
+        System.out.println("Spielmodus: HÖLLE");
+        wechselZuGamescreen(acEv, 1);
+    }
+
+    public void wechselZuGamescreen(ActionEvent acEv, int modus) throws IOException {
         try {
-            Spieler spieler = new Spieler(txt_Namensfeld.getText());
+            Spieler spieler = new Spieler(txtNamensfeld.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielbildschirm.fxml"));
             root = loader.load();
             Spielbildschirmcontroller spielcontroller = loader.getController();
             //ab hier soll der spielbildschirmcontroller übernehmen
-            spielcontroller.aktiviereSpielfeld(e, spieler, root,mode);
-        } catch (DelimException ex){
-            lbl_popup.setText(ex.getMessage());
+            spielcontroller.aktiviereSpielfeld(acEv, spieler, root, modus);
+        } catch (DelimException ex) {
+            lblPopup.setText(ex.getMessage());
         } catch (EmptyException ex) {
-            lbl_popup.setText(ex.getMessage());
+            lblPopup.setText(ex.getMessage());
         }
     }
 
-    public void setzeHighscorespieler() throws IOException{
+    public void setzeHighscorespieler() throws IOException {
         ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
-        lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lbl_highcorepunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()+"");
+        lblHighscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorepunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte() + "");
     }
 
 }
