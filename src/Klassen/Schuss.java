@@ -2,6 +2,7 @@ package Klassen;
 
 import javafx.application.Platform;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -13,20 +14,8 @@ public class Schuss extends BeweglicheObjekte {
         super(xKoor, yKoor, root);
         setzeBreite(5);
         setzeHoehe(10);
-    }
-
-//todo Schuss als rechteck erstellen und über x und y Koordinaten bewegen
-
-    @Override
-    protected void zeichneWeiss(double breite, double hoehe) {
-        Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
-        objekt.setFill(Color.WHITE);
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                root.getChildren().add(objekt);
-            }
-        });
-        //this.root.getChildren().add(objekt);
+        Image img = new Image(getClass().getResource("../Schuss_Rot.png").toExternalForm());
+        setzteBild(img);
     }
 
     public void schiessenHoch() {
