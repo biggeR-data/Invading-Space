@@ -134,7 +134,7 @@ public class Game extends Thread{
             // text ausgeben
             Platform.runLater(new Runnable() {
                 @Override public void run() {
-                    gui.setztePopup("Stufe " + stage + "erreicht");
+                    gui.setztePopup("Welle " + stage +" erreicht!" );
                 }
             });
             try {
@@ -144,7 +144,7 @@ public class Game extends Thread{
             }
             Platform.runLater(new Runnable() {
                 @Override public void run() {
-                    gui.setztePopup("");
+                    gui.entfernePopup();
                 }
             });
 
@@ -229,7 +229,7 @@ public class Game extends Thread{
         for(int x = 0;x< 12;x++){
             listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
         }
-
+        
         // 20er Monster
         for(int y = 0;y< 2;y++){
             for (int x = 0; x < 12; x++) {

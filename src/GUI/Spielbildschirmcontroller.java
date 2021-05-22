@@ -3,19 +3,25 @@ package GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 import Klassen.Spieler;
 import Klassen.ScoreListe;
 import Klassen.Game;
+
+import static java.awt.Color.WHITE;
+import static java.awt.Color.white;
 
 public class Spielbildschirmcontroller {
 
@@ -38,6 +44,7 @@ public class Spielbildschirmcontroller {
     private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private int modus;
     private static Game spielThread;
+    private Label labelPopUp;
 
     //Hier Spieler anstatt String empfangen
     public void aktiviereSpielbildschirm(ActionEvent acEv, Spieler pSpieler, Parent wurzel, int modus) throws IOException {
@@ -102,7 +109,17 @@ public class Spielbildschirmcontroller {
     }
 
     public void setztePopup(String m) {
+        labelPopUp = new Label(m);
+        labelPopUp.setLayoutX(270);
+        labelPopUp.setLayoutY(298);
+        labelPopUp.setTextFill(javafx.scene.paint.Color.WHITE);
+        labelPopUp.setFont(Font.font ("System", 23));
+        root.getChildren().add(labelPopUp);
         lblPopup.setText(m);
+    }
+
+    public void entfernePopup(){
+        root.getChildren().remove(labelPopUp);
     }
 
     public static Game getSpielThread() {
