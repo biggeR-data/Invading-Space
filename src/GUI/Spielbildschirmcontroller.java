@@ -127,6 +127,7 @@ public class Spielbildschirmcontroller {
 
     /**
      * dynamisches Popup
+     *
      * @param nachricht
      */
     public void setztePopup(String nachricht) {
