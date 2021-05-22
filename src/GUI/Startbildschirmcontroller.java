@@ -54,7 +54,7 @@ public class Startbildschirmcontroller {
     }
 
     public void setzeHighscorespieler() throws IOException{
-        ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
+        ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
         lbl_highscorename.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
         lbl_highcorepunkte.setText(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()+"");
     }

@@ -33,7 +33,7 @@ public class Endbildschirmcontroller {
     private Label lbl_top2score;
     @FXML
     private Label lbl_top3score;
-    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
+    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private Spieler spieler;
     private int mode;
 

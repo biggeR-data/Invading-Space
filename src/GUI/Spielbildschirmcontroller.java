@@ -34,7 +34,7 @@ public class Spielbildschirmcontroller {
     @FXML
     private Label lbl_popup;
     private Spieler spieler;
-    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten.txt");
+    private ScoreListe scoreListe = new ScoreListe("./res/spielerdaten_normal.txt");
     private int mode;
     private Game spielthread;
 
