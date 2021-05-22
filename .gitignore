@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 out/
+res/spielerdaten_hölle.txt
+res/spielerdaten_normal.txt
