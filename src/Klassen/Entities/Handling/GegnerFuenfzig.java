@@ -8,7 +8,7 @@ public class GegnerFuenfzig extends Gegner {
         super(xKoor, yKoor, root);
         setzePunkte(50);
         Image img = erhalteBild("Großschiff_Separatisten.png");
-        setzteBild(img);
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        setzeBild(img);
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 }

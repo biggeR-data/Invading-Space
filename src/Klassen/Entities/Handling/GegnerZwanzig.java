@@ -8,7 +8,7 @@ public class GegnerZwanzig extends Gegner {
         super(xKoor, yKoor, root);
         setzePunkte(20);
         Image img = erhalteBild("HyenaClassBomber.png");
-        setzteBild(img);
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        setzeBild(img);
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 }

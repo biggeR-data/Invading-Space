@@ -10,8 +10,8 @@ public abstract class Gegner extends BeweglicheObjekte {
     public Gegner(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
         //Image img = new Image(getClass().getResource("/Testing/DarthVaderKopf.png").toExternalForm());
-        //setzteBild(img);
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        //setzeBild(img);
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
@@ -39,9 +39,9 @@ public abstract class Gegner extends BeweglicheObjekte {
      * Neues Objekt zeichnen
      */
     public void bewegenRechts() {
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.xKoor = erhalteXKoor() + erhalteXBewegung();
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
@@ -51,15 +51,15 @@ public abstract class Gegner extends BeweglicheObjekte {
      * Neues Objekt zeichnen
      */
     public void bewegenLinks() {
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.xKoor = erhalteXKoor() - erhalteXBewegung();
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     public void bewegenRunter() {
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     public Schuss schiessen() {

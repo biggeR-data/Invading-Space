@@ -22,12 +22,12 @@ public class Schuss extends BeweglicheObjekte {
     public void schiessenHoch() {
         // Aussehen setzen
         Image bild = erhalteBild("Schuss_Blau.png");
-        setzteBild(bild);
+        setzeBild(bild);
 
         // Bewegung
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.yKoor = erhalteYKoor() - YBEWEGUNG;
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
@@ -36,12 +36,12 @@ public class Schuss extends BeweglicheObjekte {
     public void schiessenRunter() {
         // Aussehen setzen
         Image img = erhalteBild("Schuss_Rot.png");
-        setzteBild(img);
+        setzeBild(img);
 
         // Bewegung
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
@@ -49,7 +49,7 @@ public class Schuss extends BeweglicheObjekte {
      * @param yRand
      * @return boolean
      */
-    public boolean pruefeKollisionOben(double yRand) {
+    public boolean pruefeTrefferOben(double yRand) {
         if (erhalteYKoor() - YBEWEGUNG < yRand) {
             return true;
         }
@@ -61,7 +61,7 @@ public class Schuss extends BeweglicheObjekte {
      * @param yRand
      * @return boolean
      */
-    public boolean pruefeKollisionUnten(double yRand) {
+    public boolean pruefeTrefferUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
         }

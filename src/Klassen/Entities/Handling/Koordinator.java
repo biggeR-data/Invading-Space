@@ -88,7 +88,7 @@ public class Koordinator {
                 if (prüfeKollisionRand() == true) {
                     for (Gegner gegner : this.gegnerListe) {
                         gegner.bewegenRunter();
-                        gegner.zeichneWeiss(gegner.erhalteBreite(), gegner.erhalteHoehe());
+                        gegner.erschaffeObjekt(gegner.erhalteBreite(), gegner.erhalteHoehe());
                     }
                     setzteRichtung(xBewegung.RECHTS);
                 } else {
@@ -102,7 +102,7 @@ public class Koordinator {
                 if (prüfeKollisionRand() == true) {
                     for (Gegner gegner : this.gegnerListe) {
                         gegner.bewegenRunter();
-                        gegner.zeichneWeiss(gegner.erhalteBreite(), gegner.erhalteHoehe());
+                        gegner.erschaffeObjekt(gegner.erhalteBreite(), gegner.erhalteHoehe());
                     }
                     setzteRichtung(xBewegung.LINKS);
                 } else {
@@ -126,17 +126,17 @@ public class Koordinator {
                 if (gegner.pruefeKollision(schuss) == true) {
                     score += gegner.erhaltePunkte();
                     // Gegner zerstört und aus der ArrayList gegnerListe entfernen
-                    gegner.zeichneSchwarz(gegner.erhalteBreite(), gegner.erhalteHoehe());
+                    gegner.entferneObjekt();
                     loescheGegner.add(gegner);
                     // Schuss zerstören und aus der ArrayList schusseListe entfernen
-                    schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
+                    schuss.entferneObjekt();
                     loescheSchuesse.add(schuss);
                 }
             }
         }
         for (Schuss schuss : schuesseRaumschiff) {
-            if (schuss.pruefeKollisionOben(RANDOBEN) == true) {
-                schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
+            if (schuss.pruefeTrefferOben(RANDOBEN) == true) {
+                schuss.entferneObjekt();
                 loescheSchuesse.add(schuss);
             }
         }
@@ -153,8 +153,8 @@ public class Koordinator {
             }
         }
         for (Schuss schuss : schuesseMonster) {
-            if (schuss.pruefeKollisionUnten(RANDUNTENSCHUSS) == true) {
-                schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
+            if (schuss.pruefeTrefferUnten(RANDUNTENSCHUSS) == true) {
+                schuss.entferneObjekt();
                 loescheSchuesse.add(schuss);
             }
         }

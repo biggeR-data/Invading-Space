@@ -10,8 +10,8 @@ public class Raumschiff extends BeweglicheObjekte {
         setzeBreite(40);
         setzeHoehe(40);
         Image img = erhalteBild("MileniumFalke3.png");
-        setzteBild(img);
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        setzeBild(img);
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
@@ -21,9 +21,9 @@ public class Raumschiff extends BeweglicheObjekte {
      * Neues Objekt zeichnen
      */
     public void bewegenRechts() {
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.xKoor = erhalteXKoor() + erhalteXBewegung();
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
@@ -33,9 +33,9 @@ public class Raumschiff extends BeweglicheObjekte {
      * Neues Objekt zeichnen
      */
     public void bewegenLinks() {
-        zeichneSchwarz(erhalteBreite(), erhalteHoehe());
+        entferneObjekt();
         this.xKoor = erhalteXKoor() - erhalteXBewegung();
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**

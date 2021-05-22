@@ -9,7 +9,7 @@ public class GegnerZehn extends Gegner {
         super(xKoor, yKoor, root);
         setzePunkte(10);
         Image img = erhalteBild("TIEFigtherFront.png");
-        setzteBild(img);
-        zeichneWeiss(erhalteBreite(), erhalteHoehe());
+        setzeBild(img);
+        erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 }
