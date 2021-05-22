@@ -3,11 +3,11 @@ package Klassen.Entities.Handling;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 
-/***************************
-        Unterterklasse erstellen
-    ***************************/
-
+/**
+ * wird genutzt um einen Kampf zu simulieren
+ */
 public class Schuss extends BeweglicheObjekte {
+
     private final double YBEWEGUNG = 10;
 
     protected Schuss(double xKoor, double yKoor, Group root) {
@@ -16,25 +16,20 @@ public class Schuss extends BeweglicheObjekte {
         setzeHoehe(10);
     }
 
-    /***************************
-        Schuss erstellen und Bild zuweisen
-        Schuss "fliegt nach oben"
-     ***************************/
-
+    /**
+     * Schuss des Raumschiffs
+     */
     public void schiessenHoch() {
-        Image img = erhalteBild("Schuss_Blau.png");
-        setzteBild(img);
+        Image bild = erhalteBild("Schuss_Blau.png");
+        setzteBild(bild);
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
-        this.yKoor =  erhalteYKoor() - YBEWEGUNG;
+        this.yKoor = erhalteYKoor() - YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
-    /***************************
-        Schuss erstellen und Bild zuweisen
-        Schuss "fliegt nach unten"
-     ***************************/
-
-
+    /**
+     * Schuss der Gegner
+     */
     public void schiessenRunter() {
         Image img = erhalteBild("Schuss_Rot.png");
         setzteBild(img);
@@ -43,11 +38,11 @@ public class Schuss extends BeweglicheObjekte {
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
-    /***************************
-        Prüfen, ob der Schuss am Bildrand angekommen ist
-        Obere Rand des Feldes
-     ***************************/
-
+    /**
+     * Treffertest der Gegner
+     * @param yRand
+     * @return boolean
+     */
     public boolean pruefeKollisionOben(double yRand) {
         if (erhalteYKoor() - YBEWEGUNG < yRand) {
             return true;
@@ -55,11 +50,11 @@ public class Schuss extends BeweglicheObjekte {
         return false;
     }
 
-    /***************************
-         Prüfen, ob der Schuss am Bildrand angekommen ist
-         Untere Rand des Feldes
-     ***************************/
-
+    /**
+     * Treffertest des Raumschiffs
+     * @param yRand
+     * @return boolean
+     */
     public boolean pruefeKollisionUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
