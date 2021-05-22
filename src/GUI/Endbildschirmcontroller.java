@@ -16,6 +16,9 @@ import java.io.IOException;
 import Klassen.ScoreListe;
 import Klassen.Spieler;
 
+/**
+ * funktionale Logik des Endbildschirms
+ */
 public class Endbildschirmcontroller {
 
     private Stage stage;

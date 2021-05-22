@@ -18,6 +18,9 @@ import Klassen.Spieler;
 import Klassen.ScoreListe;
 import Klassen.Game;
 
+/**
+ * funktionale Logik während dem Spielen
+ */
 public class Spielbildschirmcontroller {
 
     // Zugriff auf GUI
@@ -25,7 +28,7 @@ public class Spielbildschirmcontroller {
     private Scene scene;
     private Group root;
 
-    //Import des FMXL files
+    // Import des FMXL files
     @FXML
     private Label lblSpielername;
     @FXML
@@ -71,10 +74,8 @@ public class Spielbildschirmcontroller {
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.D) || event.getCode().equals(KeyCode.RIGHT)) {
                 spielThread.keyRight();
-                //System.out.println(event.getCode());
             } else if (event.getCode().equals(KeyCode.A) || event.getCode().equals(KeyCode.LEFT)) {
                 spielThread.keyLeft();
-                //System.out.println(event.getCode());
             } else if (event.getCode().equals(KeyCode.W) || event.getCode().equals(KeyCode.UP)) {
                 spielThread.keyUp();
             }

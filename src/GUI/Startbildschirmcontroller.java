@@ -24,6 +24,8 @@ public class Startbildschirmcontroller {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    // Import des FMXL files
     @FXML
     private TextField txtNamensfeld;
     @FXML
