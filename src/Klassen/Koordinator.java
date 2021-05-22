@@ -15,7 +15,7 @@ public class Koordinator {
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
     private final double RANDUNTENMONSTER = 690;
-    private final double RANDUNTENSCHUSS = 700;
+    private final double RANDUNTENSCHUSS = 670;
     private final double RANDOBEN = 80;
     private int score = 0;
 

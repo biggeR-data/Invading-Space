@@ -64,6 +64,7 @@ Jan,40
 asd,37
 asd,35
 Tim,30
+Jan,30
 asd,21
 sdaf,21
 Tim,20
@@ -73,6 +74,7 @@ Tom,12
 Tim,10
 Kai,10
 jan,10
+Jan,10
 Jan,9
 Maximilian,7
 Patrick,1
@@ -91,4 +93,5 @@ Patrick,0
 Patrick,0
 Jan,0
 jan,0
+Jan,0
 Jan,0
