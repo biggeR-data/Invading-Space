@@ -7,6 +7,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+    /***************************
+        Unterterklasse erstellen
+    ***************************/
+
 public class Schuss extends BeweglicheObjekte {
     private final double YBEWEGUNG = 10;
 
@@ -16,6 +20,11 @@ public class Schuss extends BeweglicheObjekte {
         setzeHoehe(10);
     }
 
+    /***************************
+        Schuss erstellen und Bild zuweisen
+        Schuss "fliegt nach oben"
+     ***************************/
+
     public void schiessenHoch() {
         Image img = new Image(getClass().getResource("../Schuss_Blau.png").toExternalForm());
         setzteBild(img);
@@ -23,6 +32,12 @@ public class Schuss extends BeweglicheObjekte {
         this.yKoor =  erhalteYKoor() - YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
+
+    /***************************
+        Schuss erstellen und Bild zuweisen
+        Schuss "fliegt nach unten"
+     ***************************/
+
 
     public void schiessenRunter() {
         Image img = new Image(getClass().getResource("../Schuss_Rot.png").toExternalForm());
@@ -32,12 +47,22 @@ public class Schuss extends BeweglicheObjekte {
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
     }
 
+    /***************************
+        Prüfen, ob der Schuss am Bildrand angekommen ist
+        Obere Rand des Feldes
+     ***************************/
+
     public boolean pruefeKollisionOben(double yRand) {
         if (erhalteYKoor() - YBEWEGUNG < yRand) {
             return true;
         }
         return false;
     }
+
+    /***************************
+         Prüfen, ob der Schuss am Bildrand angekommen ist
+         Untere Rand des Feldes
+     ***************************/
 
     public boolean pruefeKollisionUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
