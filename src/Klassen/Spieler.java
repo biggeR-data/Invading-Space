@@ -27,8 +27,12 @@ public class Spieler {
         return name;
     }
 
+    /**
+     * korrekte Formatierung für csv Speicherart in Spielerdaten Textdatei
+     *
+     * @return String
+     */
     public String zuString() {
-        // passende Formatierung für csv Speicherart in spielerdaten_normal.txt
         return name + "," + punkte;
     }
 }

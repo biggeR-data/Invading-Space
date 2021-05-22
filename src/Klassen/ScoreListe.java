@@ -19,22 +19,29 @@ public class ScoreListe {
             setDokSpielerdaten(pfad_zu_spielerdaten);
             txtAuslesen();
             absteigendSortieren();
-        } catch (DelimException ex) {
-            System.out.println(ex.getMessage());
-        } catch (EmptyException ex) {
-            System.out.println(ex.getMessage());
+        } catch (DelimException delEx) {
+            System.out.println(delEx.getMessage());
+        } catch (EmptyException empEx) {
+            System.out.println(empEx.getMessage());
         }
     }
 
     private void setDokSpielerdaten(String pfadZuSpielerdaten) {
-        this.dokSpielerdaten = Paths.get(pfadZuSpielerdaten);
+        dokSpielerdaten = Paths.get(pfadZuSpielerdaten);
     }
 
+    /**
+     * Spielerdaten Textdatei auslesen
+     * Spielerliste anlegen
+     *
+     * @throws DelimException
+     * @throws EmptyException
+     */
     private void txtAuslesen() throws DelimException, EmptyException {
         try {
             // vorhandene Spielerdaten erfassen
             // Dokument einlesen
-            BufferedReader dokLeser = Files.newBufferedReader(this.dokSpielerdaten);
+            BufferedReader dokLeser = Files.newBufferedReader(dokSpielerdaten);
 
             String momentaneZeile = dokLeser.readLine();
 
@@ -47,70 +54,89 @@ public class ScoreListe {
                 neuerSpieler.setzePunkte(Integer.parseInt(st.nextToken()));
 
                 // Spieler hinzufügen
-                this.spielerliste.add(neuerSpieler);
+                spielerliste.add(neuerSpieler);
 
                 momentaneZeile = dokLeser.readLine();
             }
 
             dokLeser.close();
 
-        } catch (java.io.IOException ex) {
+        } catch (java.io.IOException ioEx) {
             System.out.println("Es ist ein Fehler aufgetreten während die Spielerdaten.txt Datei ausgelesen wurde.");
         }
     }
 
+    /**
+     * Spielerliste sortieren durch InsertionSort Algorithmus
+     */
     private void absteigendSortieren() {
-        // InsertionSort
-        int laenge = this.spielerliste.size();
+        int laenge = spielerliste.size();
 
         // benötigt um zwei Elemente tauschen zu können
         Spieler temp;
         int positionstauschIndex;
 
         for (int indexzeiger = 1; indexzeiger < laenge; indexzeiger++) {
-            if (this.spielerliste.get(indexzeiger).erhaltePunkte() > this.spielerliste.get(indexzeiger - 1).erhaltePunkte()) {
+            if (spielerliste.get(indexzeiger).erhaltePunkte() > spielerliste.get(indexzeiger - 1).erhaltePunkte()) {
                 // zwischenspeichern des Spielers mit mehr Punkten
-                temp = this.spielerliste.get(indexzeiger);
+                temp = spielerliste.get(indexzeiger);
+
                 // Index zum tauschen zwischenspeichern
                 positionstauschIndex = indexzeiger;
-                while ((positionstauschIndex > 0) && (this.spielerliste.get(positionstauschIndex - 1).erhaltePunkte() < temp.erhaltePunkte())) {
-                    this.spielerliste.set(positionstauschIndex, this.spielerliste.get(positionstauschIndex - 1));
+
+                // Tausch vollziehen
+                while ((positionstauschIndex > 0) && (spielerliste.get(positionstauschIndex - 1).erhaltePunkte() < temp.erhaltePunkte())) {
+                    spielerliste.set(positionstauschIndex, spielerliste.get(positionstauschIndex - 1));
                     positionstauschIndex -= 1;
                 }
+
                 // Einfügen des zwischengespeicherten Elements an vorgesehener Stelle
-                this.spielerliste.set(positionstauschIndex, temp);
+                spielerliste.set(positionstauschIndex, temp);
             }
         }
     }
 
+    /**
+     * geänderte Spielerliste über alte Spielerdaten Textdatei überschreiben
+     */
     public void txtUpdaten() {
-        // Spiel soll beendet werden -> sync Spielerdaten in .txt
         try {
-            BufferedWriter dokSchreiber = Files.newBufferedWriter(this.dokSpielerdaten, StandardOpenOption.WRITE);
+            BufferedWriter dokSchreiber = Files.newBufferedWriter(dokSpielerdaten, StandardOpenOption.WRITE);
 
             // Iteration über Spielerliste, pro Spieler Iteration über Linkedlist, Werte per Kommas getrennt in .txt schreiben
             spielerliste.stream().forEach(spieler -> {
                 try {
                     dokSchreiber.write(spieler.zuString() + "\n");
-                } catch (java.io.IOException ex) {
+                } catch (java.io.IOException ioEx) {
                     System.out.println("Es ist ein Problem aufgetreten beim iterativen abspeichern der Spieler.");
                 }
             });
 
             dokSchreiber.close();
 
-        } catch (java.io.IOException ex) {
+        } catch (java.io.IOException ioEx) {
             System.out.println("Es ist ein Problem aufgetreten bei der Ablage der Spielerdaten.");
         }
     }
 
+    /**
+     * sortiert einen neuen Spielereintrag hinzufügen
+     *
+     * @param neuerSpieler
+     */
     public void spielerHinzufuegen(Spieler neuerSpieler) {
-        this.spielerliste.add(neuerSpieler);
+        spielerliste.add(neuerSpieler);
         absteigendSortieren();
     }
 
+    /**
+     * Zugriff für Highscore Abfrage
+     *
+     * @param punkteIndex
+     * @return Spieler
+     */
     public Spieler spielerlisteIndexAusgabe(int punkteIndex) {
-        return this.spielerliste.get(punkteIndex);
+        return spielerliste.get(punkteIndex);
     }
 
 }
