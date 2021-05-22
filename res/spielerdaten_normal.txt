@@ -21,7 +21,10 @@ Jan,2640
 jasndadwdawsdsdad,2187
 PhilippFögen,1430
 dsf,1399
+Jan,1360
 Jan,1320
+Jan,1320
+Jan,1150
 Kai,1003
 Kai,1002
 Rüdiger,1001
@@ -36,6 +39,7 @@ sdfgs,409
 jan,379
 jan,379
 asd,379
+Jan,370
 asd,349
 dsf,349
 dfs,349
@@ -56,6 +60,7 @@ Jan,130
 Jan,120
 Jan,110
 Jan,109
+Jan,100
 asd,82
 Jan,60
 Leonstest,60
@@ -67,9 +72,12 @@ asd,37
 asd,35
 Tim,30
 Jan,30
+Jan,30
+Jan,30
 asd,21
 sdaf,21
 Tim,20
+Jan,20
 sdaf,19
 Jasmin,13
 Tom,12
@@ -95,5 +103,6 @@ Patrick,0
 Patrick,0
 Jan,0
 jan,0
+Jan,0
 Jan,0
 Jan,0

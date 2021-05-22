@@ -35,7 +35,7 @@ public class Game extends Thread{
     private long lastSchiffSchussMillis = 0; // in millisekunden
     private long lastMonsterSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
-    private int timePerTick = 100; // in millisekunden
+    private int timePerTick = 150; // in millisekunden
 
     public Game(Spielbildschirmcontroller gui, int mode, Group root){
         this.root = root;
@@ -46,7 +46,7 @@ public class Game extends Thread{
             case 0:
                 // normal
                 schussGeschwindigkeitSchiff = 850;
-                monsterGeschwindigkeit = 10;
+                monsterGeschwindigkeit = 8;
                 schussGeschwindigkeitMonster = 800;
                 rangeSchussGeschwindigkeitMonster.put("min", 1000L);
                 rangeSchussGeschwindigkeitMonster.put("max", 1800L);
@@ -56,8 +56,8 @@ public class Game extends Thread{
                 schussGeschwindigkeitSchiff = 850;
                 monsterGeschwindigkeit = 2;
                 schussGeschwindigkeitMonster = 600;
-                rangeSchussGeschwindigkeitMonster.put("min", 800L);
-                rangeSchussGeschwindigkeitMonster.put("max", 1500L);
+                rangeSchussGeschwindigkeitMonster.put("min", 700L);
+                rangeSchussGeschwindigkeitMonster.put("max", 1200L);
                 break;
         }
     }
