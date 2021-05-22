@@ -172,7 +172,7 @@ public class Game extends Thread{
 
 
         // Schüsse von den Monstern bewegen und gameover überprüfen
-        if(!koordinator.ueberpruefenRaumschiffUndBewegeSchuss(schiff)) {
+        if(koordinator.ueberpruefenRaumschiffUndBewegeSchuss(schiff)) {
             gameover = true;
         }
     }
@@ -182,7 +182,7 @@ public class Game extends Thread{
         koordinator.ueberprüfenUndBewegenMonster();
 
         // überprüfe gameover
-        if(!koordinator.gameOver()) {
+        if(koordinator.gameOver()) {
             gameover = true;
         }
     }
