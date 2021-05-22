@@ -140,6 +140,7 @@ public class Koordinator {
     public void neueMonsterListeUebergeben(ArrayList<Monster> monster) {
         Collections.reverse(monster);
         this.monsterListe = monster;
+        this.setzteRichtung(xBewegung.RECHTS);
     }
 
     public boolean gameOver() {

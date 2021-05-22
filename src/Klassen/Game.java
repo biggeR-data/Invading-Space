@@ -16,9 +16,9 @@ public class Game extends Thread{
     private int monsterGeschwindigkeit; // in millisekunden
     private int schussGeschwindigkeitSchiff; // in millisekunden
 
-    private int score;
+    private int stage = 1;
     private boolean gameover = false;
-    private boolean schussloesen = false;
+    private boolean schussLoesenSchiff = false;
 
     private Koordinator koordinator = new Koordinator();
     private Spielbildschirmcontroller gui;
@@ -93,12 +93,11 @@ public class Game extends Thread{
                 gui.setztePunktzahl(koordinator.erhalteScore());
             }
         });
-        checkMonsterGetroffen();
 
-        // loese neuen Schuss
-        if(schussloesen){
+        // Schiff loese neuen Schuss
+        if(schussLoesenSchiff){
             loeseNeuenSchuss();
-            schussloesen=!schussloesen;
+            schussLoesenSchiff =!schussLoesenSchiff;
         }
 
         // nicht jeden Takt ausführen (bei Monster beschleunigung MonsterGeschwindigkeit ändern)
@@ -108,6 +107,28 @@ public class Game extends Thread{
 
         // neue Welle notwendig?
         if(koordinator.neueMonsterListeNotwendig()){
+            // stage erhöhen
+            stage ++;
+            System.out.println("Neue Stage erreicht: " + stage);
+
+            // text ausgeben
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    gui.setztePopup("Stufe " + stage + "erreicht");
+                }
+            });
+            try {
+                this.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    gui.setztePopup("");
+                }
+            });
+
+            // monster generieren
             monsterGenerieren();
             try {
                 this.sleep(0,500);
@@ -115,7 +136,7 @@ public class Game extends Thread{
                 e.printStackTrace();
             }
 
-            //geschwindigkeit erhöhen
+            // geschwindigkeit erhöhen
             if(monsterGeschwindigkeit>8) {
                 monsterGeschwindigkeit -= 2;
             }
@@ -124,21 +145,25 @@ public class Game extends Thread{
     }
 
     // private Operationen
-    private void checkMonsterGetroffen(){
-        System.out.println("checke Monster getroffen");
-        // wenn Monster getroffen - entfernen
-        // Punktzahl aktualisieren
-    }
-
     private void bewegeSchuesse(){
         System.out.println("bewege Schüsse");
+        // Schüsse vom Schiff
         koordinator.ueberpruefenUndBewegenSchuss();
+
+        /*
+        // Schüsse von den Monstern
+        if(!koordinator.ueberprüfeRaumschiffGetroffen(schiff)) {
+            gameover = false;
+        }
+         */
     }
 
     private void bewegeMonster(){
         System.out.println("bewege Monster");
         koordinator.ueberprüfenUndBewegenMonster();
-        gameover = koordinator.gameOver();
+        if(!koordinator.gameOver()) {
+            gameover = false;
+        }
     }
 
     private void loeseNeuenSchuss() {
@@ -159,7 +184,7 @@ public class Game extends Thread{
     public void keyUp(){
         System.out.println("key up");
         if((lastSchiffSchussMillis + schussGeschwindigkeitSchiff) <= System.currentTimeMillis()){
-            schussloesen = true;
+            schussLoesenSchiff = true;
             System.out.println("schuss freigegeben");
             lastSchiffSchussMillis = System.currentTimeMillis();
         }
@@ -183,6 +208,7 @@ public class Game extends Thread{
         for(int x = 0;x< 12;x++){
             listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
         }
+        /*
         // 20er Monster
         for(int y = 0;y< 2;y++){
             for (int x = 0; x < 12; x++) {
@@ -195,8 +221,7 @@ public class Game extends Thread{
                 listMonster.add(new MonsterZehn(x * 40 + 30, y * 50 + 250, root));
             }
         }
-
+        */
         koordinator.neueMonsterListeUebergeben(listMonster);
-
     }
 }

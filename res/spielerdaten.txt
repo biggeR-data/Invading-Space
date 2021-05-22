@@ -15,6 +15,7 @@ Jasmin,15000
 Jasmin,15000
 Jan,15000
 asd,15000
+Jan,2640
 jasndadwdawsdsdad,2187
 PhilippFögen,1430
 dsf,1399
@@ -42,7 +43,9 @@ yxc,349
 asd,349
 asd,349
 asd,190
+hejhi,190
 Jan,180
+Jan,150
 Jan,109
 asd,82
 Thomas,42
