@@ -41,8 +41,25 @@ public class Koordinator {
         schuesseRaumschiff.add(schuss);
     }
 
-    public void hinzufuegenSchussMonster(Schuss schuss) {
-        schuesseMonster.add(schuss);
+    public void schiessenMonster(double xKoorRaumschiff) {
+        ArrayList<Monster> naechsteMonster = new ArrayList<Monster>();
+        for (Monster monster : this.monsterListe) {
+            if (monster.erhalteXKoor() <= xKoorRaumschiff + 10 && monster.erhalteXKoor() >= xKoorRaumschiff - 10) {
+                naechsteMonster.add(monster);
+            }
+        }
+        double yKoorMonsterMax = 0;
+        for (Monster monster : naechsteMonster) {
+            if (monster.erhalteYKoor() >= yKoorMonsterMax) {
+                yKoorMonsterMax = monster.erhalteYKoor();
+            }
+        }
+        for (Monster monster : naechsteMonster) {
+            if (monster.erhalteYKoor() == yKoorMonsterMax) {
+                monster.schiessen();
+            }
+        }
+
     }
 
     private boolean prüfeKollisionRand() {
@@ -95,7 +112,7 @@ public class Koordinator {
         }
     }
 
-    public void ueberpruefenUndBewegenSchuss() {
+    public void ueberpruefenMonsterUndBewegenSchuss() {
         // Kollision mit Schuss überprüfen (für jedes Objekt)
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
@@ -125,7 +142,7 @@ public class Koordinator {
         this.monsterListe.removeAll(loescheMonster);
     }
 
-    public boolean ueberprüfeRaumschiffGetroffen(Raumschiff raumschiff) {
+    public boolean ueberpruefenRaumschiffUndBewegeSchuss(Raumschiff raumschiff) {
         for (Schuss schuss : schuesseMonster) {
             schuss.schiessenRunter();
             if (raumschiff.pruefeKollision(schuss)) {

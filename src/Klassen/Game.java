@@ -148,11 +148,11 @@ public class Game extends Thread{
     private void bewegeSchuesse(){
         System.out.println("bewege Schüsse");
         // Schüsse vom Schiff
-        koordinator.ueberpruefenUndBewegenSchuss();
+        koordinator.ueberpruefenMonsterUndBewegenSchuss();
 
 
         // Schüsse von den Monstern
-        if(!koordinator.ueberprüfeRaumschiffGetroffen(schiff)) {
+        if(!koordinator.ueberpruefenRaumschiffUndBewegeSchuss(schiff)) {
             gameover = false;
         }
     }
