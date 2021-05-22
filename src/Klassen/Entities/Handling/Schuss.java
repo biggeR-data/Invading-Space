@@ -20,8 +20,11 @@ public class Schuss extends BeweglicheObjekte {
      * Schuss des Raumschiffs
      */
     public void schiessenHoch() {
+        // Aussehen setzen
         Image bild = erhalteBild("Schuss_Blau.png");
         setzteBild(bild);
+
+        // Bewegung
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor = erhalteYKoor() - YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
@@ -31,8 +34,11 @@ public class Schuss extends BeweglicheObjekte {
      * Schuss der Gegner
      */
     public void schiessenRunter() {
+        // Aussehen setzen
         Image img = erhalteBild("Schuss_Rot.png");
         setzteBild(img);
+
+        // Bewegung
         zeichneSchwarz(erhalteBreite(), erhalteHoehe());
         this.yKoor = erhalteYKoor() + YBEWEGUNG;
         zeichneWeiss(erhalteBreite(), erhalteHoehe());
