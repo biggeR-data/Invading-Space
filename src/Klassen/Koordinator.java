@@ -138,23 +138,25 @@ public class Koordinator {
                 loescheSchuesse.add(schuss);
             }
         }
-        for (Schuss schuss : schuesseMonster) {
-            if (schuss.pruefeKollisionUnten(RANDUNTENSCHUSS) == true) {
-                schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
-                loescheSchuesse.add(schuss);
-            }
-        }
         schuesseRaumschiff.removeAll(loescheSchuesse);
         this.monsterListe.removeAll(loescheMonster);
     }
 
     public boolean ueberpruefenRaumschiffUndBewegeSchuss(Raumschiff raumschiff) {
+        ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
         for (Schuss schuss : schuesseMonster) {
             schuss.schiessenRunter();
             if (raumschiff.pruefeKollision(schuss)) {
                 return true;
             }
         }
+        for (Schuss schuss : schuesseMonster) {
+            if (schuss.pruefeKollisionUnten(RANDUNTENSCHUSS) == true) {
+                schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
+                loescheSchuesse.add(schuss);
+            }
+        }
+        schuesseMonster.removeAll(loescheSchuesse);
         return false;
     }
 

@@ -1,5 +1,6 @@
 Jan,10000000
 Jan,10000000
+Jan,10000000
 Leon_derBugfixende_Boss,15000
 BIg-P,15000
 lil_Chicken,15000
@@ -50,6 +51,7 @@ Jan,180
 Jan,150
 Jan,109
 asd,82
+Jasmin,80
 Thomas,42
 Jasmin,40
 Angela,40
@@ -85,3 +87,6 @@ Patrick,0
 Jan,0
 jan,0
 Jan,0
+Jasmin,0
+Jasmin,0
+Jasmin,0
