@@ -138,6 +138,12 @@ public class Koordinator {
                 loescheSchuesse.add(schuss);
             }
         }
+        for (Schuss schuss : schuesseMonster) {
+            if (schuss.pruefeKollisionUnten(RANDUNTENSCHUSS) == true) {
+                schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
+                loescheSchuesse.add(schuss);
+            }
+        }
         schuesseRaumschiff.removeAll(loescheSchuesse);
         this.monsterListe.removeAll(loescheMonster);
     }
