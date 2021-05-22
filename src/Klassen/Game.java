@@ -229,13 +229,14 @@ public class Game extends Thread{
         for(int x = 0;x< 12;x++){
             listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
         }
-        
+
         // 20er Monster
         for(int y = 0;y< 2;y++){
             for (int x = 0; x < 12; x++) {
                 listMonster.add(new MonsterZwanzig(x * 40 + 30, y * 50 + 150, root));
             }
         }
+        
         // 10er Monster
         for(int y = 0;y<2;y++){
             for (int x = 0; x < 12; x++) {
