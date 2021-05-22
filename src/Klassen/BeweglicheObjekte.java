@@ -20,6 +20,7 @@ public abstract class BeweglicheObjekte {
     private double hoehe = STANDARD_HOEHE;
     private double breite = STANDARD_BREITE;
     private double xBewegung = STANDARD_XBEWEGUNG;
+    private Rectangle zeichenObjekt;
     public Group root;
     private Image img = STANDART_BILD;
 
@@ -108,22 +109,29 @@ public abstract class BeweglicheObjekte {
 
     // Rechteck zeichnen schwarz und weiß
     protected void zeichneSchwarz(double breite, double hoehe) {
-        Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
-        objekt.setFill(Color.BLACK);
+        //Rectangle objekt  = new Rectangle(xKoor, yKoor, breite, hoehe);
+        if (zeichenObjekt != null) {
+            zeichenObjekt.setFill(Color.BLACK);
+        } else {
+            System.out.println("zeichenobjekt ist null");
+        }
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                root.getChildren().add(objekt);
+                root.getChildren().remove(zeichenObjekt);
             }
         });
         //this.root.getChildren().add(objekt);
     }
 
     protected void zeichneWeiss(double breite, double hoehe) {
-        Rectangle objekt = new Rectangle(xKoor, yKoor, breite, hoehe);
-        objekt.setFill(new ImagePattern(img));
+        zeichenObjekt = new Rectangle(xKoor, yKoor, breite, hoehe);
+        zeichenObjekt.setFill(new ImagePattern(img));
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                root.getChildren().add(objekt);
+                if (root.getChildren() != null && root.getChildren().contains(zeichenObjekt)) {
+                    return;
+                }
+                root.getChildren().add(zeichenObjekt);
             }
         });
         //this.root.getChildren().add(objekt);
