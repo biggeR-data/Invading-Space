@@ -120,6 +120,16 @@ public class Koordinator {
         this.monsterListe.removeAll(loescheMonster);
     }
 
+    public boolean ueberprüfeRaumschiffGetroffen(Raumschiff raumschiff) {
+        for (Schuss schuss : schuesseListe) {
+            schuss.schiessenRunter();
+            if (raumschiff.pruefeKollision(schuss)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean neueMonsterListeNotwendig() {
         if (this.monsterListe.isEmpty()) {
             return true;
