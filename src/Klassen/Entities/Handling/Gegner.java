@@ -2,12 +2,12 @@ package Klassen.Entities.Handling;
 
 import javafx.scene.Group;
 
-public abstract class Monster extends BeweglicheObjekte {
+public abstract class Gegner extends BeweglicheObjekte {
     private static final int PUNKTE = 10;
     private final double YBEWEGUNG = 50;
     private int punkte = PUNKTE;
 
-    public Monster(double xKoor, double yKoor, Group root) {
+    public Gegner(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
         //Image img = new Image(getClass().getResource("/Testing/DarthVaderKopf.png").toExternalForm());
         //setzteBild(img);
@@ -15,7 +15,7 @@ public abstract class Monster extends BeweglicheObjekte {
     }
 
     /**
-     * Eine neue Punktzahl für das Monster-Objekt setzen.
+     * Eine neue Punktzahl für das Gegner-Objekt setzen.
      * @param punkte Ein int-Wert
      */
     protected void setzePunkte(int punkte) {
@@ -23,7 +23,7 @@ public abstract class Monster extends BeweglicheObjekte {
     }
 
     /**
-     * Erhalte die aktuelle Punktzahl des Monster-Objekts
+     * Erhalte die aktuelle Punktzahl des Gegner-Objekts
      * @return
      */
     public int erhaltePunkte() {
@@ -31,7 +31,7 @@ public abstract class Monster extends BeweglicheObjekte {
     }
 
     /**
-     * Das Monster-Objekt nach rechts bewegen.
+     * Das Gegner-Objekt nach rechts bewegen.
      * Altes Objekt entfernen
      * Koordinaten neu berechnen
      * Neues Objekt zeichnen
@@ -43,7 +43,7 @@ public abstract class Monster extends BeweglicheObjekte {
     }
 
     /**
-     * Das Monster-Objekt nach links bewegen.
+     * Das Gegner-Objekt nach links bewegen.
      * Altes Objekt entfernen
      * Koordinaten neu berechnen
      * Neues Objekt zeichnen

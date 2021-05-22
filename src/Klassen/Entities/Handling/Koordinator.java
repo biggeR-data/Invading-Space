@@ -9,7 +9,7 @@ public class Koordinator {
         RECHTS
     }
     private xBewegung richtung = xBewegung.RECHTS; //true = rechts; false = links
-    private ArrayList<Monster> monsterListe;
+    private ArrayList<Gegner> gegnerListe;
     private ArrayList<Schuss> schuesseRaumschiff = new ArrayList<Schuss>();
     private ArrayList<Schuss> schuesseMonster = new ArrayList<Schuss>();
     private final double RANDRECHTS = 590;
@@ -42,21 +42,21 @@ public class Koordinator {
     }
 
     public void schiessenMonster(double xKoorRaumschiff) {
-        ArrayList<Monster> naechsteMonster = new ArrayList<Monster>();
-        for (Monster monster : this.monsterListe) {
-            if (monster.erhalteXKoor() <= xKoorRaumschiff + 10 && monster.erhalteXKoor() >= xKoorRaumschiff - 10) {
-                naechsteMonster.add(monster);
+        ArrayList<Gegner> naechsteGegner = new ArrayList<Gegner>();
+        for (Gegner gegner : this.gegnerListe) {
+            if (gegner.erhalteXKoor() <= xKoorRaumschiff + 10 && gegner.erhalteXKoor() >= xKoorRaumschiff - 10) {
+                naechsteGegner.add(gegner);
             }
         }
         double yKoorMonsterMax = 0;
-        for (Monster monster : naechsteMonster) {
-            if (monster.erhalteYKoor() >= yKoorMonsterMax) {
-                yKoorMonsterMax = monster.erhalteYKoor();
+        for (Gegner gegner : naechsteGegner) {
+            if (gegner.erhalteYKoor() >= yKoorMonsterMax) {
+                yKoorMonsterMax = gegner.erhalteYKoor();
             }
         }
-        for (Monster monster : naechsteMonster) {
-            if (monster.erhalteYKoor() == yKoorMonsterMax) {
-                schuesseMonster.add(monster.schiessen());
+        for (Gegner gegner : naechsteGegner) {
+            if (gegner.erhalteYKoor() == yKoorMonsterMax) {
+                schuesseMonster.add(gegner.schiessen());
             }
         }
 
@@ -64,14 +64,14 @@ public class Koordinator {
 
     private boolean prüfeKollisionRand() {
         if (richtung == xBewegung.RECHTS) {
-            for (Monster monster : this.monsterListe) {
-                if (monster.pruefeKollisionRechts(RANDRECHTS) == true) {
+            for (Gegner gegner : this.gegnerListe) {
+                if (gegner.pruefeKollisionRechts(RANDRECHTS) == true) {
                     return true;
                 }
             }
         } else {
-            for (Monster monster : this.monsterListe) {
-                if (monster.pruefeKollisionLinks(RANDLINKS) == true) {
+            for (Gegner gegner : this.gegnerListe) {
+                if (gegner.pruefeKollisionLinks(RANDLINKS) == true) {
                     return true;
                 }
             }
@@ -80,32 +80,32 @@ public class Koordinator {
     }
 
     public void ueberprüfenUndBewegenMonster() {
-        // Kollision mit Rand überprüfen, Monster bewegen und ggf. Richtung wechseln
+        // Kollision mit Rand überprüfen, Gegner bewegen und ggf. Richtung wechseln
         switch (richtung) {
             case LINKS:
                 if (prüfeKollisionRand() == true) {
-                    for (Monster monster : this.monsterListe) {
-                        monster.bewegenRunter();
-                        monster.zeichneWeiss(monster.erhalteBreite(), monster.erhalteHoehe());
+                    for (Gegner gegner : this.gegnerListe) {
+                        gegner.bewegenRunter();
+                        gegner.zeichneWeiss(gegner.erhalteBreite(), gegner.erhalteHoehe());
                     }
                     setzteRichtung(xBewegung.RECHTS);
                 } else {
-                    for (Monster monster : this.monsterListe) {
-                        monster.bewegenLinks();
+                    for (Gegner gegner : this.gegnerListe) {
+                        gegner.bewegenLinks();
                     }
                 }
                 break;
 
             case RECHTS:
                 if (prüfeKollisionRand() == true) {
-                    for (Monster monster : this.monsterListe) {
-                        monster.bewegenRunter();
-                        monster.zeichneWeiss(monster.erhalteBreite(), monster.erhalteHoehe());
+                    for (Gegner gegner : this.gegnerListe) {
+                        gegner.bewegenRunter();
+                        gegner.zeichneWeiss(gegner.erhalteBreite(), gegner.erhalteHoehe());
                     }
                     setzteRichtung(xBewegung.LINKS);
                 } else {
-                    for (Monster monster : this.monsterListe) {
-                        monster.bewegenRechts();
+                    for (Gegner gegner : this.gegnerListe) {
+                        gegner.bewegenRechts();
                     }
                 }
                 break;
@@ -116,16 +116,16 @@ public class Koordinator {
         // Kollision mit Schuss überprüfen (für jedes Objekt)
         // Element aus der Datenstruktur nehmen (und damit auf den Bildschirm entfernen (ggf. zeichenSchwarz))
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
-        ArrayList<Monster> loescheMonster = new ArrayList<Monster>();
+        ArrayList<Gegner> loescheGegner = new ArrayList<Gegner>();
 
         for (Schuss schuss : schuesseRaumschiff) {
             schuss.schiessenHoch();
-            for (Monster monster : this.monsterListe) {
-                if (monster.pruefeKollision(schuss) == true) {
-                    score += monster.erhaltePunkte();
-                    // Monster zerstört und aus der ArrayList monsterListe entfernen
-                    monster.zeichneSchwarz(monster.erhalteBreite(), monster.erhalteHoehe());
-                    loescheMonster.add(monster);
+            for (Gegner gegner : this.gegnerListe) {
+                if (gegner.pruefeKollision(schuss) == true) {
+                    score += gegner.erhaltePunkte();
+                    // Gegner zerstört und aus der ArrayList gegnerListe entfernen
+                    gegner.zeichneSchwarz(gegner.erhalteBreite(), gegner.erhalteHoehe());
+                    loescheGegner.add(gegner);
                     // Schuss zerstören und aus der ArrayList schusseListe entfernen
                     schuss.zeichneSchwarz(schuss.erhalteBreite(), schuss.erhalteHoehe());
                     loescheSchuesse.add(schuss);
@@ -139,7 +139,7 @@ public class Koordinator {
             }
         }
         schuesseRaumschiff.removeAll(loescheSchuesse);
-        this.monsterListe.removeAll(loescheMonster);
+        this.gegnerListe.removeAll(loescheGegner);
     }
 
     public boolean ueberpruefenRaumschiffUndBewegeSchuss(Raumschiff raumschiff) {
@@ -161,21 +161,21 @@ public class Koordinator {
     }
 
     public boolean neueMonsterListeNotwendig() {
-        if (this.monsterListe.isEmpty()) {
+        if (this.gegnerListe.isEmpty()) {
             return true;
         }
         return false;
     }
 
-    public void neueMonsterListeUebergeben(ArrayList<Monster> monster) {
-        Collections.reverse(monster);
-        this.monsterListe = monster;
+    public void neueMonsterListeUebergeben(ArrayList<Gegner> gegner) {
+        Collections.reverse(gegner);
+        this.gegnerListe = gegner;
         this.setzteRichtung(xBewegung.RECHTS);
     }
 
     public boolean gameOver() {
-        for (Monster monster : this.monsterListe) {
-            if (monster.pruefeKollisionUnten(RANDUNTENMONSTER) == true) {
+        for (Gegner gegner : this.gegnerListe) {
+            if (gegner.pruefeKollisionUnten(RANDUNTENMONSTER) == true) {
                 return true;
             }
         }

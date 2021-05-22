@@ -20,7 +20,7 @@ public class Game extends Thread{
     private long schussGeschwindigkeitSchiff; // in millisekunden
     private long schussGeschwindigkeitMonster; // in millisekungen
 
-    // Range für Random Schussgeschwindikeit der Monster
+    // Range für Random Schussgeschwindikeit der Gegner
     private Map<String, Long> rangeSchussGeschwindigkeitMonster = new HashMap<String, Long>();
 
     private int stage = 1;
@@ -30,7 +30,7 @@ public class Game extends Thread{
     private Koordinator koordinator = new Koordinator();
     private Spielbildschirmcontroller gui;
     private Spieler spieler;
-    private ArrayList<Monster> listMonster = new ArrayList<Monster>();
+    private ArrayList<Gegner> listGegner = new ArrayList<Gegner>();
     private Raumschiff schiff;
 
     private long lastSchiffSchussMillis = 0; // in millisekunden
@@ -112,16 +112,16 @@ public class Game extends Thread{
             schussLoesenSchiff =!schussLoesenSchiff;
         }
 
-        // Monster schuss loesen
+        // Gegner schuss loesen
         if(lastMonsterSchussMillis + schussGeschwindigkeitMonster <= System.currentTimeMillis()){
-            //System.out.println("Monster schießt");
+            //System.out.println("Gegner schießt");
             koordinator.schiessenMonster(schiff.xKoor);
             schussGeschwindigkeitMonster = (long) (Math.random()*(rangeSchussGeschwindigkeitMonster.get("max") - rangeSchussGeschwindigkeitMonster.get("min")) + rangeSchussGeschwindigkeitMonster.get("min"));
             //System.out.println("Nächster Schuss:" + schussGeschwindigkeitMonster);
             lastMonsterSchussMillis = System.currentTimeMillis();
         }
 
-        // nicht jeden Takt ausführen (bei Monster beschleunigung MonsterGeschwindigkeit ändern)
+        // nicht jeden Takt ausführen (bei Gegner beschleunigung MonsterGeschwindigkeit ändern)
         if(zeahlerTakt % monsterGeschwindigkeit == 0){
             bewegeMonster();
         }
@@ -179,7 +179,7 @@ public class Game extends Thread{
     }
 
     private void bewegeMonster(){
-        //System.out.println("bewege Monster");
+        //System.out.println("bewege Gegner");
         koordinator.ueberprüfenUndBewegenMonster();
 
         // überprüfe gameover
@@ -225,26 +225,26 @@ public class Game extends Thread{
     }
 
     public void monsterGenerieren(){
-        listMonster.removeAll(listMonster);
-        // 50er Monster
+        listGegner.removeAll(listGegner);
+        // 50er Gegner
         for(int x = 0;x< 12;x++){
-            listMonster.add(new MonsterFuenfzig(x * 40 + 30, 100, root));
+            listGegner.add(new GegnerFuenfzig(x * 40 + 30, 100, root));
         }
 
-        // 20er Monster
+        // 20er Gegner
         for(int y = 0;y< 2;y++){
             for (int x = 0; x < 12; x++) {
-                listMonster.add(new MonsterZwanzig(x * 40 + 30, y * 50 + 150, root));
+                listGegner.add(new GegnerZwanzig(x * 40 + 30, y * 50 + 150, root));
             }
         }
         
-        // 10er Monster
+        // 10er Gegner
         for(int y = 0;y<2;y++){
             for (int x = 0; x < 12; x++) {
-                listMonster.add(new MonsterZehn(x * 40 + 30, y * 50 + 250, root));
+                listGegner.add(new GegnerZehn(x * 40 + 30, y * 50 + 250, root));
             }
         }
 
-        koordinator.neueMonsterListeUebergeben(listMonster);
+        koordinator.neueMonsterListeUebergeben(listGegner);
     }
 }
