@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 // todo: Stages? GameOver? Score speichern?
 
@@ -13,8 +15,12 @@ public class Game extends Thread{
     private Group root;
 
     private long zeahlerTakt = 0;
-    private int monsterGeschwindigkeit; // in millisekunden
-    private int schussGeschwindigkeitSchiff; // in millisekunden
+    private int monsterGeschwindigkeit; // in ticks
+    private long schussGeschwindigkeitSchiff; // in millisekunden
+    private long schussGeschwindigkeitMonster; // in millisekungen
+
+    // Range für Random Schussgeschwindikeit der Monster
+    private Map<String, Long> rangeSchussGeschwindigkeitMonster = new HashMap<String, Long>();
 
     private int stage = 1;
     private boolean gameover = false;
@@ -24,11 +30,10 @@ public class Game extends Thread{
     private Spielbildschirmcontroller gui;
     private Spieler spieler;
     private ArrayList<Monster> listMonster = new ArrayList<Monster>();
-    private ArrayList<Schuss> listSchuesse = new ArrayList<Schuss>();
     private Raumschiff schiff;
 
-    private long lastSchussMillis = 0; // in millisekunden
-    private long lastSchiffSchussMillis = 0;
+    private long lastSchiffSchussMillis = 0; // in millisekunden
+    private long lastMonsterSchussMillis = 0; // in millisekunden
     private long lastTickMillis = 0; // in millisekunden
     private int timePerTick = 50; // in millisekunden
 
@@ -42,11 +47,17 @@ public class Game extends Thread{
                 // normal
                 schussGeschwindigkeitSchiff = 850;
                 monsterGeschwindigkeit = 20;
+                schussGeschwindigkeitMonster = 500;
+                rangeSchussGeschwindigkeitMonster.put("min", 200L);
+                rangeSchussGeschwindigkeitMonster.put("max", 800L);
                 break;
             case 1:
                 // schnell
                 schussGeschwindigkeitSchiff = 850;
                 monsterGeschwindigkeit = 4;
+                schussGeschwindigkeitMonster = 500;
+                rangeSchussGeschwindigkeitMonster.put("min", 100L);
+                rangeSchussGeschwindigkeitMonster.put("max", 700L);
                 break;
         }
     }
@@ -56,7 +67,7 @@ public class Game extends Thread{
     public void run(){
         monsterGenerieren();
         lastTickMillis = System.currentTimeMillis();
-        lastSchussMillis = System.currentTimeMillis();
+        lastMonsterSchussMillis = System.currentTimeMillis();
         lastSchiffSchussMillis = System.currentTimeMillis();
         schiff = new Raumschiff(280,638, root);
         // spiele bis gameover
@@ -98,6 +109,15 @@ public class Game extends Thread{
         if(schussLoesenSchiff){
             loeseNeuenSchuss();
             schussLoesenSchiff =!schussLoesenSchiff;
+        }
+
+        // Monster schuss loesen
+        if(lastMonsterSchussMillis + schussGeschwindigkeitMonster <= System.currentTimeMillis()){
+            System.out.println("Monster schießt");
+            koordinator.schiessenMonster(schiff.xKoor);
+            schussGeschwindigkeitMonster = (long) (Math.random()*(rangeSchussGeschwindigkeitMonster.get("max") - rangeSchussGeschwindigkeitMonster.get("min")) + rangeSchussGeschwindigkeitMonster.get("min"));
+            System.out.println("Nächster Schuss:" + schussGeschwindigkeitMonster);
+            lastMonsterSchussMillis = System.currentTimeMillis();
         }
 
         // nicht jeden Takt ausführen (bei Monster beschleunigung MonsterGeschwindigkeit ändern)
@@ -151,17 +171,19 @@ public class Game extends Thread{
         koordinator.ueberpruefenMonsterUndBewegenSchuss();
 
 
-        // Schüsse von den Monstern
+        // Schüsse von den Monstern bewegen und gameover überprüfen
         if(!koordinator.ueberpruefenRaumschiffUndBewegeSchuss(schiff)) {
-            gameover = false;
+            gameover = true;
         }
     }
 
     private void bewegeMonster(){
         System.out.println("bewege Monster");
         koordinator.ueberprüfenUndBewegenMonster();
+
+        // überprüfe gameover
         if(!koordinator.gameOver()) {
-            gameover = false;
+            gameover = true;
         }
     }
 
