@@ -195,7 +195,7 @@ public class ObjektSteuerung {
 
         // Überprüfen, ob die Schüsse den oberen Rand erreichen
         for (Schuss schuss : schuesseRaumschiff) {
-            if (schuss.pruefeGegnerGetroffen(RANDOBEN) == true) {
+            if (schuss.pruefeKollisionRandOben(RANDOBEN) == true) {
                 schuss.loescheObjekt();
                 loescheSchuesse.add(schuss);
             }
@@ -228,7 +228,7 @@ public class ObjektSteuerung {
 
         // Schuss verfehlt -> Objekt entfernen
         for (Schuss schuss : schuesseGegner) {
-            if (schuss.pruefeRaumschiffGetroffen(RANDUNTENSCHUSS) == true) {
+            if (schuss.pruefeKollisionRandUnten(RANDUNTENSCHUSS) == true) {
                 schuss.loescheObjekt();
                 loescheSchuesse.add(schuss);
             }

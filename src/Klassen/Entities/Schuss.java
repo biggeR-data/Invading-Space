@@ -45,12 +45,12 @@ public class Schuss extends BeweglicheObjekte {
     }
 
     /**
-     * Treffertest der Gegner
+     * Überprufen, ob der Schuss an den oberen Rand kommt
      *
      * @param yRand Höhenlimit
      * @return boolean Wahr, falls ein Treffer vorliegt
      */
-    public boolean pruefeGegnerGetroffen(double yRand) {
+    public boolean pruefeKollisionRandOben(double yRand) {
         if (erhalteYKoor() - YBEWEGUNG < yRand) {
             return true;
         }
@@ -59,12 +59,12 @@ public class Schuss extends BeweglicheObjekte {
     }
 
     /**
-     * Treffertest des Raumschiffs
+     * Überprüfen, ob der Schuss an den unteren Rand kommt
      *
      * @param yRand Höhenlimit
      * @return boolean Wahr, falls ein Treffer vorliegt
      */
-    public boolean pruefeRaumschiffGetroffen(double yRand) {
+    public boolean pruefeKollisionRandUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
         }
