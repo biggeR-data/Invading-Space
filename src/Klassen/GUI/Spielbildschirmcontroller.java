@@ -1,5 +1,6 @@
 package Klassen.GUI;
 
+import Klassen.Handling.Spielablauf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,6 @@ import java.io.IOException;
 
 import Klassen.Scores.Spieler;
 import Klassen.Scores.ScoreListe;
-import Klassen.Handling.Game;
 
 /**
  * funktionale Logik während dem Spielen
@@ -49,7 +49,7 @@ public class Spielbildschirmcontroller {
     private Spieler spieler;
     private int modus;
 
-    private static Game spielThread;
+    private static Spielablauf spielThread;
 
     /**
      * Thread starten für Spiel
@@ -88,7 +88,7 @@ public class Spielbildschirmcontroller {
 
         // Starten des Threads
         // KeyEvents des Spielablaufs verarbeiten
-        spielThread = new Game(this, modus, root);
+        spielThread = new Spielablauf(modus,this, root);
         spielThread.start();
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -141,10 +141,10 @@ public class Spielbildschirmcontroller {
     public void setzePopup(String nachricht) {
         // Aussehen & Styling
         lblPopUp = new Label(nachricht);
-        lblPopUp.setLayoutX(270);
+        lblPopUp.setLayoutX(220);
         lblPopUp.setLayoutY(298);
-        lblPopUp.setTextFill(javafx.scene.paint.Color.WHITE);
-        lblPopUp.setFont(Font.font("System", 23));
+        lblPopUp.setTextFill(javafx.scene.paint.Color.valueOf("#facc15"));
+        lblPopUp.setFont(starwarsfontvoll);
 
         // Einblendung
         root.getChildren().add(lblPopUp);
@@ -155,7 +155,7 @@ public class Spielbildschirmcontroller {
         root.getChildren().remove(lblPopUp);
     }
 
-    public static Game erhalteSpielThread() {
+    public static Spielablauf erhalteSpielThread() {
         return spielThread;
     }
 
