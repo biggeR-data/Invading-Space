@@ -1,5 +1,4 @@
 .DS_Store
 .idea
 out/
-res/Scores/spielerdaten_hölle.txt
-res/Scores/spielerdaten_normal.txt
+res/Scores/
