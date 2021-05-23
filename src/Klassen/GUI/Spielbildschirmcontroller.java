@@ -160,10 +160,12 @@ public class Spielbildschirmcontroller {
     }
 
     public void formatieren() {
+        // Highscore
         lblHighscore.setFont(starwarsfontvoll);
         lblHighscoreName.setFont(starwarsfontvoll);
         lblHighscorePunkte.setFont(starwarsfontvoll);
 
+        // Spieler
         lblSpielername.setFont(starwarsfontvoll);
         lblAktuellerScore.setFont(starwarsfontvoll);
 
