@@ -12,12 +12,12 @@ import java.nio.file.StandardOpenOption;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class ScoreListe {
+public class PunkteListe {
 
     private LinkedList<Spieler> spielerliste = new LinkedList<>();
     private Path dokSpielerdaten;
 
-    public ScoreListe(String pfad_zu_spielerdaten) {
+    public PunkteListe(String pfad_zu_spielerdaten) {
         try {
             setDokSpielerdaten(pfad_zu_spielerdaten);
             txtAuslesen();

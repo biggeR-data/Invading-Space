@@ -2,7 +2,7 @@ package Klassen.GUI;
 
 import Klassen.Exceptions.DelimException;
 import Klassen.Exceptions.EmptyException;
-import Klassen.Scores.ScoreListe;
+import Klassen.Scores.PunkteListe;
 import Klassen.Scores.Spieler;
 
 import javafx.event.ActionEvent;
@@ -77,14 +77,14 @@ public class Startbildschirmcontroller {
     }
 
     public void aktiviereStartbildschirm() {
-        ScoreListe scoreListeNormal = new ScoreListe("./res/Scores/spielerdaten_normal.txt");
-        ScoreListe scoreListeHölle = new ScoreListe("./res/Scores/spielerdaten_hölle.txt");
+        PunkteListe punkteListeNormal = new PunkteListe("./res/Scores/spielerdaten_normal.txt");
+        PunkteListe punkteListeHölle = new PunkteListe("./res/Scores/spielerdaten_hölle.txt");
 
         // Highscore pro Modus setzen
-        lblHighscoreNameNormal.setText(scoreListeNormal.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkteNormal.setText(String.valueOf(scoreListeNormal.spielerlisteIndexAusgabe(0).erhaltePunkte()));
-        lblHighscoreNameHölle.setText(scoreListeHölle.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkteHölle.setText(String.valueOf(scoreListeHölle.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        lblHighscoreNameNormal.setText(punkteListeNormal.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkteNormal.setText(String.valueOf(punkteListeNormal.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        lblHighscoreNameHölle.setText(punkteListeHölle.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkteHölle.setText(String.valueOf(punkteListeHölle.spielerlisteIndexAusgabe(0).erhaltePunkte()));
 
         formatieren();
     }

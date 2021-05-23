@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import Klassen.Scores.Spieler;
-import Klassen.Scores.ScoreListe;
+import Klassen.Scores.PunkteListe;
 
 /**
  * funktionale Logik während dem Spielen
@@ -44,7 +44,7 @@ public class Spielbildschirmcontroller {
     private Label lblPopUp;
 
     // Scores
-    private ScoreListe scoreListe;
+    private PunkteListe punkteListe;
     private String pfadZuSpielerdaten;
     private Spieler spieler;
     private int modus;
@@ -81,10 +81,10 @@ public class Spielbildschirmcontroller {
         }
 
         // Highscore Spieler
-        scoreListe = new ScoreListe(pfadZuSpielerdaten);
+        punkteListe = new PunkteListe(pfadZuSpielerdaten);
         lblSpielername.setText(spieler.erhalteName());
-        lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        lblHighscoreName.setText(punkteListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkte.setText(String.valueOf(punkteListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
 
         // Starten des Threads
         // KeyEvents des Spielablaufs verarbeiten

@@ -19,7 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import Klassen.Scores.ScoreListe;
+import Klassen.Scores.PunkteListe;
 import Klassen.Scores.Spieler;
 
 /**
@@ -66,7 +66,7 @@ public class Endbildschirmcontroller {
     @FXML private Button btnStartseite;
 
     // Score relevant Attribute
-    private ScoreListe scoreListe;
+    private PunkteListe punkteListe;
     private String pfadZuSpielerdaten;
     private Spieler spieler;
     private int modus;
@@ -107,20 +107,20 @@ public class Endbildschirmcontroller {
         }
 
         // Punktzahl Verarbeitung
-        scoreListe = new ScoreListe(pfadZuSpielerdaten);
-        scoreListe.spielerHinzufuegen(spieler);
+        punkteListe = new PunkteListe(pfadZuSpielerdaten);
+        punkteListe.spielerHinzufuegen(spieler);
         lblScore.setText(String.valueOf(spieler.erhaltePunkte()));
 
         // Highscore Verwaltung
-        lblTop1Name.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lblTop1Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
-        lblTop2Name.setText(scoreListe.spielerlisteIndexAusgabe(1).erhalteName());
-        lblTop2Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(1).erhaltePunkte()));
-        lblTop3Name.setText(scoreListe.spielerlisteIndexAusgabe(2).erhalteName());
-        lblTop3Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(2).erhaltePunkte()));
+        lblTop1Name.setText(punkteListe.spielerlisteIndexAusgabe(0).erhalteName());
+        lblTop1Score.setText(String.valueOf(punkteListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        lblTop2Name.setText(punkteListe.spielerlisteIndexAusgabe(1).erhalteName());
+        lblTop2Score.setText(String.valueOf(punkteListe.spielerlisteIndexAusgabe(1).erhaltePunkte()));
+        lblTop3Name.setText(punkteListe.spielerlisteIndexAusgabe(2).erhalteName());
+        lblTop3Score.setText(String.valueOf(punkteListe.spielerlisteIndexAusgabe(2).erhaltePunkte()));
 
         // Endstand der Highscores speichern
-        scoreListe.txtUpdaten();
+        punkteListe.txtUpdaten();
         stage.setScene(scene);
         stage.show();
     }
