@@ -109,9 +109,13 @@ public abstract class BeweglicheObjekte {
         });
     }
 
+    /**
+     * Lösche das Objekt aus dem Spiel
+     */
     public void loescheObjekt() {
         entferneObjekt();
     }
+    
     /**
      * Zeichne ein rechteckiges Objekt mit ausgewähltem Image auf der grafischen Oberfläche
      *
