@@ -1,3 +1,4 @@
+patrick,7050
 Jan,2140
 Jasmin,1410
 Jan,1200
@@ -36,5 +37,8 @@ Leon,10
 Patrick,10
 Jasmin,0
 Jasmin,0
+Jasmin,0
+Jasmin,0
+min,0
 Jasmin,0
 Jasmin,0
