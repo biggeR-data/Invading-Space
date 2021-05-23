@@ -81,11 +81,6 @@ public abstract class BeweglicheObjekte {
         this.hoehe = hoehe;
     }
 
-    // todo: rausnehmen
-    protected void setzeXBewegung(double xBewegung) {
-        this.xBewegung = xBewegung;
-    }
-
     public double erhalteXBewegung() {
         return xBewegung;
     }
@@ -94,7 +89,6 @@ public abstract class BeweglicheObjekte {
         bild = image;
     }
 
-    // todo: rausnehmen
     public Group erhalteGroup() {
         return this.root;
     }
@@ -102,10 +96,11 @@ public abstract class BeweglicheObjekte {
     /**
      * Enferne das entsprechende Objekt von der grafischen Oberfläche
      */
-    protected void entferneObjekt() {
+    public void entferneObjekt() {
         if (zeichenObjekt != null) {
             zeichenObjekt.setFill(Color.BLACK);
         }
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -120,9 +115,10 @@ public abstract class BeweglicheObjekte {
      * @param breite
      * @param hoehe
      */
-    protected void erschaffeObjekt(double breite, double hoehe) {
+    public void erschaffeObjekt(double breite, double hoehe) {
         zeichenObjekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         zeichenObjekt.setFill(new ImagePattern(bild));
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -144,6 +140,7 @@ public abstract class BeweglicheObjekte {
         if (erhalteXKoor() + erhalteBreite() + xBewegung > xRand) {
             return true;
         }
+
         return false;
     }
 
@@ -157,22 +154,24 @@ public abstract class BeweglicheObjekte {
         if (erhalteXKoor() - xBewegung < xRand) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * Prüfung, ob Gegner die Reihe des Raumschiffs erreicht haben
+     * Test, ob Schuss des Raumschiffs oder des Gegners den Gegenüber treffen
      *
      * @param pruefObjekt Objekt, welches auf Überlagerung getestet wird
      * @return boolean Wahr, falls zwei Objekte sich überlagern
      */
-    public boolean pruefeKollision(BeweglicheObjekte pruefObjekt) {
+    public boolean pruefeGetroffen(BeweglicheObjekte pruefObjekt) {
         if (pruefObjekt.erhalteXKoor() + pruefObjekt.erhalteBreite() >= this.xKoor &&
                 pruefObjekt.erhalteXKoor() <= this.xKoor + breite &&
                 pruefObjekt.erhalteYKoor() + pruefObjekt.erhalteHoehe() >= this.yKoor &&
                 pruefObjekt.erhalteYKoor() <= this.yKoor + hoehe) {
             return true;
         }
+
         return false;
     }
 
@@ -188,6 +187,7 @@ public abstract class BeweglicheObjekte {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
 

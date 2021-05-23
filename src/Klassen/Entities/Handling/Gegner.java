@@ -9,10 +9,10 @@ import javafx.scene.Group;
  * Schussfunktion
  */
 public abstract class Gegner extends BeweglicheObjekte {
-    // todo: Standart Punkte wirklich benötigt?
-    private static final int PUNKTE = 10;
+
     private final double YBEWEGUNG = 50;
 
+    private static final int PUNKTE = 10;
     private int punkte = PUNKTE;
 
     /**
@@ -83,6 +83,8 @@ public abstract class Gegner extends BeweglicheObjekte {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
         }
+
         return false;
     }
+
 }

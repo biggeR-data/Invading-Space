@@ -3,6 +3,12 @@ package Klassen.Entities.Handling;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 
+/**
+ * Spieler kontrolliert dieses Objekt
+ * Festlegung von Maßen und Position
+ * Bewegungsfunktionen
+ * Schussfunktion
+ */
 public class Raumschiff extends BeweglicheObjekte {
 
     public Raumschiff(int xKoor, int yKoor, Group root) {

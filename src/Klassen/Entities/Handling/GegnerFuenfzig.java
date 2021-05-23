@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 
 public class GegnerFuenfzig extends Gegner {
+
     public GegnerFuenfzig(double xKoor, double yKoor, Group root) {
         // Position & Punkte
         super(xKoor, yKoor, root);
@@ -15,4 +16,5 @@ public class GegnerFuenfzig extends Gegner {
 
         erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
+
 }

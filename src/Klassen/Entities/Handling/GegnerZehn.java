@@ -16,4 +16,5 @@ public class GegnerZehn extends Gegner {
 
         erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
+
 }

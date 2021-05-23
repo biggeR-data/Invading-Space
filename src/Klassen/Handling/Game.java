@@ -1,5 +1,6 @@
-package Klassen.Entities.Handling;
+package Klassen.Handling;
 
+import Klassen.Entities.Handling.*;
 import Klassen.GUI.Spielbildschirmcontroller;
 import Klassen.Scores.Spieler;
 import javafx.application.Platform;
@@ -27,7 +28,7 @@ public class Game extends Thread {
     private boolean gameover = false;
     private boolean schussLoesenSchiff = false;
 
-    private Koordinator koordinator = new Koordinator();
+    private ObjektSteuerung objektSteuerung = new ObjektSteuerung();
     private Spielbildschirmcontroller gui;
     private Spieler spieler;
     private ArrayList<Gegner> listGegner = new ArrayList<Gegner>();
@@ -103,7 +104,7 @@ public class Game extends Thread {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                gui.setztePunktzahl(koordinator.erhalteScore());
+                gui.setztePunktzahl(objektSteuerung.erhalteScore());
             }
         });
 
@@ -116,7 +117,7 @@ public class Game extends Thread {
         // Gegner schuss loesen
         if (lastMonsterSchussMillis + schussGeschwindigkeitMonster <= System.currentTimeMillis()) {
             //System.out.println("Gegner schießt");
-            koordinator.schiessenMonster(schiff.xKoor);
+            objektSteuerung.schiessenGegner(schiff.xKoor);
             schussGeschwindigkeitMonster = (long) (Math.random() * (rangeSchussGeschwindigkeitMonster.get("max") - rangeSchussGeschwindigkeitMonster.get("min")) + rangeSchussGeschwindigkeitMonster.get("min"));
             //System.out.println("Nächster Schuss:" + schussGeschwindigkeitMonster);
             lastMonsterSchussMillis = System.currentTimeMillis();
@@ -128,7 +129,7 @@ public class Game extends Thread {
         }
 
         // neue Welle notwendig?
-        if (koordinator.neueMonsterListeNotwendig()) {
+        if (objektSteuerung.neueWelleNotwendig()) {
             // stage erhöhen
             stage++;
             //System.out.println("Neue Stage erreicht: " + stage);
@@ -172,28 +173,28 @@ public class Game extends Thread {
     private void bewegeSchuesse() {
         //System.out.println("bewege Schüsse");
         // Schüsse vom Schiff
-        koordinator.ueberpruefenMonsterUndBewegeSchuss();
+        objektSteuerung.bewegeSchussRaumschiff();
 
 
         // Schüsse von den Monstern bewegen und gameover überprüfen
-        if (koordinator.ueberpruefenRaumschiffUndBewegeSchuss(schiff)) {
+        if (objektSteuerung.bewegeSchussGegner(schiff)) {
             gameover = true;
         }
     }
 
     private void bewegeMonster() {
         //System.out.println("bewege Gegner");
-        koordinator.ueberpruefenUndBewegenMonster();
+        objektSteuerung.bewegeGegner();
 
         // überprüfe gameover
-        if (koordinator.gameOver()) {
+        if (objektSteuerung.gameOver()) {
             gameover = true;
         }
     }
 
     private void loeseNeuenSchuss() {
         //System.out.println("schieße");
-        koordinator.hinzufuegenSchussRaumschiff(schiff.schiessen());
+        objektSteuerung.hinzufuegenSchussRaumschiff(schiff.schiessen());
     }
 
     private void gameover() {
@@ -217,13 +218,13 @@ public class Game extends Thread {
     }
 
     public void keyLeft() {
-        if (!schiff.pruefeKollisionLinks(koordinator.erhalteRandLinks() - 5)) {
+        if (!schiff.pruefeKollisionLinks(objektSteuerung.erhalteRandLinks() - 5)) {
             schiff.bewegenLinks();
         }
     }
 
     public void keyRight() {
-        if (!schiff.pruefeKollisionRechts(koordinator.erhalteRandRechts())) {
+        if (!schiff.pruefeKollisionRechts(objektSteuerung.erhalteRandRechts())) {
             schiff.bewegenRechts();
         }
     }
@@ -249,6 +250,6 @@ public class Game extends Thread {
             }
         }
 
-        koordinator.neueMonsterListeUebergeben(listGegner);
+        objektSteuerung.neueWelle(listGegner);
     }
 }

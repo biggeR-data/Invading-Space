@@ -1,17 +1,18 @@
-package Klassen.Entities.Handling;
+package Klassen.Handling;
+
+import Klassen.Entities.Handling.Gegner;
+import Klassen.Entities.Handling.Raumschiff;
+import Klassen.Entities.Handling.Schuss;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-// todo: Klassenname ändern, ggf Beschreibung
-// todo: prüfe Kollision refactoren -> treffendere Namen
-
 /**
- * Der Koordinator koordiniert verschiede bewegliche Objekte
+ * ObjektSteuerung koordiniert verschiede bewegliche Objekte
  * Überprüfungen von Kollisionen mit Rändern und anderen Objekten
  * Bearbeitung der Gegner- und Schussliste
  */
-public class Koordinator {
+public class ObjektSteuerung {
 
     // Bewegungsrichtung
     private enum xBewegung {
@@ -19,25 +20,24 @@ public class Koordinator {
         RECHTS
     }
 
-    // todo: Verstehen wofür das hier ist
     private xBewegung richtung = xBewegung.RECHTS;
 
     // Listen von Objekten welche durch Treffer einen Zustand ändern
     private ArrayList<Gegner> gegnerListe;
     private ArrayList<Schuss> schuesseRaumschiff = new ArrayList<Schuss>();
-    private ArrayList<Schuss> schuesseMonster = new ArrayList<Schuss>();
+    private ArrayList<Schuss> schuesseGegner = new ArrayList<Schuss>();
 
     // Koordinaten der Ränder
     private final double RANDRECHTS = 590;
     private final double RANDLINKS = 15;
-    private final double RANDUNTENMONSTER = 690;
+    private final double RANDUNTENGEGNER = 690;
     private final double RANDUNTENSCHUSS = 670;
     private final double RANDOBEN = 80;
 
     // Startwert des Punktestands
     private int score = 0;
 
-    public Koordinator() {
+    public ObjektSteuerung() {
     }
 
     public int erhalteScore() {
@@ -66,32 +66,32 @@ public class Koordinator {
     }
 
     /**
-     * Monster, welches am nächsten zum Raumschiff ist, schießt
+     * Gegner, welches am nächsten zum Raumschiff ist, schießt
      *
      * @param xKoorRaumschiff Position des Raumschiffs um die Nähe zu bestimmen
      */
-    public void schiessenMonster(double xKoorRaumschiff) {
+    public void schiessenGegner(double xKoorRaumschiff) {
         ArrayList<Gegner> naechsteGegner = new ArrayList<Gegner>();
 
-        // nahe Monster auswählen
+        // nahe Gegner auswählen
         for (Gegner gegner : this.gegnerListe) {
             if (gegner.erhalteXKoor() <= xKoorRaumschiff + 10 && gegner.erhalteXKoor() >= xKoorRaumschiff - 10) {
                 naechsteGegner.add(gegner);
             }
         }
 
-        double yKoorMonsterMax = 0;
+        double yKoorGegnerMax = 0;
 
-        // Auswahl des Monsters, welches in der untersten Reihe ist
+        // Auswahl des Gegners, welches in der untersten Reihe ist
         for (Gegner gegner : naechsteGegner) {
-            if (gegner.erhalteYKoor() >= yKoorMonsterMax) {
-                yKoorMonsterMax = gegner.erhalteYKoor();
+            if (gegner.erhalteYKoor() >= yKoorGegnerMax) {
+                yKoorGegnerMax = gegner.erhalteYKoor();
             }
         }
 
         for (Gegner gegner : naechsteGegner) {
-            if (gegner.erhalteYKoor() == yKoorMonsterMax) {
-                schuesseMonster.add(gegner.schiessen());
+            if (gegner.erhalteYKoor() == yKoorGegnerMax) {
+                schuesseGegner.add(gegner.schiessen());
             }
         }
     }
@@ -122,7 +122,7 @@ public class Koordinator {
      * Die Gegner, je nach ihrer Position, bewegen
      * gegebenenfalls die Bewegungsrichtung ändern
      */
-    public void ueberpruefenUndBewegenMonster() {
+    public void bewegeGegner() {
         // Kollision mit Rand überprüfen, Gegner bewegen und ggf. Richtung wechseln
         switch (richtung) {
             case LINKS:
@@ -165,10 +165,10 @@ public class Koordinator {
 
     /**
      * Schüsse des Raumschiffs auf Treffer überprüfen
-     * bei Treffern werden der Schuss und das Monster gelöscht, die Punktzahl wird erhöht
+     * bei Treffern werden der Schuss und das Gegner gelöscht, die Punktzahl wird erhöht
      * bei keinem Treffer wird der Schuss am oberen Rand entfernt
      */
-    public void ueberpruefenMonsterUndBewegeSchuss() {
+    public void bewegeSchussRaumschiff() {
         // Strukturen von Elementen, welche entfernt werden
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
         ArrayList<Gegner> loescheGegner = new ArrayList<Gegner>();
@@ -179,7 +179,7 @@ public class Koordinator {
 
             // Gegner testen, ob sie getroffen wurden
             for (Gegner gegner : this.gegnerListe) {
-                if (gegner.pruefeKollision(schuss) == true) {
+                if (gegner.pruefeGetroffen(schuss) == true) {
                     score += gegner.erhaltePunkte();
 
                     // entfernten Gegner erfassen
@@ -213,28 +213,28 @@ public class Koordinator {
      * @param raumschiff Raumschiff, welches gegen die Gegner kämpft
      * @return boolean Wahr, falls das Raumschiff getroffen wurde
      */
-    public boolean ueberpruefenRaumschiffUndBewegeSchuss(Raumschiff raumschiff) {
+    public boolean bewegeSchussGegner(Raumschiff raumschiff) {
         ArrayList<Schuss> loescheSchuesse = new ArrayList<Schuss>();
 
         // Treffer-Fall
-        for (Schuss schuss : schuesseMonster) {
-            // Schuss der Monster abfeuern
+        for (Schuss schuss : schuesseGegner) {
+            // Schuss der Gegner abfeuern
             schuss.schiessenRunter();
 
-            if (raumschiff.pruefeKollision(schuss)) {
+            if (raumschiff.pruefeGetroffen(schuss)) {
                 return true;
             }
         }
 
         // Schuss verfehlt -> Objekt entfernen
-        for (Schuss schuss : schuesseMonster) {
+        for (Schuss schuss : schuesseGegner) {
             if (schuss.pruefeTrefferUnten(RANDUNTENSCHUSS) == true) {
                 schuss.entferneObjekt();
                 loescheSchuesse.add(schuss);
             }
         }
 
-        schuesseMonster.removeAll(loescheSchuesse);
+        schuesseGegner.removeAll(loescheSchuesse);
         return false;
     }
 
@@ -243,25 +243,25 @@ public class Koordinator {
      *
      * @return boolean Wahr, wenn eine neue Welöe erstellt werden muss
      */
-    public boolean neueMonsterListeNotwendig() {
+    public boolean neueWelleNotwendig() {
         if (this.gegnerListe.isEmpty()) {
             return true;
         }
         return false;
     }
 
-    // todo: bessere Erklärung
-
     /**
-     * Neue Gegnerliste übergeben
+     * Neue Welle erstellen
      *
      * @param gegner Gegenspieler zum Raumschiff -> muss besiegt werden
      */
-    public void neueMonsterListeUebergeben(ArrayList<Gegner> gegner) {
-        // todo: Reverse erklären
+    public void neueWelle(ArrayList<Gegner> gegner) {
+        // umdrehen, um die unterste Reihe als erstes zu bewegen
         Collections.reverse(gegner);
 
         this.gegnerListe = gegner;
+
+        // Startrichtung setzen
         this.setzteRichtung(xBewegung.RECHTS);
     }
 
@@ -272,11 +272,12 @@ public class Koordinator {
      */
     public boolean gameOver() {
         for (Gegner gegner : this.gegnerListe) {
-            if (gegner.pruefeKollisionUnten(RANDUNTENMONSTER) == true) {
+            if (gegner.pruefeKollisionUnten(RANDUNTENGEGNER) == true) {
                 return true;
             }
         }
 
         return false;
     }
+
 }
