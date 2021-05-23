@@ -94,11 +94,11 @@ public class Spielbildschirmcontroller {
         scene = new Scene(root);
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.D) || event.getCode().equals(KeyCode.RIGHT)) {
-                spielThread.keyRight();
+                spielThread.tasteRechts();
             } else if (event.getCode().equals(KeyCode.A) || event.getCode().equals(KeyCode.LEFT)) {
-                spielThread.keyLeft();
+                spielThread.tasteLinks();
             } else if (event.getCode().equals(KeyCode.W) || event.getCode().equals(KeyCode.UP)) {
-                spielThread.keyUp();
+                spielThread.tasteHoch();
             }
         });
         stage.setScene(scene);

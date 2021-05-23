@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// todo: Wellen
-//  GameOver
-//  Score speichern -> GUI
-
 /**
  * Die Klasse Spielablauf wird als Thread gestartet und läuft parallel zu der GUI.
  */
@@ -40,7 +36,7 @@ public class Spielablauf extends Thread {
     private long schussGeschwindigkeitSchiff;
     private long lastSchiffSchussMillis = 0;
     // Gegner
-    private long nextSchussGegner;
+    private long naechsterSchussGegner;
     private long lastGegnerSchussMillis = 0;
     // Spielgeschwindigkeit
     private long lastTickMillis = 0;
@@ -67,7 +63,7 @@ public class Spielablauf extends Thread {
                 // normal
                 schussGeschwindigkeitSchiff = 850;
                 gegnerGeschwindigkeit = 20;
-                nextSchussGegner = 800;
+                naechsterSchussGegner = 800;
                 naechsterSchussZeitspanne.put("min", 1000L);
                 naechsterSchussZeitspanne.put("max", 1800L);
                 break;
@@ -76,7 +72,7 @@ public class Spielablauf extends Thread {
                 // hoelle
                 schussGeschwindigkeitSchiff = 750;
                 gegnerGeschwindigkeit = 4;
-                nextSchussGegner = 600;
+                naechsterSchussGegner = 600;
                 naechsterSchussZeitspanne.put("min", 700L);
                 naechsterSchussZeitspanne.put("max", 1100L);
                 break;
@@ -88,7 +84,7 @@ public class Spielablauf extends Thread {
      */
     @Override
     public void run() {
-        // Reset Timer
+        // Zurücksetzen des Zählers
         lastTickMillis = System.currentTimeMillis();
         lastGegnerSchussMillis = System.currentTimeMillis();
         lastSchiffSchussMillis = System.currentTimeMillis();
@@ -97,7 +93,7 @@ public class Spielablauf extends Thread {
         raumschiff = new Raumschiff(280, 638, root);
         gegnerGenerieren();
 
-        // spiele bis gameover
+        // Spiele bis Gameover
         while (!gameover) {
             // Fixierung der zeitlichen Abstände zwischen den Ticks
             while ((lastTickMillis + timePerTick) >= System.currentTimeMillis()) {
@@ -112,12 +108,12 @@ public class Spielablauf extends Thread {
 
             lastTickMillis = System.currentTimeMillis();
         }
-        // Spiel vorbei
+
         gameover();
     }
 
     /**
-     * Berechnung des nächsten ticks / frames
+     * Berechnung des nächsten Ticks
      */
     private void tick() {
         zaehlerTicks++;
@@ -125,7 +121,7 @@ public class Spielablauf extends Thread {
         // Bewegung pro Tick
         bewegeSchuesse();
 
-        // aktuelle Punkte auf der gui ausgeben
+        // aktuelle Punkte auf der GUI ausgeben
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -135,13 +131,11 @@ public class Spielablauf extends Thread {
 
         // Wenn nötig Schuss lösen
         if (schussLoesenRaumschiff) {
-            loeseNeuenSchuss();
+            raumschiffSchiessen();
             schussLoesenRaumschiff = !schussLoesenRaumschiff;
         }
 
-        // todo: Kommentar zu Gegner schießen moven
-        // Schüsse der Gegner auslösen und zufällige Zeit für nächsten Schuss setzen
-        if (lastGegnerSchussMillis + nextSchussGegner <= System.currentTimeMillis()) {
+        if (lastGegnerSchussMillis + naechsterSchussGegner <= System.currentTimeMillis()) {
             gegnerSchiessen();
         }
 
@@ -154,7 +148,7 @@ public class Spielablauf extends Thread {
         if (objektSteuerung.neueWelleNotwendig()) {
             welle++;
 
-            // popuptext ausgeben
+            // Popup einblenden
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
@@ -193,9 +187,8 @@ public class Spielablauf extends Thread {
         }
     }
 
-
     /**
-     * bewege alle Schüsse von den Gegnern und dem Schiff. Überprüfe Gameover
+     * bewege alle Schüsse von den Gegnern und dem Schiff -> Überprüfe Gameover
      */
     private void bewegeSchuesse() {
         // Schüsse vom Raumschiff bewegen
@@ -206,7 +199,6 @@ public class Spielablauf extends Thread {
             gameover = true;
         }
     }
-
 
     /**
      * Bewege die Gegner und überprüfe Gameover
@@ -222,23 +214,23 @@ public class Spielablauf extends Thread {
 
     /**
      * lässt ein Gegner, abhängig von der Position des Raumschiffes, schießen
-     * erzeugt eine zufällig Zeit bis zum nächsten Schuss
+     * erzeugt eine zufällig Zeit (in einem Zeitrahmen) bis zum nächsten Schuss
      */
     private void gegnerSchiessen() {
         objektSteuerung.schiessenGegner(raumschiff.xKoor);
-        nextSchussGegner = (long) (Math.random() * (naechsterSchussZeitspanne.get("max") - naechsterSchussZeitspanne.get("min")) + naechsterSchussZeitspanne.get("min"));
+        naechsterSchussGegner = (long) (Math.random() * (naechsterSchussZeitspanne.get("max") - naechsterSchussZeitspanne.get("min")) + naechsterSchussZeitspanne.get("min"));
         lastGegnerSchussMillis = System.currentTimeMillis();
     }
 
     /**
      * lässt das Raumschiff schiessen
      */
-    private void loeseNeuenSchuss() {
+    private void raumschiffSchiessen() {
         objektSteuerung.hinzufuegenSchussRaumschiff(raumschiff.schiessen());
     }
 
     /**
-     * teilt das Ende des Spiels der GUI mit
+     * Initialisiert Ende des Spiels
      */
     private void gameover() {
         Platform.runLater(new Runnable() {
@@ -253,6 +245,7 @@ public class Spielablauf extends Thread {
      * generiert alle Gegner neu
      */
     private void gegnerGenerieren() {
+        // alte Objekte entfernen
         listeGegner.removeAll(listeGegner);
 
         // 50er Gegner
@@ -280,12 +273,11 @@ public class Spielablauf extends Thread {
     // Methoden für die GUI
 
     /**
-     * Setzt bei aufruf, wenn ausreichend Zeit vergangen, den Schuss für den nächsten Tick an
+     * Setzt bei Aufruf, wenn ausreichend Zeit vergangen, den Schuss für den nächsten Tick an
      */
-    public void keyUp() {
+    public void tasteHoch() {
         if ((lastSchiffSchussMillis + schussGeschwindigkeitSchiff) <= System.currentTimeMillis()) {
             schussLoesenRaumschiff = true;
-            //System.out.println("schuss freigegeben");
             lastSchiffSchussMillis = System.currentTimeMillis();
         }
     }
@@ -293,7 +285,7 @@ public class Spielablauf extends Thread {
     /**
      * bewegt das Raumschiff nach links
      */
-    public void keyLeft() {
+    public void tasteLinks() {
         if (!raumschiff.pruefeKollisionLinks(objektSteuerung.erhalteRandLinks() - 5)) {
             raumschiff.bewegenLinks();
         }
@@ -302,11 +294,10 @@ public class Spielablauf extends Thread {
     /**
      * bewegt das Raumschiff nach rechts
      */
-    public void keyRight() {
-        if (!raumschiff.pruefeKollisionRechts(objektSteuerung.erhalteRandRechts())) {
+    public void tasteRechts() {
+        if (!raumschiff.pruefeKollisionRechts(objektSteuerung.erhalteRandRechts() - 5)) {
             raumschiff.bewegenRechts();
         }
     }
-
 
 }
