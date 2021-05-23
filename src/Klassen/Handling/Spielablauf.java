@@ -40,7 +40,7 @@ public class Spielablauf extends Thread {
     private long lastGegnerSchussMillis = 0;
     // Spielgeschwindigkeit
     private long lastTickMillis = 0;
-    private int timePerTick = 50;
+    private int timePerTick = 40;
 
     private Map<String, Long> naechsterSchussZeitspanne = new HashMap<String, Long>();
 
@@ -62,16 +62,16 @@ public class Spielablauf extends Thread {
             case 0:
                 // normal
                 schussGeschwindigkeitSchiff = 850;
-                gegnerGeschwindigkeit = 20;
-                naechsterSchussGegner = 800;
-                naechsterSchussZeitspanne.put("min", 1000L);
-                naechsterSchussZeitspanne.put("max", 1800L);
+                gegnerGeschwindigkeit = 30;
+                naechsterSchussGegner = 2000;
+                naechsterSchussZeitspanne.put("min", 1500L);
+                naechsterSchussZeitspanne.put("max", 2000L);
                 break;
 
             case 1:
                 // hoelle
                 schussGeschwindigkeitSchiff = 750;
-                gegnerGeschwindigkeit = 4;
+                gegnerGeschwindigkeit = 8;
                 naechsterSchussGegner = 600;
                 naechsterSchussZeitspanne.put("min", 700L);
                 naechsterSchussZeitspanne.put("max", 1100L);
