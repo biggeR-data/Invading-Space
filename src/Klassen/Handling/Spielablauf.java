@@ -61,17 +61,17 @@ public class Spielablauf extends Thread {
         switch (modus) {
             case 0:
                 // normal
-                schussGeschwindigkeitSchiff = 850;
-                gegnerGeschwindigkeit = 30;
+                schussGeschwindigkeitSchiff = 750;
+                gegnerGeschwindigkeit = 35;
                 naechsterSchussGegner = 2000;
-                naechsterSchussZeitspanne.put("min", 1500L);
-                naechsterSchussZeitspanne.put("max", 2000L);
+                naechsterSchussZeitspanne.put("min", 1600L);
+                naechsterSchussZeitspanne.put("max", 2500L);
                 break;
 
             case 1:
                 // hoelle
-                schussGeschwindigkeitSchiff = 750;
-                gegnerGeschwindigkeit = 8;
+                schussGeschwindigkeitSchiff = 700;
+                gegnerGeschwindigkeit = 10;
                 naechsterSchussGegner = 600;
                 naechsterSchussZeitspanne.put("min", 700L);
                 naechsterSchussZeitspanne.put("max", 1100L);
@@ -182,7 +182,11 @@ public class Spielablauf extends Thread {
 
             // Geschwindigkeit der Gegner erhöhen
             if (gegnerGeschwindigkeit > 8) {
-                gegnerGeschwindigkeit -= 2;
+                gegnerGeschwindigkeit -= 5;
+            }
+            if(naechsterSchussZeitspanne.get("min")>400) {
+                naechsterSchussZeitspanne.put("min", naechsterSchussZeitspanne.get("min") - 300);
+                naechsterSchussZeitspanne.put("max", naechsterSchussZeitspanne.get("max") - 300);
             }
         }
     }

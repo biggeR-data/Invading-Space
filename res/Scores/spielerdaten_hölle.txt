@@ -1,4 +1,6 @@
+Jan,580
 Leon ,190
+Jan,140
 Patrick,60
 jasmin,40
 Leon,20
@@ -13,4 +15,5 @@ sV,0
 ASDF ,0
 asdg,0
 adsg,0
+Leon,0
 Leon,0
