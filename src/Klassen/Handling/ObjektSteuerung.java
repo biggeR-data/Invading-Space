@@ -130,7 +130,7 @@ public class ObjektSteuerung {
                     // Gegner in nächste Zeile versetzen
                     for (Gegner gegner : this.gegnerListe) {
                         gegner.bewegenRunter();
-                        gegner.erschaffeObjekt(gegner.erhalteBreite(), gegner.erhalteHoehe());
+                        //gegner.erschaffeObjekt(gegner.erhalteBreite(), gegner.erhalteHoehe());
                     }
 
                     // Richtungswechsel
@@ -148,7 +148,7 @@ public class ObjektSteuerung {
                     // Gegner in nächste Zeile versetzen
                     for (Gegner gegner : this.gegnerListe) {
                         gegner.bewegenRunter();
-                        gegner.erschaffeObjekt(gegner.erhalteBreite(), gegner.erhalteHoehe());
+                        //gegner.erschaffeObjekt(gegner.erhalteBreite(), gegner.erhalteHoehe());
                     }
 
                     // Richtungswechsel
@@ -183,11 +183,11 @@ public class ObjektSteuerung {
                     score += gegner.erhaltePunkte();
 
                     // entfernten Gegner erfassen
-                    gegner.entferneObjekt();
+                    gegner.loescheObjekt();
                     loescheGegner.add(gegner);
 
                     // entfernten Schuss erfassen
-                    schuss.entferneObjekt();
+                    schuss.loescheObjekt();
                     loescheSchuesse.add(schuss);
                 }
             }
@@ -196,7 +196,7 @@ public class ObjektSteuerung {
         // Überprüfen, ob die Schüsse den oberen Rand erreichen
         for (Schuss schuss : schuesseRaumschiff) {
             if (schuss.pruefeGegnerGetroffen(RANDOBEN) == true) {
-                schuss.entferneObjekt();
+                schuss.loescheObjekt();
                 loescheSchuesse.add(schuss);
             }
         }
@@ -229,7 +229,7 @@ public class ObjektSteuerung {
         // Schuss verfehlt -> Objekt entfernen
         for (Schuss schuss : schuesseGegner) {
             if (schuss.pruefeRaumschiffGetroffen(RANDUNTENSCHUSS) == true) {
-                schuss.entferneObjekt();
+                schuss.loescheObjekt();
                 loescheSchuesse.add(schuss);
             }
         }

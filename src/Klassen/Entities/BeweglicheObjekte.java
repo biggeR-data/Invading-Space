@@ -96,7 +96,7 @@ public abstract class BeweglicheObjekte {
     /**
      * Enferne das entsprechende Objekt von der grafischen Oberfläche
      */
-    public void entferneObjekt() {
+    protected void entferneObjekt() {
         if (zeichenObjekt != null) {
             zeichenObjekt.setFill(Color.BLACK);
         }
@@ -109,13 +109,16 @@ public abstract class BeweglicheObjekte {
         });
     }
 
+    public void loescheObjekt() {
+        entferneObjekt();
+    }
     /**
      * Zeichne ein rechteckiges Objekt mit ausgewähltem Image auf der grafischen Oberfläche
      *
      * @param breite Maße in der X Dimension
      * @param hoehe Maße in der Y Dimension
      */
-    public void erschaffeObjekt(double breite, double hoehe) {
+    protected void erschaffeObjekt(double breite, double hoehe) {
         zeichenObjekt = new Rectangle(xKoor, yKoor, breite, hoehe);
         zeichenObjekt.setFill(new ImagePattern(bild));
 
