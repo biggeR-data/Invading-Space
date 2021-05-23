@@ -27,9 +27,12 @@ import Klassen.Scores.Spieler;
  */
 public class Endbildschirmcontroller {
 
+    // Zugriff auf GUI
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    // Bilder der Gegner und des Raumschiffs nach Gameover
     FileInputStream stream = new FileInputStream("res/Images/Großschiff_Separatisten.png");
     Image grossschiff = new Image(stream);
     FileInputStream stream2 = new FileInputStream("res/Images/HyenaClassBomber.png");
@@ -38,14 +41,16 @@ public class Endbildschirmcontroller {
     Image tiefighter = new Image(stream3);
     FileInputStream stream4 = new FileInputStream("res/Images/MileniumFalke3.png");
     Image milenium = new Image(stream4);
+
+    // benutzerdefinierte Schriftart
     private Font starwarsfontvoll = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjedi.ttf",18);
     private Font starwarsfontleer = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjhol.ttf",30);
 
-    // laden der FXML
-    @FXML private ImageView imgvGrossschiff;
-    @FXML private ImageView imgvBomber;
-    @FXML private ImageView imgvTiefighter;
-    @FXML private ImageView imgvMilenium;
+    // Import des FMXL files
+    @FXML private ImageView bildGrossschiff;
+    @FXML private ImageView bildBomber;
+    @FXML private ImageView bildTiefighter;
+    @FXML private ImageView bildMilenium;
     @FXML private Label lblGame;
     @FXML private Label lblOver;
     @FXML private Label lblPunktzahl;
@@ -73,10 +78,10 @@ public class Endbildschirmcontroller {
      * Präsentation des Spielergebnisses
      * Ausgabe der Top 3 Highscores
      *
-     * @param pStage
-     * @param pSpieler
-     * @param pRoot
-     * @param modus
+     * @param pStage entsprechende Subebene der GUI zur Darstellung
+     * @param pSpieler erstellter Spieler nach Namenseingabe befüllt mit Score vor Gameover
+     * @param pRoot legt fest auf welcher GUI-Ebene das Objekt erstellt wird
+     * @param modus ausgewählter Modus (Normal = 0; Hölle = 1)
      * @throws IOException
      */
     public void aktiviereEndbildschirm(Stage pStage, Spieler pSpieler, Parent pRoot, int modus) throws IOException {
@@ -86,6 +91,7 @@ public class Endbildschirmcontroller {
         stage = pStage;
         root = new Group(pRoot);
         scene = new Scene(root);
+
         formatieren();
 
         // Zugriff auf Spielerdaten Textdatei abhängig von Modus
@@ -94,6 +100,7 @@ public class Endbildschirmcontroller {
             case 0:
                 pfadZuSpielerdaten = "./res/Scores/spielerdaten_normal.txt";
                 break;
+
             case 1:
                 pfadZuSpielerdaten = "./res/Scores/spielerdaten_hölle.txt";
                 break;
@@ -104,6 +111,7 @@ public class Endbildschirmcontroller {
         scoreListe.spielerHinzufuegen(spieler);
         lblScore.setText(String.valueOf(spieler.erhaltePunkte()));
 
+        // Highscore Verwaltung
         lblTop1Name.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
         lblTop1Score.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
         lblTop2Name.setText(scoreListe.spielerlisteIndexAusgabe(1).erhalteName());
@@ -155,8 +163,11 @@ public class Endbildschirmcontroller {
     }
 
     public void formatieren(){
+        // Titel
         lblGame.setFont(starwarsfontleer);
         lblOver.setFont(starwarsfontleer);
+
+        // Punkte
         lblPunktzahl.setFont(starwarsfontvoll);
         lblScore.setFont(starwarsfontvoll);
         lblTop3Spieler.setFont(starwarsfontvoll);
@@ -166,12 +177,16 @@ public class Endbildschirmcontroller {
         lblTop1Score.setFont(starwarsfontvoll);
         lblTop2Score.setFont(starwarsfontvoll);
         lblTop3Score.setFont(starwarsfontvoll);
+
+        // Buttons
         btnErneutspielen.setFont(starwarsfontvoll);
         btnStartseite.setFont(starwarsfontvoll);
-        imgvGrossschiff.setImage(grossschiff);
-        imgvBomber.setImage(bomber);
-        imgvTiefighter.setImage(tiefighter);
-        imgvMilenium.setImage(milenium);
+
+        // Bilder der Gegner und des Raumschiffs
+        bildGrossschiff.setImage(grossschiff);
+        bildBomber.setImage(bomber);
+        bildTiefighter.setImage(tiefighter);
+        bildMilenium.setImage(milenium);
     }
 
 }

@@ -1,4 +1,4 @@
-package Klassen.Entities.Handling;
+package Klassen.Entities;
 
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -19,7 +19,7 @@ public class Schuss extends BeweglicheObjekte {
     /**
      * Schuss des Raumschiffs
      */
-    public void schiessenHoch() {
+    public void schiessenRaumschiff() {
         // Aussehen setzen
         Image bild = erhalteBild("Schuss_Blau.png");
         setzeBild(bild);
@@ -33,7 +33,7 @@ public class Schuss extends BeweglicheObjekte {
     /**
      * Schuss der Gegner
      */
-    public void schiessenRunter() {
+    public void schiessenGegner() {
         // Aussehen setzen
         Image img = erhalteBild("Schuss_Rot.png");
         setzeBild(img);
@@ -46,25 +46,30 @@ public class Schuss extends BeweglicheObjekte {
 
     /**
      * Treffertest der Gegner
-     * @param yRand
-     * @return boolean
+     *
+     * @param yRand Höhenlimit
+     * @return boolean Wahr, falls ein Treffer vorliegt
      */
-    public boolean pruefeTrefferOben(double yRand) {
+    public boolean pruefeGegnerGetroffen(double yRand) {
         if (erhalteYKoor() - YBEWEGUNG < yRand) {
             return true;
         }
+
         return false;
     }
 
     /**
      * Treffertest des Raumschiffs
-     * @param yRand
-     * @return boolean
+     *
+     * @param yRand Höhenlimit
+     * @return boolean Wahr, falls ein Treffer vorliegt
      */
-    public boolean pruefeTrefferUnten(double yRand) {
+    public boolean pruefeRaumschiffGetroffen(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {
             return true;
         }
+
         return false;
     }
+
 }

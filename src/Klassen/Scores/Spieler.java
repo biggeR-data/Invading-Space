@@ -33,9 +33,10 @@ public class Spieler {
     /**
      * korrekte Formatierung für csv Speicherart in Spielerdaten Textdatei
      *
-     * @return String
+     * @return String Spielerinfo in benötigtem Format
      */
     public String zuString() {
         return name + "," + punkte;
     }
+
 }

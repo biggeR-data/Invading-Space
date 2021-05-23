@@ -1,4 +1,4 @@
-package Klassen.Entities.Handling;
+package Klassen.Entities;
 
 import javafx.scene.Group;
 
@@ -18,8 +18,8 @@ public abstract class Gegner extends BeweglicheObjekte {
     /**
      * Position festlegen
      *
-     * @param xKoor
-     * @param yKoor
+     * @param xKoor Position in X Dimension
+     * @param yKoor Position in Y Dimension
      * @param root  legt fest auf welcher GUI-Ebene das Objekt erstellt wird
      */
     public Gegner(double xKoor, double yKoor, Group root) {
@@ -45,6 +45,7 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     /**
+     * Links-Bewegung
      * altes Gegner Objekt entfernen
      * Gegnerobjekt an neuer Position erschaffen
      */
@@ -55,6 +56,7 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     /**
+     * Rechts-Bewegung
      * altes Gegner Objekt entfernen
      * Gegnerobjekt an neuer Position erschaffen
      */
@@ -67,7 +69,7 @@ public abstract class Gegner extends BeweglicheObjekte {
     /**
      * Schuss an der Position des Gegners abfeuern
      *
-     * @return Schuss
+     * @return Schuss Schuss des Gegners
      */
     public Schuss schiessen() {
         return new Schuss(erhalteXKoor() + (erhalteBreite() / 2), erhalteYKoor(), root);
@@ -76,11 +78,11 @@ public abstract class Gegner extends BeweglicheObjekte {
     /**
      * Überprüfen ob ein Gegner den unteren Rand (Raumschiff) trifft.
      *
-     * @param yRand bestimmt die Grenze zwischen der Gegnerzone und der eigenen Zone
+     * @param zonenMarkierung bestimmt die Grenze zwischen der Gegnerzone und der eigenen Zone
      * @return boolean Wahr, falls die Gegner die eigene Reihe durchbrechen
      */
-    public boolean pruefeKollisionUnten(double yRand) {
-        if (erhalteYKoor() + YBEWEGUNG > yRand) {
+    public boolean pruefeKollisionUnten(double zonenMarkierung) {
+        if (erhalteYKoor() + YBEWEGUNG > zonenMarkierung) {
             return true;
         }
 

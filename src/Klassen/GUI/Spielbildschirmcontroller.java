@@ -28,8 +28,11 @@ public class Spielbildschirmcontroller {
     private Stage stage;
     private Scene scene;
     private Group root;
-    private Font starwarsfontvoll = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjedi.ttf",18);
-    private Font starwarsfontleer = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjhol.ttf",30);
+
+    // benutzerdefinierte Schriftart
+    private Font starwarsfontvoll = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjedi.ttf", 18);
+    private Font starwarsfontleer = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjhol.ttf", 30);
+
     // Import des FMXL files
     @FXML private Label lblHighscore;
     @FXML private Label lblSpielername;
@@ -38,13 +41,14 @@ public class Spielbildschirmcontroller {
     @FXML private Label lblHighscorePunkte;
     @FXML private Button btnWeltraumverlassen;
 
-
     private Label lblPopUp;
 
+    // Scores
     private ScoreListe scoreListe;
     private String pfadZuSpielerdaten;
     private Spieler spieler;
     private int modus;
+
     private static Game spielThread;
 
     /**
@@ -52,22 +56,25 @@ public class Spielbildschirmcontroller {
      * KeyEvents des Spielers verarbeiten
      *
      * @param acEv
-     * @param pSpieler
-     * @param pRoot
-     * @param modus
+     * @param pSpieler erstellter Spieler durch Namenseingabe
+     * @param pRoot    legt fest auf welcher GUI-Ebene das Objekt erstellt wird
+     * @param modus    ausgewählter Modus (Normal = 0; Hölle = 1)
      */
     public void aktiviereSpielbildschirm(ActionEvent acEv, Spieler pSpieler, Parent pRoot, int modus) {
         // Aufbau der Oberfläche
         this.modus = modus;
         spieler = pSpieler;
         root = new Group(pRoot);
+
         formatieren();
+
         // Zugriff auf Spielerdaten Textdatei abhängig von Modus
         // Modus spezifische Highscores
         switch (modus) {
             case 0:
                 pfadZuSpielerdaten = "./res/Scores/spielerdaten_normal.txt";
                 break;
+
             case 1:
                 pfadZuSpielerdaten = "./res/Scores/spielerdaten_hölle.txt";
                 break;
@@ -122,21 +129,24 @@ public class Spielbildschirmcontroller {
         }
     }
 
-    public void setztePunktzahl(int punktzahl) {
+    public void setzePunktzahl(int punktzahl) {
         lblAktuellerScore.setText(String.valueOf(punktzahl));
     }
 
     /**
      * dynamisches Popup
      *
-     * @param nachricht
+     * @param nachricht Benachrichtung für Spieler nach bestimmten Events
      */
-    public void setztePopup(String nachricht) {
+    public void setzePopup(String nachricht) {
+        // Aussehen & Styling
         lblPopUp = new Label(nachricht);
         lblPopUp.setLayoutX(270);
         lblPopUp.setLayoutY(298);
         lblPopUp.setTextFill(javafx.scene.paint.Color.WHITE);
         lblPopUp.setFont(Font.font("System", 23));
+
+        // Einblendung
         root.getChildren().add(lblPopUp);
         lblPopUp.setText(nachricht);
     }
@@ -149,12 +159,14 @@ public class Spielbildschirmcontroller {
         return spielThread;
     }
 
-    public void formatieren(){
+    public void formatieren() {
         lblHighscore.setFont(starwarsfontvoll);
-        lblSpielername.setFont(starwarsfontvoll);
-        lblAktuellerScore.setFont(starwarsfontvoll);
         lblHighscoreName.setFont(starwarsfontvoll);
         lblHighscorePunkte.setFont(starwarsfontvoll);
+
+        lblSpielername.setFont(starwarsfontvoll);
+        lblAktuellerScore.setFont(starwarsfontvoll);
+
         btnWeltraumverlassen.setFont(starwarsfontvoll);
     }
 

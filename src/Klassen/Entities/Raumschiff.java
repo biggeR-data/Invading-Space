@@ -1,4 +1,4 @@
-package Klassen.Entities.Handling;
+package Klassen.Entities;
 
 import javafx.scene.Group;
 import javafx.scene.image.Image;

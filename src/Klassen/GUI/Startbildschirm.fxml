@@ -40,13 +40,13 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgvBomber" fitHeight="70.0" fitWidth="70.0" layoutX="422.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvTiefighter" fitHeight="70.0" fitWidth="70.0" layoutX="492.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvGrossschiff" fitHeight="70.0" fitWidth="70.0" layoutX="492.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvMilenium" fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvTiefighter2" fitHeight="70.0" fitWidth="70.0" layoutX="107.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvBomber2" fitHeight="70.0" fitWidth="70.0" layoutX="265.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvGrossschiff2" fitHeight="70.0" fitWidth="70.0" layoutX="422.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildBomber" fitHeight="70.0" fitWidth="70.0" layoutX="422.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildTiefighter" fitHeight="70.0" fitWidth="70.0" layoutX="492.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildGrossschiff" fitHeight="70.0" fitWidth="70.0" layoutX="492.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildMilenium" fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildTiefighter2" fitHeight="70.0" fitWidth="70.0" layoutX="107.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildBomber2" fitHeight="70.0" fitWidth="70.0" layoutX="265.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildGrossschiff2" fitHeight="70.0" fitWidth="70.0" layoutX="422.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="lbl10" layoutX="129.0" layoutY="592.0" text="10" textAlignment="CENTER" textFill="#facc15">
                <font>
                   <Font size="23.0" />

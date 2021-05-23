@@ -1,6 +1,6 @@
 package Klassen.Handling;
 
-import Klassen.Entities.Handling.*;
+import Klassen.Entities.*;
 import Klassen.GUI.Spielbildschirmcontroller;
 import Klassen.Scores.Spieler;
 import javafx.application.Platform;
@@ -104,7 +104,7 @@ public class Game extends Thread {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                gui.setztePunktzahl(objektSteuerung.erhalteScore());
+                gui.setzePunktzahl(objektSteuerung.erhalteScore());
             }
         });
 
@@ -138,7 +138,7 @@ public class Game extends Thread {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    gui.setztePopup("Welle " + stage + " erreicht!");
+                    gui.setzePopup("Welle " + stage + " erreicht!");
                 }
             });
             try {

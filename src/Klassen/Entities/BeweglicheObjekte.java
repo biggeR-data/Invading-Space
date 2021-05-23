@@ -1,4 +1,4 @@
-package Klassen.Entities.Handling;
+package Klassen.Entities;
 
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -42,9 +42,9 @@ public abstract class BeweglicheObjekte {
     /**
      * Position und Aussehen festlegen
      *
-     * @param xKoor
-     * @param yKoor
-     * @param root
+     * @param xKoor Position in X Dimension
+     * @param yKoor Position in Y Dimension
+     * @param root legt fest auf welcher GUI-Ebene das Objekt erstellt wird
      */
     protected BeweglicheObjekte(double xKoor, double yKoor, Group root) {
         // Layout
@@ -112,8 +112,8 @@ public abstract class BeweglicheObjekte {
     /**
      * Zeichne ein rechteckiges Objekt mit ausgewähltem Image auf der grafischen Oberfläche
      *
-     * @param breite
-     * @param hoehe
+     * @param breite Maße in der X Dimension
+     * @param hoehe Maße in der Y Dimension
      */
     public void erschaffeObjekt(double breite, double hoehe) {
         zeichenObjekt = new Rectangle(xKoor, yKoor, breite, hoehe);
@@ -133,8 +133,8 @@ public abstract class BeweglicheObjekte {
     /**
      * Kollision von einem Objekt mit dem rechten Rand überprüfen
      *
-     * @param xRand
-     * @return boolean
+     * @param xRand Rechte Randbeschränkung
+     * @return boolean Wahr, wenn der rechte Rand überschritten werden würde
      */
     public boolean pruefeKollisionRechts(double xRand) {
         if (erhalteXKoor() + erhalteBreite() + xBewegung > xRand) {
@@ -147,7 +147,7 @@ public abstract class BeweglicheObjekte {
     /**
      * Kollision von einem Objekt mit dem linken Rand überprüfen
      *
-     * @param xRand
+     * @param xRand Linke Randbeschränkung
      * @return boolean Wahr, wenn der linke Rand überschritten werden würde
      */
     public boolean pruefeKollisionLinks(double xRand) {

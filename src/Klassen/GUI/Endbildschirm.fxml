@@ -76,10 +76,10 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgvBomber" fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvTiefighter" fitHeight="70.0" fitWidth="70.0" layoutX="486.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvGrossschiff" fitHeight="70.0" fitWidth="70.0" layoutX="410.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgvMilenium" fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildBomber" fitHeight="70.0" fitWidth="70.0" layoutX="451.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildTiefighter" fitHeight="70.0" fitWidth="70.0" layoutX="486.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildGrossschiff" fitHeight="70.0" fitWidth="70.0" layoutX="410.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bildMilenium" fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
   </items>

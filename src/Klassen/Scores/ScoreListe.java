@@ -125,7 +125,7 @@ public class ScoreListe {
     /**
      * sortiert einen neuen Spielereintrag hinzufügen
      *
-     * @param neuerSpieler
+     * @param neuerSpieler Spieler, welcher sortiert zur Highscoreliste hinzugefügt werden soll
      */
     public void spielerHinzufuegen(Spieler neuerSpieler) {
         spielerliste.add(neuerSpieler);
@@ -135,8 +135,8 @@ public class ScoreListe {
     /**
      * Zugriff für Highscore Abfrage
      *
-     * @param punkteIndex
-     * @return Spieler
+     * @param punkteIndex Position in der Highscoreliste
+     * @return Spieler Spieler an angefragter Position
      */
     public Spieler spielerlisteIndexAusgabe(int punkteIndex) {
         return spielerliste.get(punkteIndex);

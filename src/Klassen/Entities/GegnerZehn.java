@@ -1,17 +1,17 @@
-package Klassen.Entities.Handling;
+package Klassen.Entities;
 
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 
-public class GegnerFuenfzig extends Gegner {
+public class GegnerZehn extends Gegner {
 
-    public GegnerFuenfzig(double xKoor, double yKoor, Group root) {
+    public GegnerZehn(double xKoor, double yKoor, Group root) {
         // Position & Punkte
         super(xKoor, yKoor, root);
-        setzePunkte(50);
+        setzePunkte(10);
 
         // Aussehen
-        Image bild = erhalteBild("Großschiff_Separatisten.png");
+        Image bild = erhalteBild("TIEFigtherFront.png");
         setzeBild(bild);
 
         erschaffeObjekt(erhalteBreite(), erhalteHoehe());

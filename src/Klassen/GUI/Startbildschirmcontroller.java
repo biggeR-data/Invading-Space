@@ -27,9 +27,12 @@ import java.io.IOException;
  */
 public class Startbildschirmcontroller {
 
+    // Zugriff auf GUI
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    // Bilder auf Startbildschirm der Gegner und des Raumschiffs
     FileInputStream stream = new FileInputStream("res/Images/Großschiff_Separatisten.png");
     Image grossschiff = new Image(stream);
     FileInputStream stream2 = new FileInputStream("res/Images/HyenaClassBomber.png");
@@ -38,6 +41,7 @@ public class Startbildschirmcontroller {
     Image tiefighter = new Image(stream3);
     FileInputStream stream4 = new FileInputStream("res/Images/MileniumFalke3.png");
     Image milenium = new Image(stream4);
+
     // Import des FMXL files
     @FXML private Label lbl10;
     @FXML private Label lbl20;
@@ -56,13 +60,15 @@ public class Startbildschirmcontroller {
     @FXML private Label lblHighscoreNameHölle;
     @FXML private Label lblHighscorePunkteHölle;
     @FXML private Label lblPopup;
-    @FXML private ImageView imgvGrossschiff;
-    @FXML private ImageView imgvBomber;
-    @FXML private ImageView imgvTiefighter;
-    @FXML private ImageView imgvMilenium;
-    @FXML private ImageView imgvGrossschiff2;
-    @FXML private ImageView imgvBomber2;
-    @FXML private ImageView imgvTiefighter2;
+    @FXML private ImageView bildGrossschiff;
+    @FXML private ImageView bildBomber;
+    @FXML private ImageView bildTiefighter;
+    @FXML private ImageView bildMilenium;
+    @FXML private ImageView bildGrossschiff2;
+    @FXML private ImageView bildBomber2;
+    @FXML private ImageView bildTiefighter2;
+
+    // Benutzerdefinierte Schriftart
     //Font Quelle: https://www.dafont.com/de/star-jedi.font?psize=s
     private Font starwarsfontvoll = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjedi.ttf",18);
     private Font starwarsfontleer = Font.loadFont("file:res/Styling/star_jedi/starjedi/Starjhol.ttf",30);
@@ -71,12 +77,15 @@ public class Startbildschirmcontroller {
     }
 
     public void aktiviereStartbildschirm() {
-        ScoreListe scoreListe = new ScoreListe("./res/Scores/spielerdaten_normal.txt");
-        ScoreListe scoreListehölle = new ScoreListe("./res/Scores/spielerdaten_hölle.txt");
-        lblHighscoreNameNormal.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkteNormal.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
-        lblHighscoreNameHölle.setText(scoreListehölle.spielerlisteIndexAusgabe(0).erhalteName());
-        lblHighscorePunkteHölle.setText(String.valueOf(scoreListehölle.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        ScoreListe scoreListeNormal = new ScoreListe("./res/Scores/spielerdaten_normal.txt");
+        ScoreListe scoreListeHölle = new ScoreListe("./res/Scores/spielerdaten_hölle.txt");
+
+        // Highscore pro Modus setzen
+        lblHighscoreNameNormal.setText(scoreListeNormal.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkteNormal.setText(String.valueOf(scoreListeNormal.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+        lblHighscoreNameHölle.setText(scoreListeHölle.spielerlisteIndexAusgabe(0).erhalteName());
+        lblHighscorePunkteHölle.setText(String.valueOf(scoreListeHölle.spielerlisteIndexAusgabe(0).erhaltePunkte()));
+
         formatieren();
     }
 
@@ -92,7 +101,7 @@ public class Startbildschirmcontroller {
      * Logik transferieren zum geladenen Spielbildschirm
      *
      * @param acEv
-     * @param modus
+     * @param modus ausgewählter Modus (Normal = 0; Hölle = 1)
      * @throws IOException
      */
     public void wechselZuSpielbildschirm(ActionEvent acEv, int modus) throws IOException {
@@ -116,31 +125,45 @@ public class Startbildschirmcontroller {
             lblPopup.setText(empEx.getMessage());
         }
     }
+
     public void formatieren(){
+        // Highscores
         lblHighscoreNameNormal.setFont(starwarsfontvoll);
         lblHighscorePunkteNormal.setFont(starwarsfontvoll);
         lblHighscoreNameHölle.setFont(starwarsfontvoll);
         lblHighscorePunkteHölle.setFont(starwarsfontvoll);
         lblHighscore.setFont(starwarsfontvoll);
+
+        // Modus
         lblNormal.setFont(starwarsfontvoll);
         lblHölle.setFont(starwarsfontvoll);
+        btn_hölle.setFont(starwarsfontvoll);
+        btn_normal.setFont(starwarsfontvoll);
+
+        // Titel
         lblSpace.setFont(starwarsfontleer);
         lblInvader.setFont(starwarsfontleer);
         lblaberbesser.setFont(starwarsfontvoll);
+
+        // Titel Bilder
+        bildGrossschiff.setImage(grossschiff);
+        bildBomber.setImage(bomber);
+        bildTiefighter.setImage(tiefighter);
+        bildMilenium.setImage(milenium);
+
+        // Namenseingabe
         txtNamensfeld.setFont(starwarsfontvoll);
         txtNamensfeld.setStyle("-fx-text-inner-color: #facc15;-fx-control-inner-background: #000000");
-        btn_hölle.setFont(starwarsfontvoll);
-        btn_normal.setFont(starwarsfontvoll);
+
+        // Punkte
         lbl10.setFont(starwarsfontvoll);
         lbl20.setFont(starwarsfontvoll);
         lbl50.setFont(starwarsfontvoll);
-        imgvGrossschiff.setImage(grossschiff);
-        imgvBomber.setImage(bomber);
-        imgvTiefighter.setImage(tiefighter);
-        imgvMilenium.setImage(milenium);
-        imgvGrossschiff2.setImage(grossschiff);
-        imgvBomber2.setImage(bomber);
-        imgvTiefighter2.setImage(tiefighter);
+
+        // Bilder bei Punkten
+        bildGrossschiff2.setImage(grossschiff);
+        bildBomber2.setImage(bomber);
+        bildTiefighter2.setImage(tiefighter);
     }
 
 }

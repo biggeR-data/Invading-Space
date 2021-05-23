@@ -1,8 +1,8 @@
 package Klassen.Handling;
 
-import Klassen.Entities.Handling.Gegner;
-import Klassen.Entities.Handling.Raumschiff;
-import Klassen.Entities.Handling.Schuss;
+import Klassen.Entities.Gegner;
+import Klassen.Entities.Raumschiff;
+import Klassen.Entities.Schuss;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -175,7 +175,7 @@ public class ObjektSteuerung {
 
         for (Schuss schuss : schuesseRaumschiff) {
             // Schuss des Raumschiffs abfeuern
-            schuss.schiessenHoch();
+            schuss.schiessenRaumschiff();
 
             // Gegner testen, ob sie getroffen wurden
             for (Gegner gegner : this.gegnerListe) {
@@ -195,7 +195,7 @@ public class ObjektSteuerung {
 
         // Überprüfen, ob die Schüsse den oberen Rand erreichen
         for (Schuss schuss : schuesseRaumschiff) {
-            if (schuss.pruefeTrefferOben(RANDOBEN) == true) {
+            if (schuss.pruefeGegnerGetroffen(RANDOBEN) == true) {
                 schuss.entferneObjekt();
                 loescheSchuesse.add(schuss);
             }
@@ -219,7 +219,7 @@ public class ObjektSteuerung {
         // Treffer-Fall
         for (Schuss schuss : schuesseGegner) {
             // Schuss der Gegner abfeuern
-            schuss.schiessenRunter();
+            schuss.schiessenGegner();
 
             if (raumschiff.pruefeGetroffen(schuss)) {
                 return true;
@@ -228,7 +228,7 @@ public class ObjektSteuerung {
 
         // Schuss verfehlt -> Objekt entfernen
         for (Schuss schuss : schuesseGegner) {
-            if (schuss.pruefeTrefferUnten(RANDUNTENSCHUSS) == true) {
+            if (schuss.pruefeRaumschiffGetroffen(RANDUNTENSCHUSS) == true) {
                 schuss.entferneObjekt();
                 loescheSchuesse.add(schuss);
             }

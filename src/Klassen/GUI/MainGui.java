@@ -16,7 +16,7 @@ public class MainGui extends Application {
      * Startpunkt der Gui-Applikation
      * Auflösung: 600 * 768 Pixel
      *
-     * @param primaryStage
+     * @param primaryStage Hauptebene auf der Aktionen ausgeführt werden
      */
     @Override
     public void start(Stage primaryStage) {
