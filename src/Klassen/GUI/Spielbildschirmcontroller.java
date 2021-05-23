@@ -61,12 +61,10 @@ public class Spielbildschirmcontroller {
      * @param modus
      */
     public void aktiviereSpielbildschirm(ActionEvent acEv, Spieler pSpieler, Parent pRoot, int modus) {
-        // Spieleigenschaften
+        // Aufbau der Oberfläche
         this.modus = modus;
         spieler = pSpieler;
         root = new Group(pRoot);
-        spielThread = new Game(this, modus, root);
-        spielThread.start();
         formatieren();
         // Zugriff auf Spielerdaten Textdatei abhängig von Modus
         // Modus spezifische Highscores
@@ -85,8 +83,10 @@ public class Spielbildschirmcontroller {
         lblHighscoreName.setText(scoreListe.spielerlisteIndexAusgabe(0).erhalteName());
         lblHighscorePunkte.setText(String.valueOf(scoreListe.spielerlisteIndexAusgabe(0).erhaltePunkte()));
 
-        // Aufbau der Oberfläche
+        // Starten des Threads
         // KeyEvents des Spielablaufs verarbeiten
+        spielThread = new Game(this, modus, root);
+        spielThread.start();
         stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.setOnKeyPressed(event -> {
@@ -107,6 +107,9 @@ public class Spielbildschirmcontroller {
      */
     public void wechselZuEndbildschirm() {
         try {
+            // Beenden des Spiels
+            spielThread.stop();
+
             // Laden der Endbildschirmoberfläche
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Endbildschirm.fxml"));
             Parent root2 = loader.load();
@@ -118,26 +121,9 @@ public class Spielbildschirmcontroller {
             spieler.setzePunkte(aktuellerScore);
             endbildschirmController.aktiviereEndbildschirm(stage, spieler, root2, modus);
 
-            // Beenden des Spiels
-            spielThread.stop();
         } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
-    }
-
-    /**
-     * Logik transferieren zum geladenen Startbildschirm auf Knopfdruck
-     *
-     * @param acEv
-     * @throws IOException
-     */
-    public void wechselZuStartbildschirm(ActionEvent acEv) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Startbildschirm.fxml"));
-        stage = (Stage) ((Node) acEv.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        spielThread.stop();
     }
 
     public void setztePunktzahl(int punktzahl) {
