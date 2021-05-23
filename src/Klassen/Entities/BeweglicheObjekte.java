@@ -57,6 +57,11 @@ public abstract class BeweglicheObjekte {
         bild = STANDART_BILD;
     }
 
+    /**
+     * No argument Konstruktor
+     */
+    private BeweglicheObjekte() {}
+
     public double erhalteXKoor() {
         return xKoor;
     }
@@ -115,7 +120,7 @@ public abstract class BeweglicheObjekte {
     public void loescheObjekt() {
         entferneObjekt();
     }
-    
+
     /**
      * Zeichne ein rechteckiges Objekt mit ausgewähltem Image auf der grafischen Oberfläche
      *

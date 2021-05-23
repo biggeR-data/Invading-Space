@@ -22,7 +22,7 @@ public abstract class Gegner extends BeweglicheObjekte {
      * @param yKoor Position in Y Dimension
      * @param root  legt fest auf welcher GUI-Ebene das Objekt erstellt wird
      */
-    public Gegner(double xKoor, double yKoor, Group root) {
+    protected Gegner(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
     }
 
