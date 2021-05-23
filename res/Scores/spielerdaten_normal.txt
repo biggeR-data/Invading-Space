@@ -1,6 +1,11 @@
 Jasmin,730
 Jasmin,370
+ag,110
+lol,100
 patrick,80
+asdg,50
+asdg,40
+adsg,20
 Jan,10
 Jasmin,10
 Leon,10
