@@ -5,10 +5,11 @@ import javafx.scene.Group;
 /**
  * Oberklasse aller Gegner
  * Festlegung von Maßen und Position
- * Bewegungsfunktionen, Schussfunktion und Rückgabewert für die Kollisionsüberprüfung mit dem unteren Rand
+ * Bewegungsfunktionen und -beschränkungen
+ * Schussfunktion
  */
 public abstract class Gegner extends BeweglicheObjekte {
-    // Standart Attribute
+    // todo: Standart Punkte wirklich benötigt?
     private static final int PUNKTE = 10;
     private final double YBEWEGUNG = 50;
 
@@ -16,9 +17,10 @@ public abstract class Gegner extends BeweglicheObjekte {
 
     /**
      * Position festlegen
+     *
      * @param xKoor
      * @param yKoor
-     * @param root
+     * @param root  legt fest auf welcher GUI-Ebene das Objekt erstellt wird
      */
     public Gegner(double xKoor, double yKoor, Group root) {
         super(xKoor, yKoor, root);
@@ -33,10 +35,8 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     /**
-     * Das Gegner-Objekt nach rechts bewegen.
-     * Altes Objekt entfernen
-     * Koordinaten neu berechnen
-     * Neues Objekt zeichnen
+     * altes Gegner Objekt entfernen
+     * Gegnerobjekt an neuer Position erschaffen
      */
     public void bewegenRechts() {
         entferneObjekt();
@@ -45,10 +45,8 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     /**
-     * Das Gegner-Objekt nach links bewegen.
-     * Altes Objekt entfernen
-     * Koordinaten neu berechnen
-     * Neues Objekt zeichnen
+     * altes Gegner Objekt entfernen
+     * Gegnerobjekt an neuer Position erschaffen
      */
     public void bewegenLinks() {
         entferneObjekt();
@@ -57,10 +55,8 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     /**
-     * Das Gegner-Objekt nach unten bewegen.
-     * Altes Objekt entfernen
-     * Koordinaten neu berechnen
-     * Neues Objekt zeichnen
+     * altes Gegner Objekt entfernen
+     * Gegnerobjekt an neuer Position erschaffen
      */
     public void bewegenRunter() {
         entferneObjekt();
@@ -69,7 +65,8 @@ public abstract class Gegner extends BeweglicheObjekte {
     }
 
     /**
-     * Ein Objekt der Klasse Schuss erstellen
+     * Schuss an der Position des Gegners abfeuern
+     *
      * @return Schuss
      */
     public Schuss schiessen() {
@@ -78,8 +75,9 @@ public abstract class Gegner extends BeweglicheObjekte {
 
     /**
      * Überprüfen ob ein Gegner den unteren Rand (Raumschiff) trifft.
-     * @param yRand
-     * @return Boolescher Wert
+     *
+     * @param yRand bestimmt die Grenze zwischen der Gegnerzone und der eigenen Zone
+     * @return boolean Wahr, falls die Gegner die eigene Reihe durchbrechen
      */
     public boolean pruefeKollisionUnten(double yRand) {
         if (erhalteYKoor() + YBEWEGUNG > yRand) {

@@ -4,21 +4,25 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 
 public class Raumschiff extends BeweglicheObjekte {
-    // Konstruktor
+
     public Raumschiff(int xKoor, int yKoor, Group root) {
+        // Position
         super(xKoor, yKoor, root);
+
+        // Maße
         setzeBreite(40);
         setzeHoehe(40);
+
+        // Aussehen
         Image img = erhalteBild("MileniumFalke3.png");
         setzeBild(img);
+
         erschaffeObjekt(erhalteBreite(), erhalteHoehe());
     }
 
     /**
-     * Das Raumschiff-Objekt nach rechts bewegen.
-     * Altes Objekt entfernen
-     * Koordinaten neu berechnen
-     * Neues Objekt zeichnen
+     * Bewegung nach rechts durch neues Objekt realisieren
+     * altes Objekt entfernen
      */
     public void bewegenRechts() {
         entferneObjekt();
@@ -27,10 +31,8 @@ public class Raumschiff extends BeweglicheObjekte {
     }
 
     /**
-     * Das Raumschiff-Objekt nach links bewegen.
-     * Altes Objekt entfernen
-     * Koordinaten neu berechnen
-     * Neues Objekt zeichnen
+     * Bewegung nach rechts durch neues Objekt realisieren
+     * altes Objekt entfernen
      */
     public void bewegenLinks() {
         entferneObjekt();
@@ -39,7 +41,7 @@ public class Raumschiff extends BeweglicheObjekte {
     }
 
     /**
-     * Das Raumschiff-Objekt schießen lassen
+     * Schuss an momentaner Position
      */
     public Schuss schiessen() {
         return new Schuss(erhalteXKoor() + (erhalteBreite() / 2), erhalteYKoor(), root);

@@ -151,7 +151,7 @@ public abstract class BeweglicheObjekte {
      * Kollision von einem Objekt mit dem linken Rand überprüfen
      *
      * @param xRand
-     * @return boolean
+     * @return boolean Wahr, wenn der linke Rand überschritten werden würde
      */
     public boolean pruefeKollisionLinks(double xRand) {
         if (erhalteXKoor() - xBewegung < xRand) {
@@ -164,7 +164,7 @@ public abstract class BeweglicheObjekte {
      * Prüfung, ob Gegner die Reihe des Raumschiffs erreicht haben
      *
      * @param pruefObjekt Objekt, welches auf Überlagerung getestet wird
-     * @return boolean
+     * @return boolean Wahr, falls zwei Objekte sich überlagern
      */
     public boolean pruefeKollision(BeweglicheObjekte pruefObjekt) {
         if (pruefObjekt.erhalteXKoor() + pruefObjekt.erhalteBreite() >= this.xKoor &&
@@ -179,8 +179,8 @@ public abstract class BeweglicheObjekte {
     /**
      * simplifizierter Zugriff um Grafiken Entitäten zuzuschreiben
      *
-     * @param name
-     * @return Image
+     * @param name Dateiname
+     * @return Image Aussehen des Objekts anhand einer Grafik
      */
     protected static Image erhalteBild(String name) {
         try {

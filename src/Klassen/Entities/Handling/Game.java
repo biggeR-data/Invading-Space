@@ -172,7 +172,7 @@ public class Game extends Thread {
     private void bewegeSchuesse() {
         //System.out.println("bewege Schüsse");
         // Schüsse vom Schiff
-        koordinator.ueberpruefenMonsterUndBewegenSchuss();
+        koordinator.ueberpruefenMonsterUndBewegeSchuss();
 
 
         // Schüsse von den Monstern bewegen und gameover überprüfen
@@ -183,7 +183,7 @@ public class Game extends Thread {
 
     private void bewegeMonster() {
         //System.out.println("bewege Gegner");
-        koordinator.ueberprüfenUndBewegenMonster();
+        koordinator.ueberpruefenUndBewegenMonster();
 
         // überprüfe gameover
         if (koordinator.gameOver()) {
