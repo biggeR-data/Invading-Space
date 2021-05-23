@@ -259,7 +259,7 @@ public class Spielablauf extends Thread {
         for (int x = 0; x < 12; x++) {
             listeGegner.add(new GegnerFuenfzig(x * 40 + 30, 100, root));
         }
-/*
+
         // 20er Gegner
         for (int y = 0; y < 2; y++) {
             for (int x = 0; x < 12; x++) {
@@ -273,7 +273,7 @@ public class Spielablauf extends Thread {
                 listeGegner.add(new GegnerZehn(x * 40 + 30, y * 50 + 250, root));
             }
         }
-*/
+
         objektSteuerung.neueWelle(listeGegner);
     }
 
