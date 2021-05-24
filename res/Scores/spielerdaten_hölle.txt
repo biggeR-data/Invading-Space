@@ -1,4 +1,6 @@
+Patrick,690
 Jan,580
+Patrick,380
 Leon ,190
 Jan,140
 Patrick,60
@@ -17,3 +19,4 @@ asdg,0
 adsg,0
 Leon,0
 Leon,0
+eon,0
