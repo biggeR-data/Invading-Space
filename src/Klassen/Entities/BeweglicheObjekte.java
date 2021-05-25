@@ -19,9 +19,9 @@ public abstract class BeweglicheObjekte {
 
     // Standard Attribute
     private static final double STANDARD_HOEHE = 25;
-    protected static final double STANDARD_BREITE = 25;
-    protected static final double STANDARD_XBEWEGUNG = 10;
-    protected Image STANDART_BILD;
+    private static final double STANDARD_BREITE = 25;
+    private static final double STANDARD_XBEWEGUNG = 10;
+    private Image STANDART_BILD;
 
     // Position
     public double xKoor;
